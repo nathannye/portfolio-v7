@@ -25,7 +25,8 @@ class _Scroll extends Subscribable<ScrollEvent> {
 		super()
 
 		if (!isServer) {
-			this.init()
+			// Defer until `#app` is in the DOM so we never fall back to `window` while overflow lives on `#app`.
+			requestAnimationFrame(() => this.init())
 		}
 	}
 
@@ -44,17 +45,21 @@ class _Scroll extends Subscribable<ScrollEvent> {
 	}
 
 	init(): void {
-		this.y = window.scrollY || 0
-		const wrapper = document.querySelector('#app')
+		const wrapper = document.getElementById('app')
+		if (!wrapper) {
+			requestAnimationFrame(() => this.init())
+			return
+		}
+
+		this.y = wrapper.scrollTop
 		this.lenis = new Lenis({
-			wrapper: wrapper || window,
+			wrapper,
+			content: wrapper,
 			autoResize: false,
 		})
 
-		console.log(this.lenis)
-
 		this.lenis.on('scroll', this.onScroll.bind(this))
-		gsap.ticker.add((time: number) => this.lenis!.raf(time * 1000))
+		gsap.ticker.add((time: number) => this.lenis?.raf(time * 1000))
 
 		// Observe document.body so Lenis resizes when page length changes (e.g. HMR)
 		let bodyHeight = 0

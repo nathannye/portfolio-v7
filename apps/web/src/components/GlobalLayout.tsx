@@ -2,6 +2,8 @@ import type { JSX } from 'solid-js'
 import { onMount, Show } from 'solid-js'
 import { isServer } from 'solid-js/web'
 import { useWindowResize } from '~/hooks/useResize'
+// biome-ignore lint/correctness/noUnusedImports: bound by Solid `use:scroll` at compile time
+import { scroll } from '~/subscribers/scroll'
 import { setCssVariable } from '~/utils/css'
 import GridOverlay from './GridOverlay'
 import Navbar from './Navbar'

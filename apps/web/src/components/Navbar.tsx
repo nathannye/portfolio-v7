@@ -1,10 +1,12 @@
 import { A } from '@solidjs/router'
+import cx from 'classix'
 import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 import { onScroll } from '~/utils'
 
 export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
+	const [isScrolled, setIsScrolled] = createSignal(false)
 
 	const getTime = () => {
 		return new Intl.DateTimeFormat('en-US', {
@@ -19,8 +21,12 @@ export default function Navbar() {
 			setTime(getTime())
 		}, 1000)
 
-		onScroll((progress) => {
-			console.log(progress)
+		onScroll(({ scroll }) => {
+			if (scroll > 0 && !isScrolled()) {
+				setIsScrolled(true)
+			} else if (scroll === 0 && isScrolled()) {
+				setIsScrolled(false)
+			}
 		})
 	})
 
@@ -29,15 +35,20 @@ export default function Navbar() {
 	})
 
 	return (
-		<header class="eyebrow flex pt-11 px-margin-1 fixed top-0 left-0 right-0">
-			<A href="/" aria-label="Home" class="w-grid-4-w">
+		<header
+			class={cx(
+				'eyebrow after:origin-top after:scale-y-0 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 after:duration-600 after:ease-expo-out pb-6',
+				isScrolled() && 'after:scale-y-100',
+			)}
+		>
+			<A href="/" aria-label="Home" class="eyebrow w-grid-4-w relative z-2">
 				Nathan Nye
 			</A>
-			<dl class="flex gap-gutter-1">
+			<dl class="flex eyebrow gap-gutter-1 relative z-2">
 				<dt class="w-grid-1 text-right">Get in touch</dt>
 				<dd class="w-grid-3-w">nathan@nye.dev</dd>
 			</dl>
-			<dl class="flex gap-gutter-1">
+			<dl class="flex eyebrow gap-gutter-1 relative z-2">
 				<dt>Denver, CO</dt>
 				<dd>MST {time()}</dd>
 			</dl>
