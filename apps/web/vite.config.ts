@@ -27,12 +27,12 @@ export default defineConfig({
 
 				const home = await client.fetch('*[_type == "home"] {_updatedAt}')
 				const homeItem = {
-					url: '/',
+					url: `${DOMAIN}/`,
 					lastModified: home._updatedAt,
 				}
 
 				const projectItems = projects.map((project) => ({
-					url: project.slug,
+					url: `${DOMAIN}/${project.slug}`,
 					lastModified: project._updatedAt,
 				}))
 
