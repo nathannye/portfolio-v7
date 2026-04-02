@@ -1,19 +1,22 @@
 import cx from 'classix'
 import { onMount } from 'solid-js'
+import { Resizer } from '~/subscribers/resizer'
 import { onTrack } from '~/utils'
 
 export default function ParallaxMedia(props) {
 	let wrapper: HTMLDivElement
 	let el: HTMLDivElement
 
-	const DISTANCE = 20
+	const DISTANCE = 28
 
 	onMount(() => {
 		if (!wrapper || !el) return
 		onTrack(
 			el,
 			(progress) => {
-				const val = progress * (DISTANCE / 2)
+				const isMobile = Resizer.isMobile
+				const d = isMobile ? DISTANCE * 1.3 : DISTANCE
+				const val = progress * (d / 2)
 				el.style.transform = `translateY(${val}%)`
 			},
 			{
@@ -32,7 +35,7 @@ export default function ParallaxMedia(props) {
 			{...props}
 			class={cx('overflow-hidden', props.class)}
 		>
-			<div ref={el} class="origin-bottom scale-[var(--scale)]">
+			<div ref={el} class="origin-bottom size-full scale-[var(--scale)]">
 				{props.children}
 			</div>
 		</div>
