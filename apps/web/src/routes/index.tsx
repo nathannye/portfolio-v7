@@ -44,11 +44,11 @@ export default function Home() {
 								Sanity.io and Contentful
 							</p>
 						</header>
-						<div class="w-full flex flex-col gap-y-120">
+						<div class="w-full flex flex-col gap-y-95">
 							<ListSection title="The Good Stuff" itemCount={projects.length}>
 								<div class="mt-10">
 									<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
-										<div class="w-grid-3-w">Name</div>
+										<div class="w-grid-3-w">Title</div>
 										<div class="w-grid-2-w">Partners in Crime</div>
 										<div class="w-grid-2-w">Kudos</div>
 										<div class="w-grid-2-w">Press</div>
@@ -61,9 +61,9 @@ export default function Home() {
 								</div>
 							</ListSection>
 							<ListSection title="Margins" itemCount={margins.length}>
-								<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
-									<div class="w-grid-3-w">What</div>
-									<div class="w-grid-2-w">When</div>
+								<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
+									<div class="w-grid-3-w">Title</div>
+									<div class="w-grid-2-w">Published</div>
 									<div class="w-grid-3-w">Category</div>
 								</div>
 								<div class="mt-10">

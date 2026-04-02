@@ -44,15 +44,15 @@ export default function Navbar() {
 			<A
 				href="/"
 				aria-label="Home"
-				class="eyebrow w-grid-1 shrink-0 lg:w-grid-4-w relative z-2"
+				class="eyebrow w-grid-1 shrink-0 font-[180] lg:w-grid-4-w relative z-2"
 			>
 				Nathan Nye
 			</A>
-			<dl class="flex eyebrow gap-gutter-1 relative z-2">
+			<dl class="flex eyebrow gap-gutter-1 opacity-80 relative z-2">
 				<dt class="w-grid-1 text-right">Get in touch</dt>
 				<dd class="lg:w-grid-3-w">nathan@nye.dev</dd>
 			</dl>
-			<dl class="flex max-lg:justify-end max-lg:text-right max-lg:w-full eyebrow gap-x-gutter-1 relative z-2">
+			<dl class="flex max-lg:justify-end opacity-80 max-lg:text-right max-lg:w-full eyebrow gap-x-gutter-1 relative z-2">
 				<dt>Denver, CO</dt>
 				<dd>MST {time()}</dd>
 			</dl>
