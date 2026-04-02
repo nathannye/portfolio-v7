@@ -8,7 +8,7 @@ const getProject = query(async (slug: string) => {
 	'use server'
 	return await getDocumentBySlug('project', slug, {
 		extraQuery:
-			'[0]{title, slug, role, stack, year, mainImage, "partners": partners[]->name, _createdAt, _updatedAt}',
+			'[0]{title, slug, role, stack, year, mainImage, partners, liveLink, _createdAt, _updatedAt}',
 	})
 }, 'project-details')
 

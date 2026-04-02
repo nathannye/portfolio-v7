@@ -1,5 +1,6 @@
 import { A } from '@solidjs/router'
 import { For } from 'solid-js'
+import { formatPartner } from '~/utils/string'
 
 type ProjectListItemProps = {
 	title: string
@@ -10,17 +11,8 @@ type ProjectListItemProps = {
 export default function ProjectListItem(props: ProjectListItemProps) {
 	const list = (items: string[]) => (items ? items.join(', ') : '')
 
-	const partnerList = (partners: Partner[]) =>
-		partners
-			? partners
-					.map((partner) => {
-						if (partner.country) {
-							return `${partner.name}  [ ${partner.country} ]`
-						}
-						return partner.name
-					})
-					.join(', ')
-			: ''
+	const partnerList = (partners) =>
+		partners ? partners.map((partner) => formatPartner(partner)).join(', ') : ''
 
 	return (
 		<li class="w-full border-t border-inverted/10">
