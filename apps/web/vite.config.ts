@@ -10,7 +10,20 @@ export default defineConfig({
 	plugins: [
 		solidStart(),
 		tailwindcss(),
-		nitro(),
+		nitro({
+			preset: 'vercel',
+			routeRules: {
+				'/**': {
+					prerender: true,
+				},
+				'/projects/**': {
+					prerender: true,
+				},
+				'/margins/**': {
+					prerender: true,
+				},
+			},
+		}),
 		crawlMeMaybeSitemap({
 			domain: DOMAIN,
 			sitemaps: async () => {
