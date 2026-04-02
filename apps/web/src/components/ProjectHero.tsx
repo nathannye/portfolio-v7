@@ -10,13 +10,16 @@ type ProjectHeroProps = {
 	stack: string[]
 	role: string[]
 	year?: number
-	partners?: string[]
+	partners?: {
+		name: string
+		link: string
+	}[]
 	liveLink?: string
 }
 
 export default function ProjectHero(props: ProjectHeroProps) {
 	const list = (items: string[]) => (items ? items.join(', ') : '')
-	const partnerList = (partners) =>
+	const partnerList = (partners: { name: string; link: string }[]) =>
 		partners?.length
 			? partners.map((partner) => formatPartner(partner)).join(', ')
 			: ''

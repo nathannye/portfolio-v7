@@ -22,12 +22,20 @@ export default createPage({
 	preview: createPreview('title', 'year', 'mainImage'),
 	fields: [
 		{
+			name: 'description',
+			description: 'Used as meta description, not visible on the frontend',
+			type: 'text',
+			rows: 3,
+			validation: (Rule) => Rule.required(),
+		},
+		{
 			name: 'mainImage',
 			type: 'image',
 		},
 		{
 			name: 'year',
 			type: 'number',
+			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: 'liveLink',
@@ -36,6 +44,7 @@ export default createPage({
 		{
 			name: 'stack',
 			type: 'array',
+			validation: (Rule) => Rule.required(),
 			of: [{ type: 'string' }],
 			options: {
 				list: projectStackLabels,
@@ -43,6 +52,7 @@ export default createPage({
 		},
 		{
 			name: 'role',
+			validation: (Rule) => Rule.required(),
 			type: 'array',
 			of: [
 				{

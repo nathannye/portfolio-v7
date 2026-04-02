@@ -63,7 +63,6 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 		name,
 		seo,
 		slug,
-		hasParentPage,
 		prefix,
 		icon,
 		body,
@@ -72,7 +71,6 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 		groups,
 		orderings,
 		slices,
-		schemaMarkupType,
 	} = options
 
 	if (body) {
@@ -85,22 +83,22 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 		)
 	}
 
-	if (seo !== false) {
-		allFields.push({
-			group: 'seo',
-			name: 'seo',
-			type: 'metadata',
-		})
-		allFields.push({
-			name: 'schemaMarkup',
-			group: process.env.NODE_ENV === 'development' ? 'schema-markup' : 'content',
-			type: 'schemaMarkup',
-			hidden: () => process.env.NODE_ENV !== 'development',
-			options: schemaMarkupType
-				? { defaultSchemaType: schemaMarkupType }
-				: undefined,
-		})
-	}
+	// if (seo !== false) {
+	// 	allFields.push({
+	// 		group: 'seo',
+	// 		name: 'seo',
+	// 		type: 'metadata',
+	// 	})
+	// 	allFields.push({
+	// 		name: 'schemaMarkup',
+	// 		group: process.env.NODE_ENV === 'development' ? 'schema-markup' : 'content',
+	// 		type: 'schemaMarkup',
+	// 		hidden: () => process.env.NODE_ENV !== 'development',
+	// 		options: schemaMarkupType
+	// 			? { defaultSchemaType: schemaMarkupType }
+	// 			: undefined,
+	// 	})
+	// }
 
 	if (slug) {
 		allFields.unshift({

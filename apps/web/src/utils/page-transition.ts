@@ -44,19 +44,12 @@ export function usePageTransition() {
 	const navigate = useNavigate()
 	const isRouting = useIsRouting()
 	const preload = usePreloadRoute()
-	const skipNextLeave = { v: false }
+	let transitioning = false
 
 	useBeforeLeave(async (e: BeforeLeaveEventArgs) => {
-		if (skipNextLeave.v) {
-			skipNextLeave.v = false
-			return
-		}
-
-		if (typeof e.to === 'number') {
-			return
-		}
-
+		if (transitioning) return
 		e.preventDefault()
+		transitioning = true
 
 		if (typeof window !== 'undefined') {
 			preload(e.to, { preloadData: true })
@@ -65,18 +58,12 @@ export function usePageTransition() {
 
 		await animateOut()
 		await gsap.to('main', { opacity: 0, duration: MAIN_OUT_DURATION })
-		const toPathname = e.to.split('?')[0]
-		const currentPathname = location.pathname
+		Scroll.lenis?.scrollTo(0, { immediate: true })
 
-		const isQueryOnlyChange = toPathname === currentPathname
-
-		skipNextLeave.v = true
 		navigate(e.to, { ...e.options, resolve: false, scroll: false })
 		await whenRoutingSettled(isRouting)
+		transitioning = false
 
-		if (!isQueryOnlyChange) {
-			Scroll.lenis?.scrollTo(0, { immediate: true })
-		}
 		gsap.to('main', {
 			opacity: 1,
 			duration: MAIN_IN_DURATION,
@@ -84,13 +71,13 @@ export function usePageTransition() {
 		})
 	})
 
-	if (typeof window !== 'undefined') {
-		const handlePopState = async () => {
-			await animateOut()
-			Scroll.lenis?.scrollTo(0, { immediate: true })
-		}
+	// if (typeof window !== 'undefined') {
+	// 	const handlePopState = async () => {
+	// 		await animateOut()
+	// 		Scroll.lenis?.scrollTo(0, { immediate: true })
+	// 	}
 
-		window.addEventListener('popstate', handlePopState)
-		onCleanup(() => window.removeEventListener('popstate', handlePopState))
-	}
+	// 	window.addEventListener('popstate', handlePopState)
+	// 	onCleanup(() => window.removeEventListener('popstate', handlePopState))
+	// }
 }

@@ -4,6 +4,7 @@ import { isServer } from 'solid-js/web'
 import { useWindowResize } from '~/hooks/useResize'
 // biome-ignore lint/correctness/noUnusedImports: bound by Solid `use:scroll` at compile time
 import { scroll } from '~/subscribers/scroll'
+import { usePageTransition } from '~/utils'
 import { setCssVariable } from '~/utils/css'
 import Footer from './Footer'
 import GridOverlay from './GridOverlay'
@@ -12,6 +13,7 @@ import WebSiteMarkup from './WebSiteMarkup'
 
 export default function GlobalLayout({ children }: { children: JSX.Element }) {
 	let el: HTMLElement | null = null
+	usePageTransition()
 
 	const getScrollbarWidth = () => {
 		let width = 0
