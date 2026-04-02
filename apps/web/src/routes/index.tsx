@@ -1,7 +1,8 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
 import { Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import { For } from 'solid-js'
+import { For, Show } from 'solid-js'
+import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection'
 import MarginListItem from '~/components/MarginListItem'
 import ProjectListItem from '~/components/ProjectListItem'
@@ -19,7 +20,11 @@ const getData = query(async () => {
 			'{title, slug, firstPublished, "tags":tags[]->name} | order(firstPublished desc)',
 	})
 
-	return await Promise.all([projects, margins])
+	const page = getDocumentByType('home', {
+		extraQuery: '[0]{headline, blurb}',
+	})
+
+	return await Promise.all([projects, margins, page])
 }, 'projects')
 
 export default function Home() {
@@ -28,7 +33,7 @@ export default function Home() {
 	return (
 		<SanityPage fetcher={data}>
 			{(d) => {
-				const [projects, margins] = d
+				const [projects, margins, page] = d
 				return (
 					<>
 						<Title>Nathan Nye • Creative Developer</Title>
@@ -36,18 +41,10 @@ export default function Home() {
 							name="description"
 							content="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
 						/>
-						<header class="pt-[28vh] lg:pt-[25vh] mb-120 px-margin-1">
-							<h1 class="heading-3 lg:px-grid-3-w">
-								Hey, I'm <span class="text-accent font-medium">Nathan!</span> A creative
-								developer & designer obsessed with CMS-driven web projects brought to
-								life with kick-ass animation.
-							</h1>
-							<p class="body-1 opacity-70 mt-44 lg:w-grid-5 lg:ml-grid-3-w max-lg:pr-grid-1">
-								I’ve worked with dozens of agencies and brands worldwide bringing
-								first-class visuals and motion to large-scale headless systems on
-								Sanity.io and Contentful
-							</p>
-						</header>
+						<Show when={page}>
+							<HomeHero {...page} />
+						</Show>
+
 						<div class="w-full flex flex-col gap-y-95">
 							<ListSection title="The Good Stuff" itemCount={projects.length}>
 								<div class="mt-10">
