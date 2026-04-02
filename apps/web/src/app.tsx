@@ -4,6 +4,7 @@ import { FileRoutes } from '@solidjs/start/router'
 import { Suspense } from 'solid-js'
 import './app.css'
 
+import Footer from './components/Footer'
 import GlobalLayout from './components/GlobalLayout'
 import { useViewport } from './hooks/useViewport'
 
@@ -14,7 +15,10 @@ export default function App() {
 			root={(props) => (
 				<MetaProvider>
 					<GlobalLayout>
-						<Suspense>{props.children}</Suspense>
+						<Suspense>
+							{props.children}
+							<Footer />
+						</Suspense>
 					</GlobalLayout>
 				</MetaProvider>
 			)}

@@ -51,12 +51,12 @@ export default function Navbar() {
 			<A
 				href="/"
 				aria-label="Home"
-				class="eyebrow w-grid-1 shrink-0 font-[165] lg:w-grid-4-w relative z-2"
+				class="eyebrow w-grid-1 shrink-0 font-[165] lg:w-grid-3-w relative z-2"
 			>
 				Nathan Nye
 			</A>
 			<dl class="flex eyebrow gap-gutter-1 opacity-80 relative z-2">
-				<dt class="w-grid-1 text-right">Get in touch</dt>
+				<dt class="w-grid-2 text-right">Get in touch</dt>
 				<dd class="lg:w-grid-3-w">
 					<a href="mailto:nathan@nye.dev" class="underline">
 						nathan@nye.dev

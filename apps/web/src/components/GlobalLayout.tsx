@@ -47,7 +47,6 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 			<main ref={el} use:scroll>
 				{children}
 			</main>
-			<Footer />
 		</>
 	)
 }
