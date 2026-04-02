@@ -10,6 +10,7 @@
   "dependencies": {
     "@crawl-me-maybe/sitemap": "^0.0.10",
     "@local/sanity": "workspace:*",
+    "@solidjs/meta": "^0.29.4",
     "@sanity/client": "^7.20.0",
     "@sanity/types": "^5.19.0",
     "@solid-primitives/intersection-observer": "^2.2.4",
