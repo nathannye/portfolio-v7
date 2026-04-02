@@ -6,7 +6,7 @@ export default function ParallaxMedia(props) {
 	let wrapper: HTMLDivElement
 	let el: HTMLDivElement
 
-	const DISTANCE = 16
+	const DISTANCE = 20
 
 	onMount(() => {
 		if (!wrapper || !el) return

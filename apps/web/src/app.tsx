@@ -5,8 +5,10 @@ import { Suspense } from 'solid-js'
 import './app.css'
 
 import GlobalLayout from './components/GlobalLayout'
+import { useViewport } from './hooks/useViewport'
 
 export default function App() {
+	useViewport()
 	return (
 		<Router
 			root={(props) => (
