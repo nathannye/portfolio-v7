@@ -1,4 +1,4 @@
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 import Lenis from 'lenis'
 import { isServer } from 'solid-js/web'
 import { Subscribable } from './subscribable'
@@ -49,9 +49,9 @@ class _Scroll extends Subscribable<ScrollEvent> {
 		this.lenis = new Lenis({
 			wrapper: wrapper || window,
 			autoResize: false,
-			// smoothWheel: true (default). ScrollTrigger reads Scroll.lenis.scroll via scrollerProxy so
-			// animations stay aligned while Lenis animates. WebGL uses passive wheel listeners for deltas only.
 		})
+
+		console.log(this.lenis)
 
 		this.lenis.on('scroll', this.onScroll.bind(this))
 		gsap.ticker.add((time: number) => this.lenis!.raf(time * 1000))

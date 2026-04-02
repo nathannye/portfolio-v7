@@ -1,24 +1,19 @@
+import { MetaProvider } from '@solidjs/meta'
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
-import { Show, Suspense } from 'solid-js'
-import Navbar from './components/Navbar'
+import { Suspense } from 'solid-js'
 import './app.css'
-import { MetaProvider } from '@solidjs/meta'
-import GridOverlay from './components/GridOverlay'
-import { scroll } from './subscribers/scroll'
+
+import GlobalLayout from './components/GlobalLayout'
 
 export default function App() {
 	return (
 		<Router
 			root={(props) => (
 				<MetaProvider>
-					<Navbar />
-					<Show when={process.env.NODE_ENV === 'development'}>
-						<GridOverlay />
-					</Show>
-					<main use:scroll>
+					<GlobalLayout>
 						<Suspense>{props.children}</Suspense>
-					</main>
+					</GlobalLayout>
 				</MetaProvider>
 			)}
 		>

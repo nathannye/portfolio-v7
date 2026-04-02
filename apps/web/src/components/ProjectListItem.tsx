@@ -13,9 +13,9 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 				class="pt-12 block pb-20 w-full not-first:border-t not-first:border-inverted/10"
 				href={props.slug.fullUrl}
 			>
-				<div class="flex items-baseline gap-4">
+				<div class="flex items-baseline gap-8">
 					<h3 class="heading-5">{props.title}</h3>
-					<span class="opacity-50">{props.year}</span>
+					<span class="opacity-50 font-[120]">{props.year}</span>
 				</div>
 			</A>
 		</li>
