@@ -14,5 +14,9 @@ export default createPage({
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'tag' }] }],
 		},
+		{
+			name: 'firstPublished',
+			type: 'date',
+		},
 	],
 })

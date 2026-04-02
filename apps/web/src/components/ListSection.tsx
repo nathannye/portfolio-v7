@@ -11,7 +11,7 @@ export default function ListSection(props: ListSectionProps) {
 	return (
 		<section class="px-margin-1">
 			<div class="flex items-start pt-2 border-t border-inverted/30 flex-col lg:flex-row gap-y-40">
-				<h2 class="w-grid-3-w font-[160] mt-9 eyebrow shrink-0">
+				<h2 class="w-full flex max-lg:justify-between lg:w-grid-3-w font-[160] mt-9 eyebrow shrink-0">
 					<span class="inline-block">{props.title}</span>
 
 					<BracketedText class="ml-15">{props.itemCount}</BracketedText>

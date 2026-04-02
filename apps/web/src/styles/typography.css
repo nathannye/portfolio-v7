@@ -23,6 +23,10 @@
 	font-size: max(var(--min-font-size), 1.5rem);
 	letter-spacing: -0.01em;
 	font-weight: 140;
+
+	@media screen and (max-width: 1024px) {
+		font-size: max(var(--min-font-size), 2.7rem);
+	}
 }
 
 @utility body-1 {
@@ -30,6 +34,10 @@
 	letter-spacing: -0.02em;
 	line-height: 1.45;
 	@apply font-serif;
+
+	@media screen and (max-width: 1024px) {
+		font-size: max(var(--min-font-size), 2.3rem);
+	}
 }
 
 @utility body-2 {

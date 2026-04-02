@@ -6,11 +6,11 @@ import ProjectHero from '~/components/ProjectHero'
 
 const getProject = query(async (slug: string) => {
 	'use server'
-	return await getDocumentBySlug('project', slug, {
+	return await getDocumentBySlug('margin', slug, {
 		extraQuery:
-			'[0]{title, slug, role, stack, year, mainImage, "partners": partners[]->name, _createdAt, _updatedAt}',
+			'[0]{title, slug, firstPublished, "tags":tags[]->name, _createdAt, _updatedAt}',
 	})
-}, 'project-details')
+}, 'margin-details')
 
 export default function ProjectPage({ params }) {
 	const fetcher = createAsync(() => getProject(params.slug))

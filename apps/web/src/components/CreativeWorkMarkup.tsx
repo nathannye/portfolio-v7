@@ -33,7 +33,7 @@ export default function CreativeWorkMarkup(props: {
 				dateModified: props._updatedAt,
 				// headline: props.headline,
 				keywords: [...props.stack],
-				thumbnailUrl: props.mainImage.asset.url,
+				thumbnailUrl: props.mainImage?.asset?.url,
 				// image: [
 				// 	'https://example.com/images/projects/avaline/cover.jpg',
 				// 	'https://example.com/images/projects/avaline/homepage.jpg',
