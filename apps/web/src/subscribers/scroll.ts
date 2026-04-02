@@ -55,6 +55,7 @@ class _Scroll extends Subscribable<ScrollEvent> {
 		this.lenis = new Lenis({
 			wrapper,
 			content: wrapper,
+			lerp: 0.09,
 			autoResize: false,
 		})
 
