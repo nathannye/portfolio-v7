@@ -22,7 +22,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 				class="pt-10 lg:pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
 				href={props.slug.fullUrl}
 			>
-				<h3 class="heading-5 w-grid-3-w pr-gutter-1 shrink-0">{props.title}</h3>
+				<h3 class="heading-5 w-grid-3-w lg:pr-gutter-2 shrink-0">{props.title}</h3>
 				<div class="opacity-90 w-grid-2-w eyebrow shrink-0 font-[120] max-lg:text-[2rem]">
 					{formattedDate()}
 				</div>

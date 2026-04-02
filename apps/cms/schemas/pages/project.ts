@@ -4,7 +4,7 @@ import { createPreview } from '../../utils/preview'
 
 /** Labels for project stack tags; order in Studio follows locale-aware sort. */
 const projectStackLabels = [
-	'DatoCMS',
+	'Dato',
 	'Contentful',
 	'Next.js',
 	'Sanity',
