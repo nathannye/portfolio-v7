@@ -11,5 +11,41 @@ export default {
 			type: 'string',
 			title: 'Name',
 		},
+		{
+			name: 'country',
+			type: 'string',
+			options: {
+				list: [
+					{
+						title: 'Czech Republic',
+						value: 'cz',
+					},
+					{
+						title: 'Germany',
+						value: 'de',
+					},
+					{
+						title: 'United States',
+						value: 'us',
+					},
+					{
+						title: 'United Kingdom',
+						value: 'uk',
+					},
+					{
+						title: 'France',
+						value: 'fr',
+					},
+					{
+						title: 'Italy',
+						value: 'it',
+					},
+					{
+						title: 'Netherlands',
+						value: 'nl',
+					},
+				].sort((a, b) => a.title.localeCompare(b.title)),
+			},
+		},
 	],
 }

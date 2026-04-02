@@ -21,8 +21,8 @@
 
 @utility heading-5 {
 	font-size: max(var(--min-font-size), 1.5rem);
-	letter-spacing: -0.02em;
-	font-weight: 150;
+	letter-spacing: -0.01em;
+	font-weight: 140;
 }
 
 @utility body-1 {
@@ -43,4 +43,5 @@
 	font-size: max(var(--min-font-size), 1rem);
 	font-weight: 130;
 	@apply font-sans;
+	letter-spacing: 0.02em;
 }

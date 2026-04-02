@@ -10,6 +10,7 @@ import {
 import { SlugInput } from 'sanity-plugin-prefixed-slug'
 import type { SchemaMarkupType } from '../plugins/seo'
 import { pageDefaultsGroups } from './_pageDefaults'
+import { createPortableText } from './portable-text/createPortableText'
 
 type PageAttributes = {
 	title: string
@@ -28,7 +29,6 @@ type PageAttributes = {
 	fields?: Array<FieldDefinition> // Add extra fields on top of defaults
 	schemaMarkupType?: SchemaMarkupType
 }
-
 
 const addDefaultGroups = (fields: Array<FieldDefinition>) => {
 	return fields.map((field) => {
@@ -76,11 +76,13 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 	} = options
 
 	if (body) {
-		allFields.push({
-			name: 'body',
-			group: 'content',
-			type: 'body',
-		})
+		allFields.push(
+			createPortableText('body', {
+				headings: ['h2', 'h3', 'h4'],
+				lists: ['bullet', 'number'],
+				decorators: ['bold', 'italic', 'underline', 'strikethrough'],
+			}),
+		)
 	}
 
 	if (seo !== false) {
@@ -119,7 +121,6 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 			validation: (Rule) => Rule.required().error('This page needs a slug'),
 		})
 	}
-	
 
 	if (title) {
 		allFields.unshift({
@@ -141,9 +142,7 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 		})
 	}
 
-	const reconciledFields = [
-		...addDefaultGroups([ ...allFields, ...fields]),
-	]
+	const reconciledFields = [...addDefaultGroups([...allFields, ...fields])]
 
 	const page = defineField({
 		type: 'document',

@@ -1,7 +1,6 @@
 // append
 
-import partner from "./partner";
+import partner from './partner'
+import tag from './tag'
 
-
-
-export default [partner]
+export default [partner, tag]

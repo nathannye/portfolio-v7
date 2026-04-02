@@ -1,11 +1,6 @@
-import { MdEditDocument, MdHome } from 'react-icons/md'
-import {
-	RiChatPrivateFill,
-	RiLayoutBottom2Line,
-	RiLayoutMasonryFill,
-	RiLayoutTop2Line,
-} from 'react-icons/ri'
-
+import { AiFillTag } from 'react-icons/ai'
+import { IoBusiness } from 'react-icons/io5'
+import { MdDocumentScanner, MdEditDocument, MdHome } from 'react-icons/md'
 import { setupPages } from '../utils/structure-utils'
 
 export const structure = (S, context: any) => {
@@ -18,6 +13,11 @@ export const structure = (S, context: any) => {
 		.title('Studio')
 		.items([
 			singlePage('Home', 'home', MdHome),
+			div(),
 			pageList('Projects', 'project', MdEditDocument),
+			pageList('Partners', 'partner', IoBusiness),
+			div(),
+			pageList('Margins', 'margin', MdDocumentScanner),
+			pageList('Tags', 'tag', AiFillTag),
 		])
 }
