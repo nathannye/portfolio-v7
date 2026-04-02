@@ -6,13 +6,12 @@ import {
 	usePreloadRoute,
 } from '@solidjs/router'
 import gsap from 'gsap'
-import { onCleanup } from 'solid-js'
 import { setNav } from '~/stores/navStore'
 import { Scroll } from '../subscribers/scroll'
 
 /** Seconds — `<main>` opacity during SPA navigations. */
-const MAIN_OUT_DURATION = 0.4
-const MAIN_IN_DURATION = 0.4
+const MAIN_OUT_DURATION = 0.375
+const MAIN_IN_DURATION = 0.375
 const MAIN_IN_DELAY = 0.0
 
 let outTransitions = [] as (() => void | Promise<void>)[]

@@ -35,7 +35,7 @@ export default function Home() {
 
 	onMount(() => {
 		onPageLeave(el, async () => {
-			return await gsap.to(el, { opacity: 0, duration: 0.4 })
+			return await gsap.to(el, { opacity: 0, duration: 0.375, ease: 'power2.out' })
 		})
 	})
 
