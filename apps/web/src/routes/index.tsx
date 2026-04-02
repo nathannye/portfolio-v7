@@ -3,6 +3,7 @@ import { Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { For } from 'solid-js'
 import ListSection from '~/components/ListSection'
+import MarginListItem from '~/components/MarginListItem'
 import ProjectListItem from '~/components/ProjectListItem'
 
 const getData = query(async () => {
@@ -43,21 +44,35 @@ export default function Home() {
 								Sanity.io and Contentful
 							</p>
 						</header>
-						<ListSection title="The Good Stuff" itemCount={projects.length}>
-							<div class="mt-10">
-								<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
-									<div class="w-grid-3-w">Name</div>
-									<div class="w-grid-2-w">Partners in Crime</div>
-									<div class="w-grid-2-w">Kudos</div>
-									<div class="w-grid-2-w">Press</div>
+						<div class="w-full flex flex-col gap-y-120">
+							<ListSection title="The Good Stuff" itemCount={projects.length}>
+								<div class="mt-10">
+									<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
+										<div class="w-grid-3-w">Name</div>
+										<div class="w-grid-2-w">Partners in Crime</div>
+										<div class="w-grid-2-w">Kudos</div>
+										<div class="w-grid-2-w">Press</div>
+									</div>
+									<ul>
+										<For each={projects}>
+											{(project) => <ProjectListItem {...project} />}
+										</For>
+									</ul>
 								</div>
-								<ul>
-									<For each={projects}>
-										{(project) => <ProjectListItem {...project} />}
-									</For>
-								</ul>
-							</div>
-						</ListSection>
+							</ListSection>
+							<ListSection title="Margins" itemCount={margins.length}>
+								<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
+									<div class="w-grid-3-w">What</div>
+									<div class="w-grid-2-w">When</div>
+									<div class="w-grid-3-w">Category</div>
+								</div>
+								<div class="mt-10">
+									<ul>
+										<For each={margins}>{(margin) => <MarginListItem {...margin} />}</For>
+									</ul>
+								</div>
+							</ListSection>
+						</div>
 					</>
 				)
 			}}
