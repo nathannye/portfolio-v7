@@ -5,6 +5,7 @@ import { useWindowResize } from '~/hooks/useResize'
 // biome-ignore lint/correctness/noUnusedImports: bound by Solid `use:scroll` at compile time
 import { scroll } from '~/subscribers/scroll'
 import { setCssVariable } from '~/utils/css'
+import Footer from './Footer'
 import GridOverlay from './GridOverlay'
 import Navbar from './Navbar'
 import WebSiteMarkup from './WebSiteMarkup'
@@ -44,6 +45,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 			<main ref={el} use:scroll>
 				{children}
 			</main>
+			<Footer />
 		</>
 	)
 }
