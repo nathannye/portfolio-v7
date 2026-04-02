@@ -6,7 +6,7 @@
 }
 
 @utility heading-2 {
-	font-size: max(var(--min-font-size), 5.4rem);
+	font-size: max(var(--min-font-size), 6.4rem);
 	letter-spacing: -0.02em;
 	line-height: 1.27;
 	@apply font-serif;

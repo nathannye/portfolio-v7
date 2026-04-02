@@ -1,5 +1,6 @@
 import SanityImage from '@local/sanity/components/SanityImage'
 import { Show } from 'solid-js'
+import ParallaxMedia from './ParallaxMedia'
 
 type ProjectHeroProps = {
 	title: string
@@ -14,7 +15,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 	const list = (items: string[]) => (items ? items.join(', ') : '')
 
 	return (
-		<header class="px-margin-1 pb-margin-1">
+		<header class="px-margin-1 pb-900">
 			<div class="h-[50vh] min-h-500 flex-center flex-col">
 				<h1 class="heading-2">{props.title}</h1>
 				<p class="heading-5 font-serif opacity-70 mt-12">{props.year}</p>
@@ -43,12 +44,14 @@ export default function ProjectHero(props: ProjectHeroProps) {
 					</Show>
 				</div>
 			</dl>
-			<SanityImage
-				desktopWidth={95}
-				mobileWidth={95}
-				src={props.mainImage}
-				class="min-h-600 w-full object-cover h-[110vh] mt-margin-1"
-			/>
+			<ParallaxMedia class="w-full aspect-[1/.75]">
+				<SanityImage
+					desktopWidth={95}
+					mobileWidth={95}
+					src={props.mainImage}
+					class="object-cover mt-margin-1 size-full"
+				/>
+			</ParallaxMedia>
 		</header>
 	)
 }

@@ -1,4 +1,4 @@
-// import { viewport } from '../stores/viewportStore'
+import { viewport } from '../stores/viewportStore'
 import { Scroll } from '../subscribers/scroll'
 
 interface ClientRectBounds {
@@ -25,8 +25,8 @@ export const clientRect = (element: HTMLElement): ClientRectBounds => {
 		height: bounds.height,
 		left: bounds.left,
 		right: bounds.right,
-		// wh: viewport.size.height,
-		// ww: viewport.size.width,
+		wh: viewport.size.height,
+		ww: viewport.size.width,
 		offset: bounds.top + scroll,
 	}
 }

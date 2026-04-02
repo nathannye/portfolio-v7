@@ -56,6 +56,7 @@ class _Scroll extends Subscribable<ScrollEvent> {
 			wrapper,
 			content: wrapper,
 			lerp: 0.09,
+			duration: 1.2,
 			autoResize: false,
 		})
 

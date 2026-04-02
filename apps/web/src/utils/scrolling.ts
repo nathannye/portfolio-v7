@@ -1,7 +1,6 @@
 import { createVisibilityObserver } from '@solid-primitives/intersection-observer'
 import { createEffect, createSignal, createUniqueId, onCleanup } from 'solid-js'
-// import { viewport } from '../stores/viewportStore'
-// import { viewport } from "../stores/viewportStore";
+import { viewport } from '~/stores/viewportStore'
 import { Raf } from '../subscribers/raf'
 import { Scroll } from '../subscribers/scroll'
 import { clientRect } from './clientRect'
