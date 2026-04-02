@@ -1,0 +1,6 @@
+{
+	"framework": "solidstart",
+	"outputDirectory": ".output",
+	"installCommand": "bun install --filter web...",
+	"buildCommand": "cd ../../ && bun run build --filter web..."
+}
