@@ -1,5 +1,5 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
-import { Title } from '@solidjs/meta'
+import { Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { For } from 'solid-js'
 import ListSection from '~/components/ListSection'
@@ -32,6 +32,10 @@ export default function Home() {
 				return (
 					<>
 						<Title>Nathan Nye • Creative Developer</Title>
+						<Meta
+							name="description"
+							content="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
+						/>
 						<header class="pt-[28vh] lg:pt-[25vh] mb-120 px-margin-1">
 							<h1 class="heading-3 lg:px-grid-3-w">
 								Hey, I'm <span class="text-accent font-medium">Nathan!</span> A creative
