@@ -35,19 +35,21 @@ export default defineConfig({
 				})
 
 				const projects = await client.fetch(
-					'*[_type == "project"] {title, slug, _updatedAt}',
+					'*[_type == "project"] {slug, _updatedAt}',
 				)
 
-				const home = await client.fetch('*[_type == "home"] {_updatedAt}')
+				const home = await client.fetch('*[_type == "home"]{_updatedAt}')
 				const homeItem = {
 					url: `${DOMAIN}/`,
 					lastModified: home._updatedAt,
 				}
 
-				const projectItems = projects.map((project) => ({
-					url: `${DOMAIN}/${project.slug}`,
-					lastModified: project._updatedAt,
-				}))
+				const projectItems = projects.map(
+					(project: { slug: string; _updatedAt: string }) => ({
+						url: `${DOMAIN}/${project.slug}`,
+						lastModified: project._updatedAt,
+					}),
+				)
 
 				return [homeItem, ...projectItems]
 			},
