@@ -47,6 +47,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 			<ParallaxMedia class="mt-margin-1 w-full aspect-[1/.75]">
 				<SanityImage
 					desktopWidth={95}
+					priority
 					mobileWidth={95}
 					src={props.mainImage}
 					class="object-cover size-full"

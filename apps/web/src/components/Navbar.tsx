@@ -7,6 +7,7 @@ export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
 	const [isScrolled, setIsScrolled] = createSignal(false)
+	const [isHidden, setIsHidden] = createSignal(false)
 
 	const getTime = () => {
 		return new Intl.DateTimeFormat('en-US', {
@@ -21,7 +22,13 @@ export default function Navbar() {
 			setTime(getTime())
 		}, 1000)
 
-		onScroll(({ scroll }) => {
+		onScroll(({ scroll, direction }) => {
+			if (direction === 1 && !isHidden()) {
+				setIsHidden(true)
+			} else if (direction === -1 && isHidden()) {
+				setIsHidden(false)
+			}
+
 			if (scroll > 0 && !isScrolled()) {
 				setIsScrolled(true)
 			} else if (scroll === 0 && isScrolled()) {
@@ -37,14 +44,15 @@ export default function Navbar() {
 	return (
 		<header
 			class={cx(
-				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 max-lg:justify-between	 after:duration-600 after:ease-expo-out pb-6',
+				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 max-lg:justify-between duration-800 ease-expo-out after:duration-800 after:ease-expo-out pb-6',
 				isScrolled() && 'after:scale-y-100',
+				isHidden() && '-translate-y-full',
 			)}
 		>
 			<A
 				href="/"
 				aria-label="Home"
-				class="eyebrow w-grid-1 shrink-0 font-[180] lg:w-grid-4-w relative z-2"
+				class="eyebrow w-grid-1 shrink-0 font-[165] lg:w-grid-4-w relative z-2"
 			>
 				Nathan Nye
 			</A>
