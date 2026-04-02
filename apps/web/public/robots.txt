@@ -1,12 +1,9 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /studio/
 Disallow: /api/
-Disallow: /drafts/
-Disallow: /private/
+
 
 # Allow everything else
 Allow: /
 
 # Sitemap (update this URL)
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://nye.dev/sitemap.xml

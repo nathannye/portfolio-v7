@@ -8,7 +8,7 @@ import ProjectListItem from '~/components/ProjectListItem'
 const getProjects = query(() => {
 	return getDocumentByType('project', {
 		extraQuery:
-			'{title, slug, year, mainImage, slug, "partners": partners[]->name} | order(year desc)',
+			'{title, slug, year, mainImage, slug, awards, press, "partners": partners[]->name} | order(year desc)',
 	})
 }, 'projects')
 
@@ -21,7 +21,7 @@ export default function Home() {
 				<h1 class="heading-3 px-grid-3-w">
 					Hey, I'm <span class="text-accent font-medium">Nathan!</span> A creative
 					developer & designer obsessed with CMS-driven web projects brought to life
-					with kick-ass animation.{' '}
+					with kick-ass animation.
 				</h1>
 				<p class="body-1 opacity-70 mt-44 w-grid-5 ml-grid-3-w">
 					I’ve worked with dozens of agencies and brands worldwide bringing
@@ -30,11 +30,19 @@ export default function Home() {
 				</p>
 			</header>
 			<ListSection title="The Good Stuff" itemCount={projects()?.length}>
-				<ul>
-					<For each={projects()}>
-						{(project) => <ProjectListItem {...project} />}
-					</For>
-				</ul>
+				<div class="mt-10">
+					<div class="flex pb-30 eyebrow opacity-50">
+						<div class="w-grid-3-w">Name</div>
+						<div class="w-grid-2-w">Partners in Crime</div>
+						<div class="w-grid-2-w">Kudos</div>
+						<div class="w-grid-2-w">Press</div>
+					</div>
+					<ul>
+						<For each={projects()}>
+							{(project) => <ProjectListItem {...project} />}
+						</For>
+					</ul>
+				</div>
 			</ListSection>
 		</>
 	)

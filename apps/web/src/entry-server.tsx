@@ -10,6 +10,7 @@ export default createHandler(() => (
 					<meta name="viewport" content="width=device-width, initial-scale=1" />
 					<link rel="icon" href="/favicons/favicon.ico" type="image/x-icon" />
 					<link rel="icon" href="/favicons/favicon.png" type="image/png" />
+					<meta name="twitter:site" content="@call_nye11" />
 					{assets}
 				</head>
 				<body>
