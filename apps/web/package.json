@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@crawl-me-maybe/sitemap": "^0.0.10",
     "@local/sanity": "workspace:*",
     "@sanity/client": "^7.20.0",
     "@sanity/types": "^5.19.0",
