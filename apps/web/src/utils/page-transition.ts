@@ -58,7 +58,11 @@ export function usePageTransition() {
 		}
 
 		await animateOut()
-		await gsap.to('main', { opacity: 0, duration: MAIN_OUT_DURATION })
+		await gsap.to('main', {
+			opacity: 0,
+			ease: 'power2.out',
+			duration: MAIN_OUT_DURATION,
+		})
 		Scroll.lenis?.scrollTo(0, { immediate: true })
 		setNav('hidden', false)
 		setNav('scrolled', false)
