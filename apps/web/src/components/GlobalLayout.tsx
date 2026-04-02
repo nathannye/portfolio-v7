@@ -7,6 +7,7 @@ import { scroll } from '~/subscribers/scroll'
 import { setCssVariable } from '~/utils/css'
 import GridOverlay from './GridOverlay'
 import Navbar from './Navbar'
+import WebSiteMarkup from './WebSiteMarkup'
 
 export default function GlobalLayout({ children }: { children: JSX.Element }) {
 	let el: HTMLElement | null = null
@@ -38,6 +39,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 				<GridOverlay />
 			</Show>
 			<Navbar />
+			<WebSiteMarkup />
 
 			<main ref={el} use:scroll>
 				{children}

@@ -37,7 +37,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 						Live Link
 					</a>
 					<Show when={props.partners}>
-						<div class="flex shrink-0">
+						<div class="flex shrink-0 w-grid-2 gap-gutter-1 ">
 							<dt>Partners in crime</dt>
 							<dd>{list(props.partners)}</dd>
 						</div>

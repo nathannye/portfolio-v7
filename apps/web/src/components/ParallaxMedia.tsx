@@ -13,16 +13,13 @@ export default function ParallaxMedia(props) {
 		onTrack(
 			el,
 			(progress) => {
-				el.style.transform = `translateY(${progress * (DISTANCE / 2)}%)`
+				const val = progress * (DISTANCE / 2)
+				el.style.transform = `translateY(${val}%)`
 			},
 			{
 				top: 'bottom',
 				bottom: 'top',
 			},
-			// {
-			// 	top: 'bottom',
-			// 	// bottom: 'bottom',
-			// },
 		)
 	})
 

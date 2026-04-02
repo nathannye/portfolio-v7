@@ -1,4 +1,3 @@
-
 import { table } from '@sanity/table'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
@@ -6,7 +5,6 @@ import { structureTool } from 'sanity/structure'
 import { media } from 'sanity-plugin-media'
 import { muxInput } from 'sanity-plugin-mux-input'
 import { noteField } from 'sanity-plugin-note-field'
-import { simplerColorInput } from 'sanity-plugin-simpler-color-input'
 import { structure } from './desk/structure'
 import crawlMeMaybe from './plugins/seo'
 import { schemaTypes } from './schemas'
@@ -17,15 +15,12 @@ const sharedConfig = [
 		title: 'Studio',
 		structure,
 	}),
-
 	media(),
 	noteField(),
 	muxInput(),
 	crawlMeMaybe(),
-
 	table(),
 	visionTool(),
-
 	// presentationTool({
 	// 	previewUrl: {
 	// 		initial: DOMAIN,

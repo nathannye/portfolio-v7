@@ -9,8 +9,10 @@
   },
   "dependencies": {
     "@local/sanity": "workspace:*",
+    "@sanity/client": "^7.20.0",
+    "@sanity/types": "^5.19.0",
     "@solid-primitives/intersection-observer": "^2.2.4",
-    "@solidjs/router": "^0.15.0",
+    "@solidjs/router": "^0.16.1",
     "@solidjs/start": "2.0.0-alpha.2",
     "@solidjs/vite-plugin-nitro-2": "^0.1.0",
     "classix": "^2.2.11",

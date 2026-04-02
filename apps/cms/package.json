@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "@sanity-image/url-builder": "^1.1.0",
-    "@sanity/blueprints": "^0.13.1",
+    "@sanity/blueprints": "^0.15.0",
     "@sanity/client": "^7.17.0",
     "@sanity/code-input": "^7.0.11",
     "@sanity/functions": "^1.2.1",
@@ -32,7 +32,7 @@
     "sanity-plugin-document-reference-by": "^1.0.1",
     "sanity-plugin-media": "^4.1.1",
     "sanity-plugin-mux-input": "^2.17.0",
-    "sanity-plugin-note-field": "^3.1.0",
+    "sanity-plugin-note-field": "^3.1.1",
     "sanity-plugin-prefixed-slug": "^2.0.0",
     "sanity-plugin-simpler-color-input": "^4.0.0",
     "styled-components": "^6.3.11"
@@ -43,7 +43,7 @@
     "eslint": "^10.0.3",
     "prettier": "^3.8.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   },
   "prettier": {
     "semi": false,

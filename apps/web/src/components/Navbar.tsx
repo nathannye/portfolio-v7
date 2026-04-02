@@ -37,7 +37,7 @@ export default function Navbar() {
 	return (
 		<header
 			class={cx(
-				'eyebrow after:origin-top after:scale-y-0 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 after:duration-600 after:ease-expo-out pb-6',
+				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 after:duration-600 after:ease-expo-out pb-6',
 				isScrolled() && 'after:scale-y-100',
 			)}
 		>
