@@ -21,7 +21,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 				<p class="heading-5 font-serif opacity-70 mt-12">{props.year}</p>
 			</div>
 
-			<dl class="pt-11 [&_dd]:font-[170] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-y border-inverted/10 eyebrow">
+			<dl class="pt-11 [&_dd]:font-[170] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 eyebrow">
 				<div class="flex">
 					<div class="flex shrink-0 w-grid-2-w">
 						<dt class="pr-20">Role</dt>
@@ -44,12 +44,12 @@ export default function ProjectHero(props: ProjectHeroProps) {
 					</Show>
 				</div>
 			</dl>
-			<ParallaxMedia class="w-full aspect-[1/.75]">
+			<ParallaxMedia class="mt-margin-1 w-full aspect-[1/.75]">
 				<SanityImage
 					desktopWidth={95}
 					mobileWidth={95}
 					src={props.mainImage}
-					class="object-cover mt-margin-1 size-full"
+					class="object-cover size-full"
 				/>
 			</ParallaxMedia>
 		</header>
