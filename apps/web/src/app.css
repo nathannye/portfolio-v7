@@ -1,0 +1,73 @@
+@import "./styles/fonts.css";
+@import "./styles/typography.css";
+
+@import "./styles/animation.css";
+@import "./styles/fluid-type.css";
+@import "./styles/accessibility.css";
+
+@import "./styles/main.css";
+@import "./styles/grid.css";
+
+@import "tailwindcss";
+
+@theme {
+	--font-serif: "ES Face", serif;
+	--font-sans: "Acid Grotesk", sans-serif;
+
+	--breakpoint-*: initial;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 1024px;
+	--breakpoint-xl: 1920px;
+
+	--spacing: 0.1rem;
+
+	--color-primary: #f4f5f4;
+	--color-inverted: #373e3d;
+	--color-accent: #159c88;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	overscroll-behavior: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smooth: never;
+}
+
+/* utilities */
+
+@utility flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+html,
+body {
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	overscroll-behavior-y: none;
+}
+
+#app {
+	height: 100%;
+	overflow-y: auto;
+	overscroll-behavior-y: none;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+	overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+	pointer-events: none;
+}
+
+.lenis.lenis-stopped {
+	overflow: clip;
+}

@@ -1,0 +1,50 @@
+import { defineType, defineField } from "sanity";
+import { SchemaFieldWithDefault } from "~/components/core";
+
+
+export const schemaMarkupAboutPageFields = defineType({
+	name: "schemaMarkupAboutPageFields",
+	title: "About Page Fields",
+	type: "object",
+	fields: [
+		defineField({
+			name: "name",
+			type: "string",
+			description: "Name of the about page (defaults to page title)",
+			// components: {
+			// 	input: SchemaFieldWithDefault
+			// }, 
+			// options: {
+			// 	automapName: 'description',
+			// 	matchingDefaultField: 'title'
+			// }
+		}),
+		defineField({
+			name: "description",
+			type: "text",
+			description:
+				"Description of the about page (defaults to meta description)",
+			// components: {
+			// 	input: SchemaFieldWithDefault
+			// }, 
+			// options: {
+			// 	matchingDefaultField: 'description',
+			// 	automapName: 'description'
+			// }
+		}),
+		defineField({
+			name: "about",
+			title: "About (Entities)",
+			type: "array",
+			description: "People or organizations this page is about",
+			of: [
+				{ type: "schemaMarkupPerson" },
+				{ type: "schemaMarkupOrganization" },
+			],
+		}),
+	],
+	preview: {
+		select: { title: "name" },
+		prepare: ({ title }) => ({ title: title || "About Page" }),
+	},
+});

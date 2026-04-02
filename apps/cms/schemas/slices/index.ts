@@ -1,0 +1,16 @@
+// append
+
+import { createSliceSet } from '../../utils/create'
+
+
+const globalPageSlices = [
+	
+] as any[]
+
+const slices = createSliceSet({
+	name: 'pageSlices',
+	title: 'Page Slices',
+	slices: globalPageSlices,
+})
+
+export default [slices, ...globalPageSlices]

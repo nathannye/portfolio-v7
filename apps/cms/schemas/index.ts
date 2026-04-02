@@ -1,0 +1,12 @@
+
+import blocks from './blocks'
+import pages from './pages'
+import slices from './slices'
+import taxonomies from './taxonomies'
+
+export const schemaTypes = [
+	...taxonomies,
+	...blocks,
+	...slices,
+	...pages,
+]

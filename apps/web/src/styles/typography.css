@@ -1,0 +1,47 @@
+@utility heading-1 {
+	font-size: max(var(--min-font-size), 7.8rem);
+	letter-spacing: -0.02em;
+	line-height: 1.27;
+	@apply font-serif;
+}
+
+@utility heading-2 {
+	font-size: max(var(--min-font-size), 5.4rem);
+	letter-spacing: -0.02em;
+	line-height: 1.27;
+	@apply font-serif;
+}
+
+@utility heading-3 {
+	font-size: max(var(--min-font-size), 4rem);
+	letter-spacing: -0.02em;
+	line-height: 1.27;
+	@apply font-serif;
+}
+
+@utility heading-5 {
+	font-size: max(var(--min-font-size), 1.5rem);
+	letter-spacing: -0.02em;
+	font-weight: 150;
+}
+
+@utility body-1 {
+	font-size: max(var(--min-font-size), 1.9rem);
+	letter-spacing: -0.02em;
+	line-height: 1.45;
+	@apply font-serif;
+}
+
+@utility body-2 {
+	font-size: max(var(--min-font-size), 1.05rem);
+	letter-spacing: -0.02em;
+	line-height: 1.27;
+}
+
+@utility eyebrow {
+	text-transform: uppercase;
+	font-size: max(var(--min-font-size), 1rem);
+	font-weight: 130;
+	opacity: 0.7;
+	@apply font-sans;
+}

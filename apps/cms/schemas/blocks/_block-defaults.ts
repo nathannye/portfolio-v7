@@ -1,0 +1,22 @@
+export const TIMEZONES = [
+	{ title: 'London (GMT+0)', value: 'Europe/London' },
+	{ title: 'Berlin (GMT+1)', value: 'Europe/Berlin' },
+	{ title: 'Cairo (GMT+2)', value: 'Africa/Cairo' },
+	{ title: 'Moscow (GMT+3)', value: 'Europe/Moscow' },
+	{ title: 'Dubai (GMT+4)', value: 'Asia/Dubai' },
+	{ title: 'Karachi (GMT+5)', value: 'Asia/Karachi' },
+	{ title: 'Mumbai (GMT+5:30)', value: 'Asia/Kolkata' },
+	{ title: 'Dhaka (GMT+6)', value: 'Asia/Dhaka' },
+	{ title: 'Bangkok (GMT+7)', value: 'Asia/Bangkok' },
+	{ title: 'Hong Kong (GMT+8)', value: 'Asia/Hong_Kong' },
+	{ title: 'Tokyo (GMT+9)', value: 'Asia/Tokyo' },
+	{ title: 'Sydney (GMT+11)', value: 'Australia/Sydney' },
+	{ title: 'Auckland (GMT+12)', value: 'Pacific/Auckland' },
+	{ title: 'US Eastern (New York) (GMT-5)', value: 'America/New_York' },
+	{ title: 'US Central (Chicago) (GMT-6)', value: 'America/Chicago' },
+	{ title: 'US Mountain (Denver) (GMT-7)', value: 'America/Denver' },
+	{
+		title: 'US Pacific (Los Angeles) (GMT-8)',
+		value: 'America/Los_Angeles',
+	},
+]

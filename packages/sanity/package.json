@@ -1,0 +1,23 @@
+{
+  "name": "@local/sanity",
+  "type": "module",
+  "main": "./index.ts",
+  "scripts": {
+    "generate": "pnpm sanity-yaml",
+    "import": "pnpm exec tsx ./importer/import.ts",
+    "cleanup-assets": "pnpm exec tsx ./cleanup/index.ts",
+    "dedup-docs": "pnpm exec tsx ./dedup-docs/index.ts",
+    "ref-replace": "pnpm exec tsx ./ref-replace/cli.ts"
+  },
+  "dependencies": {
+    "@portabletext/solid": "^1.0.8",
+    "@sanity/client": "^7.15.0",
+    "@sanity/image-url": "^2.0.3",
+    "@solidjs/meta": "^0.29.4",
+    "classix": "^2.2.6",
+    "walkjs": "^6.0.1",
+    "@solidjs/router": "^0.15.0",
+    "@solidjs/start": "2.0.0-alpha.2",
+    "solid-js": "^1.9.5"
+  }
+}
