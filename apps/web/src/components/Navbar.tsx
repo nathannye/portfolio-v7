@@ -1,13 +1,12 @@
 import { A } from '@solidjs/router'
 import cx from 'classix'
 import { createSignal, onCleanup, onMount } from 'solid-js'
+import { nav, setNav } from '~/stores/navStore'
 import { onScroll } from '~/utils'
 
 export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
-	const [isScrolled, setIsScrolled] = createSignal(false)
-	const [isHidden, setIsHidden] = createSignal(false)
 
 	const getTime = () => {
 		return new Intl.DateTimeFormat('en-US', {
@@ -23,16 +22,16 @@ export default function Navbar() {
 		}, 1000)
 
 		onScroll(({ scroll, direction }) => {
-			if (direction === 1 && !isHidden()) {
-				setIsHidden(true)
-			} else if (direction === -1 && isHidden()) {
-				setIsHidden(false)
+			if (direction === 1 && !nav.hidden) {
+				setNav('hidden', true)
+			} else if (direction === -1 && nav.hidden) {
+				setNav('hidden', false)
 			}
 
-			if (scroll > 0 && !isScrolled()) {
-				setIsScrolled(true)
-			} else if (scroll === 0 && isScrolled()) {
-				setIsScrolled(false)
+			if (scroll > 0 && !nav.scrolled) {
+				setNav('scrolled', true)
+			} else if (scroll === 0 && nav.scrolled) {
+				setNav('scrolled', false)
 			}
 		})
 	})
@@ -45,8 +44,8 @@ export default function Navbar() {
 		<header
 			class={cx(
 				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 max-lg:justify-between duration-800 ease-expo-out after:duration-800 after:ease-expo-out pb-6',
-				isScrolled() && 'after:scale-y-100',
-				isHidden() && '-translate-y-full',
+				nav.scrolled && 'after:scale-y-100',
+				nav.hidden && '-translate-y-full',
 			)}
 		>
 			<A

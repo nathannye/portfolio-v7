@@ -7,6 +7,7 @@ import {
 } from '@solidjs/router'
 import gsap from 'gsap'
 import { onCleanup } from 'solid-js'
+import { setNav } from '~/stores/navStore'
 import { Scroll } from '../subscribers/scroll'
 
 /** Seconds — `<main>` opacity during SPA navigations. */
@@ -59,6 +60,8 @@ export function usePageTransition() {
 		await animateOut()
 		await gsap.to('main', { opacity: 0, duration: MAIN_OUT_DURATION })
 		Scroll.lenis?.scrollTo(0, { immediate: true })
+		setNav('hidden', false)
+		setNav('scrolled', false)
 
 		navigate(e.to, { ...e.options, resolve: false, scroll: false })
 		await whenRoutingSettled(isRouting)
