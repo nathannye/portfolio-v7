@@ -48,7 +48,7 @@ export default function Home() {
 							</Show>
 
 							<div class="w-full flex flex-col gap-y-95">
-								<ListSection title="The Good Stuff" itemCount={projects.length}>
+								<ListSection title="Work" itemCount={projects.length}>
 									<div class="mt-10">
 										<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
 											<div class="w-grid-3-w">Title</div>

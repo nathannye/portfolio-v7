@@ -9,8 +9,19 @@ export default function Footer() {
 
 	return (
 		<footer class="px-margin-1 flex justify-between pt-140 w-full pb-4 eyebrow">
-			<div aria-hidden="true" class="opacity-90">
+			<div aria-hidden="true" class="opacity-90 w-grid-3-w">
 				v7
+			</div>
+
+			<div class="lg:w-grid-6-w">
+				<a
+					rel="noopener noreferrer"
+					target="_blank"
+					href="https://github.com/nathannye"
+					class="underline"
+				>
+					GitHub
+				</a>
 			</div>
 			<div class="flex opacity-90">
 				<div class="w-grid-2-w shrink-0">Face • Acid Grotesk</div>
