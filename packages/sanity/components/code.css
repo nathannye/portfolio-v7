@@ -5,19 +5,16 @@ pre[class*="language-"] {
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
-
 	line-height: 1.5;
-
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
-
 	-webkit-hyphens: none;
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
 }
-
+/* 
 code[class*="language-"]::-moz-selection,
 pre[class*="language-"]::-moz-selection,
 code[class*="language-"] ::-moz-selection,
@@ -32,7 +29,7 @@ code[class*="language-"] ::selection,
 pre[class*="language-"] ::selection {
 	background: #cceae7;
 	color: #263238;
-}
+} */
 
 :not(pre) > code[class*="language-"] {
 	white-space: normal;
