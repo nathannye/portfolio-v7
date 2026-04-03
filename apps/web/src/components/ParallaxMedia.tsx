@@ -41,7 +41,7 @@ export default function ParallaxMedia(props) {
 			{...props}
 			class={cx('overflow-hidden', props.class)}
 		>
-			<div ref={el} class="origin-bottom w-full h-auto scale-[var(--scale)]">
+			<div ref={el} class="origin-bottom size-full scale-[var(--scale)]">
 				{props.children}
 			</div>
 		</div>

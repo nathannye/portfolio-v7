@@ -65,7 +65,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 					</Show>
 				</div>
 			</dl>
-			<ParallaxMedia class="mt-margin-1 w-full aspect-[1/1.3] lg:aspect-[1/.75]">
+			<ParallaxMedia class="mt-margin-1 w-full aspect-[1/1.5] lg:aspect-[1/.75]">
 				<SanityImage
 					desktopWidth={95}
 					priority

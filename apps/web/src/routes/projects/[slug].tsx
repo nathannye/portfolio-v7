@@ -42,7 +42,13 @@ export default function ProjectPage({ params }) {
 							</Show>
 							<CreativeWorkMarkup {...data} />
 							<ProjectHero {...data} />
-							<div class="flex flex-col mt-90 w-full gap-y-90 grid-contain px-margin-1">
+							<div
+								style={{
+									'--gap': '9rem',
+									'--gap-mobile': '14rem',
+								}}
+								class="flex flex-col mt-[var(--gap-mobile)] lg:mt-[var(--gap)] w-full gap-y-[var(--gap-mobile)] lg:gap-y-[var(--gap)] grid-contain px-margin-1"
+							>
 								<SanityComponents componentList={slices} components={data.slices} />
 							</div>
 						</>

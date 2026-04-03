@@ -18,18 +18,18 @@ interface MediaDuoProps {
 
 export default function MediaDuo(props: MediaDuoProps) {
 	const columnMap = {
-		'1': 'w-grid-1',
-		'2': 'w-grid-2',
-		'3': 'w-grid-3',
-		'4': 'w-grid-4',
-		'5': 'w-grid-5',
-		'6': 'w-grid-6',
-		'7': 'w-grid-7',
-		'8': 'w-grid-8',
-		'9': 'w-grid-9',
-		'10': 'w-grid-10',
-		'11': 'w-grid-11',
-		'12': 'w-grid-12',
+		'1': 'lg:w-grid-1',
+		'2': 'lg:w-grid-2',
+		'3': 'lg:w-grid-3',
+		'4': 'lg:w-grid-4',
+		'5': 'lg:w-grid-5',
+		'6': 'lg:w-grid-6',
+		'7': 'lg:w-grid-7',
+		'8': 'lg:w-grid-8',
+		'9': 'lg:w-grid-9',
+		'10': 'lg:w-grid-10',
+		'11': 'lg:w-grid-11',
+		'12': 'lg:w-grid-12',
 		full: 'w-full',
 	}
 
@@ -51,17 +51,17 @@ export default function MediaDuo(props: MediaDuoProps) {
 
 	const getSpeed = (columns: string) => {
 		if (columns === 'full') {
-			return 0.7
+			return 0.9
 		}
 
 		const num = Number.parseInt(columns, 10)
-		return 0.4 + num * 0.1
+		return 0.4 + num * 0.05
 	}
 
 	return (
 		<Slice
 			class={cx(
-				'flex gap-gutter-1 items-start max-lg:flex-col gap-y-20',
+				'flex gap-gutter-1 items-start max-lg:flex-col gap-y-margin-1',
 				props.media.length === 1 ? 'justify-center' : 'justify-between',
 			)}
 		>
@@ -74,9 +74,12 @@ export default function MediaDuo(props: MediaDuoProps) {
 
 					if (media.mediaType === 'image') {
 						return (
-							<ParallaxMedia class={columnClass} speed={getSpeed(columns)}>
+							<ParallaxMedia
+								class={cx(columnClass, 'w-full')}
+								speed={getSpeed(columns)}
+							>
 								<SanityImage
-									class="w-full max-h-[80vh] h-auto object-cover"
+									class="w-full max-h-[60vh] lg:max-h-[80vh] h-auto object-cover"
 									desktopWidth={desktopWidth}
 									mobileWidth={mobileWidth}
 									src={media.image}
