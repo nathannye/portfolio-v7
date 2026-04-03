@@ -1,11 +1,9 @@
 import { getDocumentBySlug, SanityComponents, SanityPage } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import gsap from 'gsap'
-import { lazy, onMount, Show } from 'solid-js'
+import { lazy, Show } from 'solid-js'
 import CreativeWorkMarkup from '~/components/project/CreativeWorkMarkup'
 import ProjectHero from '~/components/project/ProjectHero'
-import { onPageLeave } from '~/utils'
 
 const getProject = query(async (slug: string) => {
 	'use server'
@@ -18,12 +16,6 @@ const getProject = query(async (slug: string) => {
 export default function ProjectPage({ params }) {
 	let el
 	const fetcher = createAsync(() => getProject(params.slug))
-
-	onMount(() => {
-		onPageLeave(el, async () => {
-			return await gsap.to(el, { opacity: 0, duration: 0.4 })
-		})
-	})
 
 	const slices = {
 		mediaDuo: lazy(() => import('~/slices/MediaDuo')),

@@ -1,13 +1,11 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
 import { Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import gsap from 'gsap'
-import { For, onMount, Show } from 'solid-js'
+import { For, Show } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection'
 import MarginListItem from '~/components/margin/MarginListItem'
 import ProjectListItem from '~/components/project/ProjectListItem'
-import { onPageLeave } from '~/utils'
 
 const getData = query(async () => {
 	'use server'
@@ -32,12 +30,6 @@ const getData = query(async () => {
 export default function Home() {
 	let el
 	const data = createAsync(() => getData())
-
-	onMount(() => {
-		onPageLeave(el, async () => {
-			return await gsap.to(el, { opacity: 0, duration: 0.375, ease: 'power2.out' })
-		})
-	})
 
 	return (
 		<div ref={el}>
