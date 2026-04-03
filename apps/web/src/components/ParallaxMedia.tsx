@@ -16,9 +16,9 @@ export default function ParallaxMedia(props) {
 	const DISTANCE = 25 * (props.speed || 1)
 
 	onMount(() => {
-		if (!wrapper || !el) return
+		if (!wrapper) return
 		onTrack(
-			el,
+			wrapper,
 			(progress) => {
 				const isMobile = Resizer.isMobile
 				const d = isMobile ? DISTANCE * 1.3 : DISTANCE

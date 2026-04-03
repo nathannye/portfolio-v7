@@ -6,11 +6,18 @@ export default {
 		select: {
 			media: 'media',
 		},
-		prepare({ media }: { media: { media: { mediaType: string }; columns: string }[] }) {
+		prepare({
+			media,
+		}: {
+			media: { media: { mediaType: string }; columns: string }[]
+		}) {
 			const items = media ?? []
 			const title = `${items.length} item${items.length === 1 ? '' : 's'}`
 			const subtitle = items
-				.map((item) => `${item.media?.mediaType ?? 'image'} - ${item.columns ?? 'full'}col`)
+				.map(
+					(item) =>
+						`${item.media?.mediaType ?? 'image'} - ${item.columns ?? 'full'}col`,
+				)
 				.join(' | ')
 			return { title, subtitle }
 		},
@@ -32,7 +39,21 @@ export default {
 							name: 'columns',
 							type: 'string',
 							options: {
-								list: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'full'],
+								list: [
+									'1',
+									'2',
+									'3',
+									'4',
+									'5',
+									'6',
+									'7',
+									'8',
+									'9',
+									'10',
+									'11',
+									'12',
+									'full',
+								],
 								initialValue: 'full',
 							},
 						},

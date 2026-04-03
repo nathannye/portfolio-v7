@@ -1,5 +1,6 @@
 import { createVisibilityObserver } from '@solid-primitives/intersection-observer'
 import { createEffect, createSignal, createUniqueId, onCleanup } from 'solid-js'
+import { useWindowResize } from '~/hooks/useResize'
 import { viewport } from '~/stores/viewportStore'
 import { Raf } from '../subscribers/raf'
 import { Scroll } from '../subscribers/scroll'
@@ -85,6 +86,12 @@ export function onTrack(
 	createEffect(() => {
 		viewport.size.height
 		viewport.size.width
+		setBounds(computeBounds(track, { top, bottom }))
+		console.log('fired effect')
+	})
+
+	useWindowResize(() => {
+		console.log('resize')
 		setBounds(computeBounds(track, { top, bottom }))
 	})
 

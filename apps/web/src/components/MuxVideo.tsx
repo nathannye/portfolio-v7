@@ -83,8 +83,8 @@ export default function MuxVideo({
 	})
 
 	return (
-		<div class="relative w-full h-full">
-			<div class={cx('relative', className)}>
+		<div class="relative w-full">
+			<div class={cx('relative aspect-video', className)}>
 				<img
 					src={posterUrl}
 					alt="Video Poster"
@@ -100,7 +100,7 @@ export default function MuxVideo({
 					controls={false}
 					autoplay={autoplay}
 					muted={true}
-					class="z-2 w-full h-auto relative object-cover"
+					class="z-2 w-full h-full relative object-cover"
 					playsinline={false}
 					loop={loop}
 				/>

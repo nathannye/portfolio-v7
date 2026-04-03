@@ -1,6 +1,7 @@
 import type { MuxVideo as MuxVideoType } from '@local/sanity'
 import SanityImage from '@local/sanity/components/SanityImage'
 import type { SanityImageAssetDocument } from '@sanity/client'
+import cx from 'classix'
 import { For } from 'solid-js'
 import MuxVideo from '~/components/MuxVideo'
 import ParallaxMedia from '~/components/ParallaxMedia'
@@ -27,6 +28,8 @@ export default function MediaDuo(props: MediaDuoProps) {
 		'8': 'w-grid-8',
 		'9': 'w-grid-9',
 		'10': 'w-grid-10',
+		'11': 'w-grid-11',
+		'12': 'w-grid-12',
 		full: 'w-full',
 	}
 
@@ -48,15 +51,20 @@ export default function MediaDuo(props: MediaDuoProps) {
 
 	const getSpeed = (columns: string) => {
 		if (columns === 'full') {
-			return 0.3
+			return 0.7
 		}
 
 		const num = Number.parseInt(columns, 10)
-		return 0.7 + num * 0.1
+		return 0.4 + num * 0.1
 	}
 
 	return (
-		<Slice class="flex gap-gutter-1 justify-between">
+		<Slice
+			class={cx(
+				'flex gap-gutter-1 items-start max-lg:flex-col gap-y-20',
+				props.media.length === 1 ? 'justify-center' : 'justify-between',
+			)}
+		>
 			<For each={props.media}>
 				{(item) => {
 					const { media, columns } = item
