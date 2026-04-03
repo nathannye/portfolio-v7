@@ -60,8 +60,10 @@ export function usePageTransition() {
 		await gsap.to('main', {
 			opacity: 0,
 			ease: 'power2.out',
+			cursor: 'wait',
 			duration: MAIN_OUT_DURATION,
 		})
+
 		Scroll.lenis?.scrollTo(0, { immediate: true })
 		setNav('hidden', false)
 		setNav('scrolled', false)
@@ -72,6 +74,7 @@ export function usePageTransition() {
 
 		gsap.to('main', {
 			opacity: 1,
+			cursor: 'default',
 			duration: MAIN_IN_DURATION,
 			delay: MAIN_IN_DELAY,
 		})

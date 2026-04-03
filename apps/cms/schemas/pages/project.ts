@@ -10,6 +10,7 @@ const projectStackLabels = [
 	'Sanity',
 	'Solid',
 	'Three',
+	'GSAP',
 	// 'Tailwind',
 	'Nuxt',
 	'Webflow',
