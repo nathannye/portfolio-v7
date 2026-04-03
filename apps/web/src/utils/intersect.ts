@@ -17,7 +17,7 @@ export function onPageLeave(element?: HTMLElement, fn?: Callback) {
 
 export function onIntersect(
 	ref: HTMLElement,
-	{ onEnter = () => {}, onLeave = () => {}, once = true, threshold = 0.1 } = {},
+	{ onEnter = () => {}, onLeave = () => {}, once = false, threshold = 0 } = {},
 ) {
 	const vo = createVisibilityObserver({ threshold })
 	const visible = vo(ref)

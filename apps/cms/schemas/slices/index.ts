@@ -1,11 +1,9 @@
 // append
 
 import { createSliceSet } from '../../utils/create'
+import mediaDuo from './mediaDuo'
 
-
-const globalPageSlices = [
-	
-] as any[]
+const globalPageSlices = [mediaDuo]
 
 const slices = createSliceSet({
 	name: 'pageSlices',

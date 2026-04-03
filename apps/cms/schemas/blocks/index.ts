@@ -1,10 +1,4 @@
-import blockContent from './blockContent'
 import body from './body'
+import media from './media'
 
-
-export default [
-	
-
-	body,
-
-] as any[]
+export default [media, body] as any[]

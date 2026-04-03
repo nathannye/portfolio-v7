@@ -2,13 +2,6 @@ import cx from 'classix'
 import type { SanityImageProps } from '../types'
 import { urlFor } from '../utils/assets'
 
-function imagePlaceholder(
-	className: string | undefined,
-	alt: string | undefined,
-) {
-	return <div class={cx(className, 'bg-pale-white box-border')} />
-}
-
 export default function SanityImage({
 	src,
 	mobileWidth,
@@ -18,7 +11,12 @@ export default function SanityImage({
 	class: className,
 }: SanityImageProps) {
 	if (!src?.asset) {
-		return imagePlaceholder(className, alt)
+		return (
+			<img
+				src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+				alt=""
+			/>
+		)
 	}
 
 	const IS_RICH_IMAGE = typeof src?.asset?.url === 'string' // means it has been de-referenced

@@ -1,5 +1,5 @@
 import { MdImage, MdPlayCircle } from 'react-icons/md'
-import MediaSelector from '../../components/MediaSelector/MediaSelector'
+import MediaSelector from '../../components/MediaSelector'
 
 export default {
 	name: 'media',
@@ -8,15 +8,22 @@ export default {
 	},
 	preview: {
 		select: {
-			video: 'video',
 			mediaType: 'mediaType',
 			image: 'image',
+			videoAssetId: 'video.asset._ref',
 		},
-		prepare({ image, mediaType }) {
+		prepare({ mediaType, image, videoAssetId }) {
+			const isVideo = mediaType === 'video'
 			return {
-				title: mediaType === 'image' ? 'Image' : 'Video',
-				media: mediaType === 'image' && image,
-				icon: mediaType === 'image' ? MdImage : MdPlayCircle,
+				title: isVideo ? 'Video' : 'Image',
+				subtitle: isVideo
+					? videoAssetId
+						? `Mux: ${videoAssetId.replace('mux-video-asset-', '')}`
+						: 'No video uploaded'
+					: image
+						? undefined
+						: 'No image selected',
+				media: !isVideo && image ? image : isVideo ? MdPlayCircle : MdImage,
 			}
 		},
 	},
@@ -43,16 +50,6 @@ export default {
 			options: {
 				collapsable: false,
 				collapsed: false,
-			},
-		},
-		{
-			name: 'embed',
-			type: 'code',
-			options: {
-				collapsable: false,
-				collapsed: false,
-				language: 'html',
-				withFilename: false,
 			},
 		},
 	],
