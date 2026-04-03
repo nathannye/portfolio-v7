@@ -51,7 +51,7 @@ export default function MediaDuo(props: MediaDuoProps) {
 
 	const getSpeed = (columns: string) => {
 		if (columns === 'full') {
-			return 0.9
+			return 0.875
 		}
 
 		const num = Number.parseInt(columns, 10)
@@ -79,7 +79,7 @@ export default function MediaDuo(props: MediaDuoProps) {
 								speed={getSpeed(columns)}
 							>
 								<SanityImage
-									class="w-full max-h-[60vh] lg:max-h-[110vh] h-auto object-cover"
+									class="w-full max-h-[75vh] lg:max-h-[110vh] h-auto object-cover"
 									desktopWidth={desktopWidth}
 									mobileWidth={mobileWidth}
 									src={media.image}
