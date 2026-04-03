@@ -25,7 +25,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 			: ''
 
 	return (
-		<header class="px-margin-1 pb-margin-1">
+		<header class="px-margin-1">
 			<div class="h-[50vh] min-h-500 flex-center flex-col">
 				<h1 class="heading-2">{props.title}</h1>
 				<p class="heading-5 font-bold font-serif opacity-70 mt-12">{props.year}</p>

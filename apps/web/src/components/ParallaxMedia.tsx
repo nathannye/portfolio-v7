@@ -3,11 +3,17 @@ import { onMount } from 'solid-js'
 import { Resizer } from '~/subscribers/resizer'
 import { onTrack } from '~/utils'
 
+interface ParallaxMediaProps {
+	children: any
+	class: string
+	speed: number
+}
+
 export default function ParallaxMedia(props) {
 	let wrapper: HTMLDivElement
 	let el: HTMLDivElement
 
-	const DISTANCE = 25
+	const DISTANCE = 25 * (props.speed || 1)
 
 	onMount(() => {
 		if (!wrapper || !el) return
@@ -35,7 +41,7 @@ export default function ParallaxMedia(props) {
 			{...props}
 			class={cx('overflow-hidden', props.class)}
 		>
-			<div ref={el} class="origin-bottom size-full scale-[var(--scale)]">
+			<div ref={el} class="origin-bottom w-full h-auto scale-[var(--scale)]">
 				{props.children}
 			</div>
 		</div>

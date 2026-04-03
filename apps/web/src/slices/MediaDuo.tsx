@@ -3,6 +3,7 @@ import SanityImage from '@local/sanity/components/SanityImage'
 import type { SanityImageAssetDocument } from '@sanity/client'
 import { For } from 'solid-js'
 import MuxVideo from '~/components/MuxVideo'
+import ParallaxMedia from '~/components/ParallaxMedia'
 import Slice from '~/components/Slice'
 
 interface MediaDuoProps {
@@ -29,6 +30,31 @@ export default function MediaDuo(props: MediaDuoProps) {
 		full: 'w-full',
 	}
 
+	const getWidthAttrs = (columns: string) => {
+		let desktopWidth = 95
+		let mobileWidth = 95
+
+		if (columns !== 'full') {
+			const num = Number.parseInt(columns, 10)
+			desktopWidth = Math.round((14 / num) * 100)
+			mobileWidth = Math.round((5 / num) * 100)
+		}
+
+		return {
+			desktopWidth,
+			mobileWidth,
+		}
+	}
+
+	const getSpeed = (columns: string) => {
+		if (columns === 'full') {
+			return 0.3
+		}
+
+		const num = Number.parseInt(columns, 10)
+		return 0.7 + num * 0.1
+	}
+
 	return (
 		<Slice class="flex gap-gutter-1 justify-between">
 			<For each={props.media}>
@@ -36,17 +62,28 @@ export default function MediaDuo(props: MediaDuoProps) {
 					const { media, columns } = item
 					const columnClass = columnMap?.[columns] || 'w-full'
 
+					const { desktopWidth, mobileWidth } = getWidthAttrs(columns)
+
 					if (media.mediaType === 'image') {
 						return (
-							<div class={columnClass}>
-								<SanityImage src={item.media.image} />
-							</div>
+							<ParallaxMedia class={columnClass} speed={getSpeed(columns)}>
+								<SanityImage
+									class="w-full max-h-[80vh] h-auto object-cover"
+									desktopWidth={desktopWidth}
+									mobileWidth={mobileWidth}
+									src={media.image}
+								/>
+							</ParallaxMedia>
 						)
 					}
 					if (media.mediaType === 'video') {
 						return (
 							<div class={columnClass}>
-								<MuxVideo src={media.video} />
+								<MuxVideo
+									posterDesktopWidth={desktopWidth}
+									posterMobileWidth={mobileWidth}
+									src={media.video}
+								/>
 							</div>
 						)
 					}

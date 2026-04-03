@@ -34,7 +34,7 @@ export default function ProjectPage({ params }) {
 			<SanityPage fetcher={fetcher}>
 				{(data) => {
 					return (
-						<div>
+						<>
 							<Title>{data.title} • Nathan Nye</Title>
 							<Link rel="canonical" href={`https://nye.dev${data.slug}`} />
 							<Show when={data.description?.length}>
@@ -42,8 +42,10 @@ export default function ProjectPage({ params }) {
 							</Show>
 							<CreativeWorkMarkup {...data} />
 							<ProjectHero {...data} />
-							<SanityComponents componentList={slices} components={data.slices} />
-						</div>
+							<div class="flex flex-col mt-90 w-full gap-y-90 grid-contain px-margin-1">
+								<SanityComponents componentList={slices} components={data.slices} />
+							</div>
+						</>
 					)
 				}}
 			</SanityPage>
