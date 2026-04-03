@@ -5,8 +5,8 @@ import gsap from 'gsap'
 import { For, onMount, Show } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection'
-import MarginListItem from '~/components/MarginListItem'
-import ProjectListItem from '~/components/ProjectListItem'
+import MarginListItem from '~/components/margin/MarginListItem'
+import ProjectListItem from '~/components/project/ProjectListItem'
 import { onPageLeave } from '~/utils'
 
 const getData = query(async () => {

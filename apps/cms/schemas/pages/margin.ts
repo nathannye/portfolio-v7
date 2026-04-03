@@ -5,7 +5,7 @@ export default createPage({
 	name: 'margin',
 	title: 'Margin',
 	icon: MdDocumentScanner,
-	prefix: '/margin',
+	prefix: '/margins',
 	body: true,
 	slices: false,
 	fields: [

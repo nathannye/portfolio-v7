@@ -44,6 +44,14 @@ export default {
 						title: 'Netherlands',
 						value: 'nl',
 					},
+					{
+						title: 'Turkey',
+						value: 'tr',
+					},
+					{
+						title: 'Portugal',
+						value: 'pt',
+					},
 				].sort((a, b) => a.title.localeCompare(b.title)),
 			},
 		},

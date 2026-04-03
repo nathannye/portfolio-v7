@@ -26,8 +26,6 @@ export const getDocumentBySlug = (
 	const { filter = '', extraQuery = '[0]{...}', params = {} } = options || {}
 	const q = `*[_type == "${documentType}" && slug.current == "${slug}"${filter}]${extraQuery}`
 
-	console.log(q)
-
 	const getter = async () => {
 		const data = await sanityClient.fetch(q, params)
 

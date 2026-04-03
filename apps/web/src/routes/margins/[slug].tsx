@@ -1,19 +1,17 @@
 import { getDocumentBySlug, SanityPage } from '@local/sanity'
 import { Link, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import CreativeWorkMarkup from '~/components/CreativeWorkMarkup'
-import ProjectHero from '~/components/ProjectHero'
+import MarginHero from '~/components/margin/MarginHero'
 
-const getProject = query(async (slug: string) => {
+const getMargin = query(async (slug: string) => {
 	'use server'
 	return await getDocumentBySlug('margin', slug, {
-		extraQuery:
-			'[0]{title, slug, firstPublished, "tags":tags[]->name, _createdAt, _updatedAt}',
+		extraQuery: '[0]{title, slug, firstPublished, body}',
 	})
 }, 'margin-details')
 
 export default function ProjectPage({ params }) {
-	const fetcher = createAsync(() => getProject(params.slug))
+	const fetcher = createAsync(() => getMargin(params.slug))
 
 	return (
 		<SanityPage fetcher={fetcher}>
@@ -23,8 +21,7 @@ export default function ProjectPage({ params }) {
 					<div>
 						<Title>{data.title} • Nathan Nye</Title>
 						<Link rel="canonical" href={`https://nye.dev${data.slug}`} />
-						<CreativeWorkMarkup {...data} />
-						<ProjectHero {...data} />
+						<MarginHero {...data} />
 					</div>
 				)
 			}}

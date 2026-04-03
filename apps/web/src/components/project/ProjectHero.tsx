@@ -2,8 +2,8 @@ import SanityImage from '@local/sanity/components/SanityImage'
 import cx from 'classix'
 import { Show } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
+import ParallaxMedia from '~/components/ParallaxMedia'
 import { formatPartner } from '~/utils/string'
-import ParallaxMedia from './ParallaxMedia'
 
 type ProjectHeroProps = {
 	title: string
