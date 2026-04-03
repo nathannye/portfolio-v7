@@ -6,17 +6,21 @@ interface SanityPageProps {
 	children: (data: SanityDocumentStub) => JSX.Element
 	fetcher?: any
 	class?: string
+	component?: string
 }
 
 export default function SanityPage(props: SanityPageProps) {
 	return (
-		<div class={`min-h-screen ${props.class}`}>
+		<Dynamic
+			component={props.component || 'div'}
+			class={`min-h-screen ${props.class}`}
+		>
 			<Show
 				fallback={<div class="flex-center h-screen w-screen">404</div>}
 				when={props.fetcher() && props.children}
 			>
 				{props.children(props.fetcher())}
 			</Show>
-		</div>
+		</Dynamic>
 	)
 }

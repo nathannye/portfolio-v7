@@ -1,8 +1,8 @@
-import { cx } from 'classix'
-import { createMemo, For, type JSX, onCleanup, onMount, Show } from 'solid-js'
+import { createMemo, For, type JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
-
 import { sanityLink } from '../utils/link'
+import { PrismCodeBlock } from './PrismCodeBlock'
+import './code.css'
 
 export interface PortableTextProps {
 	value: any
@@ -18,41 +18,30 @@ export interface PortableTextComponents {
 	listItem?: Record<string, (props: any) => JSX.Element>
 }
 
-const getEmbedType = (url: string) => {
-	if (url.includes('youtube.com') || url.includes('youtu.be')) return 'youtube'
-	return null
-}
-
 const createDefaultComponents = (): PortableTextComponents => ({
-	types: {},
+	types: {
+		code: (props) => (
+			<PrismCodeBlock
+				code={props.value.code ?? ''}
+				language={props.value.language}
+				class="!bg-inverted/3 !font-mono [&_span]:!shadow-none p-20 !text-[1.2rem] whitespace-pre block rounded-lg"
+			/>
+		),
+	},
 	block: {
 		normal: (props) => {
-			// Access the text content of the block
-			const text = props.node.children.map((child) => child.text).join('')
-			const embedType = getEmbedType(text)
-
-			if (embedType === 'youtube') {
-				const videoId = text.split('v=')[1] || text.split('/').pop()
-				return (
-					<div class="video-container">
-						<iframe
-							src={`https://www.youtube.com/embed/${videoId}`}
-							allowfullscreen
-						/>
-					</div>
-				)
-			}
-
 			// Fallback to a standard paragraph
-			return <p>{props.children}</p>
+			return <p class="body-1 mb-30">{props.children}</p>
+		},
+		code: (props) => {
+			return (
+				<code class="bg-inverted/20 inline-block p-2 rounded-sm">
+					{props.children}
+				</code>
+			)
 		},
 		blockquote: (props) => <blockquote>{props.children}</blockquote>,
-		h1: (props) => <h1>{props.children}</h1>,
-		h2: (props) => (
-			<h2 class="font-bold leading-0.8 -tracking-2.5 lg:-tracking-3.5 mb-16 text-44 lg:text-56 mt-[.75em] ">
-				{props.children}
-			</h2>
-		),
+		h2: (props) => <h2 class="heading-3 mb-10 lg:w-[80%]">{props.children}</h2>,
 		h3: (props) => (
 			<h3 class="text-36 lg:text-44 leading-0.9 mb-12 -tracking-2 font-bold mt-[.75em]">
 				{props.children}
@@ -131,7 +120,7 @@ function nestLists(blocks: any[]) {
 export function PortableText(props: PortableTextProps) {
 	const components = createMemo(() => {
 		const provided = props.components || {}
-		const baseComponents = createDefaultComponents(props.buttonAlign || 'right')
+		const baseComponents = createDefaultComponents()
 		return {
 			types: { ...baseComponents.types, ...provided.types },
 			marks: { ...baseComponents.marks, ...provided.marks },

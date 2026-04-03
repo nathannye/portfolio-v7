@@ -16,13 +16,15 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 
 	return (
 		<li class="w-full border-t border-inverted/10">
-			<A
-				class="pt-10 lg:pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
-				href={props.slug.fullUrl}
-			>
-				<div class="flex shrink-0 items-baseline gap-8 w-grid-3-w">
-					<h3 class="heading-5">{props.title}</h3>
-					<span class="opacity-50 font-[120] max-lg:text-[2rem]">{props.year}</span>
+			<div class="pt-10 lg:pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full ">
+				<div class="w-grid-3-w">
+					<A
+						href={props.slug.fullUrl}
+						class="inline-flex shrink-0 items-baseline gap-8"
+					>
+						<h3 class="heading-5">{props.title}</h3>
+						<span class="opacity-50 font-[120] max-lg:text-[2rem]">{props.year}</span>
+					</A>
 				</div>
 				<div class="flex">
 					<div class="w-grid-2-w shrink-0 opacity-90 eyebrow">
@@ -36,16 +38,21 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 							{(press, i) => {
 								const isLast = i() === props.press.length - 1
 								return (
-									<div class="underline" href={press.url}>
+									<a
+										class="underline"
+										target="_blank"
+										rel="noopener noreferrer"
+										href={press.url}
+									>
 										{press.label}
 										{!isLast && ', '}
-									</div>
+									</a>
 								)
 							}}
 						</For>
 					</div>
 				</div>
-			</A>
+			</div>
 		</li>
 	)
 }

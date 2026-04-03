@@ -36,7 +36,7 @@
 @utility body-1 {
 	font-size: max(var(--min-font-size), 1.9rem);
 	letter-spacing: -0.02em;
-	line-height: 1.45;
+	line-height: 1.52;
 	@apply font-serif;
 
 	@media screen and (max-width: 1024px) {
@@ -55,5 +55,5 @@
 	font-size: max(var(--min-font-size), 1rem);
 	font-weight: 130;
 	@apply font-sans;
-	letter-spacing: 0.02em;
+	letter-spacing: 0.003em;
 }

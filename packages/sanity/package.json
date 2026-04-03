@@ -2,6 +2,9 @@
   "name": "@local/sanity",
   "type": "module",
   "main": "./index.ts",
+  "devDependencies": {
+    "@types/prismjs": "^1.26.5"
+  },
   "scripts": {
     "generate": "pnpm sanity-yaml",
     "import": "pnpm exec tsx ./importer/import.ts",
@@ -14,10 +17,11 @@
     "@sanity/client": "^7.15.0",
     "@sanity/image-url": "^2.0.3",
     "@solidjs/meta": "^0.29.4",
-    "classix": "^2.2.6",
-    "walkjs": "^6.0.1",
     "@solidjs/router": "^0.16.1",
     "@solidjs/start": "2.0.0-alpha.2",
-    "solid-js": "^1.9.5"
+    "classix": "^2.2.6",
+    "prismjs": "^1.30.0",
+    "solid-js": "^1.9.5",
+    "walkjs": "^6.0.1"
   }
 }

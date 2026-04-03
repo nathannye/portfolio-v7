@@ -21,12 +21,6 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 
 		width = document.documentElement.offsetWidth - el.offsetWidth
 
-		console.log({
-			width,
-			d: document.documentElement.offsetWidth,
-			e: el.offsetWidth,
-		})
-
 		setCssVariable('--scrollbar', `${width}px`)
 	}
 

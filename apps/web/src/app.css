@@ -10,9 +10,13 @@
 
 @import "tailwindcss";
 
+@source "../../../packages/sanity";
+@source "./";
+
 @theme {
 	--font-serif: "ES Face", serif;
 	--font-sans: "Acid Grotesk", sans-serif;
+	--font-mono: "Suisse Mono", monospace;
 
 	--breakpoint-*: initial;
 	--breakpoint-md: 768px;
