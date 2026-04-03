@@ -6,6 +6,7 @@ import { useWindowResize } from '~/hooks/useResize'
 import { scroll } from '~/subscribers/scroll'
 import { usePageTransition } from '~/utils'
 import { setCssVariable } from '~/utils/css'
+import Footer from './Footer'
 import GridOverlay from './GridOverlay'
 import Navbar from './Navbar'
 import WebSiteMarkup from './WebSiteMarkup'
@@ -43,9 +44,12 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 			<Navbar />
 			<WebSiteMarkup />
 
-			<main ref={el} use:scroll>
-				{children}
-			</main>
+			<div ref={el}>
+				<main class="min-h-[100lvh]" use:scroll>
+					{children}
+				</main>
+				<Footer />
+			</div>
 		</>
 	)
 }

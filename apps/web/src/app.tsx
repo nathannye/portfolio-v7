@@ -2,11 +2,9 @@ import { MetaProvider } from '@solidjs/meta'
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
 import { Suspense } from 'solid-js'
-import './app.css'
-
-import Footer from './components/Footer'
 import GlobalLayout from './components/GlobalLayout'
 import { useViewport } from './hooks/useViewport'
+import './app.css'
 
 export default function App() {
 	useViewport()
@@ -15,10 +13,7 @@ export default function App() {
 			root={(props) => (
 				<MetaProvider>
 					<GlobalLayout>
-						<Suspense>
-							{props.children}
-							<Footer />
-						</Suspense>
+						<Suspense>{props.children}</Suspense>
 					</GlobalLayout>
 				</MetaProvider>
 			)}
