@@ -1,5 +1,6 @@
 import { MdDocumentScanner } from 'react-icons/md'
 import createPage from '../../utils/createPage'
+import { createPortableText } from '../../utils/portable-text/createPortableText'
 
 export default createPage({
 	name: 'margin',
@@ -9,6 +10,12 @@ export default createPage({
 	body: true,
 	slices: false,
 	fields: [
+		createPortableText('excerpt', {
+			headings: [],
+			lists: [],
+			disableLinks: true,
+			decorators: ['code', 'bold', 'italic'],
+		}),
 		{
 			name: 'tags',
 			type: 'array',

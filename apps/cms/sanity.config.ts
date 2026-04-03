@@ -1,3 +1,4 @@
+import { codeInput } from '@sanity/code-input'
 import { table } from '@sanity/table'
 import { visionTool } from '@sanity/vision'
 import { defineConfig } from 'sanity'
@@ -18,6 +19,7 @@ const sharedConfig = [
 	media(),
 	noteField(),
 	muxInput(),
+	codeInput(),
 	crawlMeMaybe(),
 	table(),
 	visionTool(),

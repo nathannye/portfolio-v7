@@ -5,8 +5,7 @@ pre[class*="language-"] {
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
-	color: #90a4ae;
-	background: #fafafa;
+
 	line-height: 1.5;
 
 	-moz-tab-size: 4;
@@ -37,15 +36,11 @@ pre[class*="language-"] ::selection {
 
 :not(pre) > code[class*="language-"] {
 	white-space: normal;
-	border-radius: 0.2em;
-	padding: 0.1em;
 }
 
 pre[class*="language-"] {
 	overflow: auto;
 	position: relative;
-	margin: 0.5em 0;
-	padding: 1.25em 1em;
 }
 
 .language-css > code,
@@ -63,7 +58,7 @@ pre[class*="language-"] {
 }
 
 .token.attr-name {
-	color: #39adb5;
+	color: #34868b;
 }
 
 .token.attr-value {
@@ -79,19 +74,19 @@ pre[class*="language-"] {
 }
 
 .token.builtin {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.cdata {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.char {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.class {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.class-name {
@@ -137,7 +132,7 @@ pre[class*="language-"] {
 }
 
 .token.inserted {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.keyword {
@@ -149,7 +144,7 @@ pre[class*="language-"] {
 }
 
 .token.operator {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.prolog {
@@ -157,7 +152,7 @@ pre[class*="language-"] {
 }
 
 .token.property {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.pseudo-class {
@@ -169,7 +164,7 @@ pre[class*="language-"] {
 }
 
 .token.punctuation {
-	color: #39adb5;
+	color: #31939a;
 }
 
 .token.regex {

@@ -78,7 +78,13 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 			createPortableText('body', {
 				headings: ['h2', 'h3', 'h4'],
 				lists: ['bullet', 'number'],
-				decorators: ['bold', 'italic', 'underline', 'strikethrough'],
+				decorators: ['bold', 'italic', 'underline', 'strikethrough', 'code'],
+				blocks: [
+					{
+						name: 'code',
+						type: 'code',
+					},
+				],
 			}),
 		)
 	}
