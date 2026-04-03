@@ -9,7 +9,8 @@ const projectStackLabels = [
 	'Next.js',
 	'Sanity',
 	'Solid',
-	'Tailwind',
+	'Three',
+	// 'Tailwind',
 	'Nuxt',
 	'Webflow',
 ].sort((a, b) => a.localeCompare(b))

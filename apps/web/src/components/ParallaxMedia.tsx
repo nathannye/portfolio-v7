@@ -9,11 +9,11 @@ interface ParallaxMediaProps {
 	speed: number
 }
 
-export default function ParallaxMedia(props) {
+export default function ParallaxMedia(props: ParallaxMediaProps) {
 	let wrapper: HTMLDivElement
 	let el: HTMLDivElement
 
-	const DISTANCE = 25 * (props.speed || 1)
+	const DISTANCE = 30 * (props.speed || 1)
 
 	onMount(() => {
 		if (!wrapper) return
