@@ -79,7 +79,7 @@ export default function MediaDuo(props: MediaDuoProps) {
 								speed={getSpeed(columns)}
 							>
 								<SanityImage
-									class="w-full max-h-[60vh] lg:max-h-[80vh] h-auto object-cover"
+									class="w-full max-h-[60vh] lg:max-h-[110vh] h-auto object-cover"
 									desktopWidth={desktopWidth}
 									mobileWidth={mobileWidth}
 									src={media.image}
