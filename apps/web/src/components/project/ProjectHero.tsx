@@ -33,33 +33,35 @@ export default function ProjectHero(props: ProjectHeroProps) {
 
 			<dl class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 eyebrow">
 				<div class="flex">
-					<div class="flex shrink-0 w-grid-2-w">
+					<dl class="flex shrink-0 w-grid-2-w">
 						<dt class="pr-20">Role</dt>
 						<dd>{list(props.role)}</dd>
-					</div>
-					<div class="flex shrink-0 gap-gutter-1">
+					</dl>
+					<dl class="flex shrink-0 gap-gutter-1">
 						<dt class="w-grid-1">Stack</dt>
 						<dd>{list(props.stack)}</dd>
-					</div>
+					</dl>
 				</div>
 				<div class="flex justify-between shrink-0 w-grid-5-w">
-					<Dynamic
-						component={props.liveLink ? 'a' : 'div'}
-						rel="noopener noreferrer"
-						target="_blank"
-						class={cx(
-							'text-accent pl-gutter-1 underline',
-							!props.liveLink && 'invisible',
-						)}
-						href={props.liveLink}
-					>
-						<Show when={props.liveLink}>Live Link</Show>
-					</Dynamic>
+					<dd>
+						<Dynamic
+							component={props.liveLink ? 'a' : 'div'}
+							rel="noopener noreferrer"
+							target="_blank"
+							class={cx(
+								'text-accent pl-gutter-1 underline',
+								!props.liveLink && 'invisible',
+							)}
+							href={props.liveLink}
+						>
+							<Show when={props.liveLink}>Live Link</Show>
+						</Dynamic>
+					</dd>
 					<Show when={props.partners}>
-						<div class="flex shrink-0 flex justify-end w-grid-4 gap-gutter-1 ">
+						<dl class="flex shrink-0 flex justify-end w-grid-4 gap-gutter-1 ">
 							<dt>Partners in crime</dt>
 							<dd>{partnerList(props.partners)}</dd>
-						</div>
+						</dl>
 					</Show>
 				</div>
 			</dl>
