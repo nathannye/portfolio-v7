@@ -56,7 +56,9 @@ export default function Navbar() {
 				Nathan Nye
 			</A>
 			<dl class="flex eyebrow gap-gutter-1 opacity-80 relative z-2">
-				<dt class="w-grid-2 text-right">Get in touch</dt>
+				<dt class="w-grid-2 text-right">
+					Get in touch <span class="inline-block ml-10">→</span>
+				</dt>
 				<dd class="lg:w-grid-3-w">
 					<a href="mailto:nathan@nye.dev" class="underline">
 						nathan@nye.dev
