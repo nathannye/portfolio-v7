@@ -1,19 +1,39 @@
+import { createAsync } from '@solidjs/router'
 import * as PrismNamespace from 'prismjs'
-import { createResource, splitProps, type JSX } from 'solid-js'
+import { type JSX, splitProps } from 'solid-js'
 
 type PrismLib = typeof PrismNamespace & {
 	highlight: (code: string, grammar: object, language: string) => string
 	languages: Record<string, object | undefined>
 }
 
-const Prism = (
-	(PrismNamespace as { default?: PrismLib }).default ??
-	PrismNamespace
-) as PrismLib
+const Prism = ((PrismNamespace as { default?: PrismLib }).default ??
+	PrismNamespace) as PrismLib
 
+/** Prism component scripts use the global `Prism` binding; keep it aligned with this module's instance. */
 function ensurePrismGlobal() {
-	const g = globalThis as typeof globalThis & { Prism?: PrismLib }
-	if (!g.Prism) g.Prism = Prism
+	;(globalThis as typeof globalThis & { Prism: PrismLib }).Prism = Prism
+}
+
+ensurePrismGlobal()
+
+/** When Studio language is "javascript" but the snippet is JSX, Prism needs the jsx grammar (tags + JS). */
+function grammarIdForHighlight(normalizedLang: string, code: string): string {
+	if (normalizedLang === 'javascript' && looksLikeJsx(code)) return 'jsx'
+	if (normalizedLang === 'typescript' && looksLikeJsx(code)) return 'tsx'
+	return normalizedLang
+}
+
+function looksLikeJsx(code: string): boolean {
+	if (!code.includes('<')) return false
+	// Closing tags / fragments — strong signals vs comparisons like `a<b` or generics `Foo<T>`.
+	if (code.includes('</') || code.includes('<>')) return true
+	if (/\bclassName\s*=/.test(code)) return true
+	// JSX value positions (avoid matching `Array<Thing>`-style generics).
+	if (/\breturn\s+<\s*[A-Za-z]/.test(code)) return true
+	if (/[=:(]\s*<\s*[A-Za-z]/.test(code)) return true
+	if (/=>\s*<\s*[A-Za-z]/.test(code)) return true
+	return false
 }
 
 const LANGUAGE_ALIASES: Record<string, string> = {
@@ -25,24 +45,10 @@ const LANGUAGE_ALIASES: Record<string, string> = {
 	shell: 'bash',
 	zsh: 'bash',
 	yml: 'yaml',
-	py: 'python',
-	rb: 'ruby',
-	rs: 'rust',
-	go: 'go',
 	md: 'markdown',
 	html: 'markup',
-	xml: 'markup',
-	svg: 'markup',
 	css: 'css',
-	scss: 'scss',
-	sass: 'scss',
-	json: 'json',
-	sql: 'sql',
 	bash: 'bash',
-	docker: 'docker',
-	dockerfile: 'docker',
-	graphql: 'graphql',
-	gql: 'graphql',
 }
 
 export function normalizeLanguage(language: string | null | undefined): string {
@@ -72,6 +78,8 @@ const LANGUAGE_LOADERS: Record<string, LangLoader> = {
 		await import('prismjs/components/prism-typescript.js')
 	},
 	jsx: async () => {
+		// jsx grammar clones Prism.languages.javascript; explicit load avoids ordering issues across chunks.
+		await import('prismjs/components/prism-javascript.js')
 		await import('prismjs/components/prism-jsx.js')
 	},
 	tsx: async () => {
@@ -79,49 +87,15 @@ const LANGUAGE_LOADERS: Record<string, LangLoader> = {
 		await import('prismjs/components/prism-jsx.js')
 		await import('prismjs/components/prism-tsx.js')
 	},
-	json: async () => {
-		await import('prismjs/components/prism-json.js')
-	},
-	json5: async () => {
-		await import('prismjs/components/prism-json.js')
-		await import('prismjs/components/prism-json5.js')
-	},
 	bash: async () => {
 		await import('prismjs/components/prism-bash.js')
 	},
 	markdown: async () => {
 		await import('prismjs/components/prism-markdown.js')
 	},
-	python: async () => {
-		await import('prismjs/components/prism-python.js')
-	},
-	rust: async () => {
-		await import('prismjs/components/prism-rust.js')
-	},
-	go: async () => {
-		await import('prismjs/components/prism-go.js')
-	},
+
 	yaml: async () => {
 		await import('prismjs/components/prism-yaml.js')
-	},
-	sql: async () => {
-		await import('prismjs/components/prism-sql.js')
-	},
-	scss: async () => {
-		await import('prismjs/components/prism-scss.js')
-	},
-	ruby: async () => {
-		await import('prismjs/components/prism-ruby.js')
-	},
-	php: async () => {
-		await import('prismjs/components/prism-markup-templating.js')
-		await import('prismjs/components/prism-php.js')
-	},
-	docker: async () => {
-		await import('prismjs/components/prism-docker.js')
-	},
-	graphql: async () => {
-		await import('prismjs/components/prism-graphql.js')
 	},
 }
 
@@ -145,10 +119,12 @@ export interface PrismCodeBlockProps {
 export function PrismCodeBlock(props: PrismCodeBlockProps): JSX.Element {
 	const [local, rest] = splitProps(props, ['code', 'language', 'class'])
 
-	const [innerHtml] = createResource(
-		() => [local.code, local.language] as const,
-		async ([code, language]) => {
-			const id = normalizeLanguage(language)
+	const innerHtml = createAsync(
+		async () => {
+			const code = local.code
+			const language = local.language
+			const normalized = normalizeLanguage(language)
+			const id = grammarIdForHighlight(normalized, code ?? '')
 			await loadPrismLanguage(id)
 			const grammar = Prism.languages[id]
 			if (grammar) {
@@ -160,19 +136,20 @@ export function PrismCodeBlock(props: PrismCodeBlockProps): JSX.Element {
 			}
 			return escapeHtml(code ?? '')
 		},
+		{ initialValue: '' },
 	)
 
 	const codeClass = () =>
-		[`language-${normalizeLanguage(local.language)}`, local.class]
+		[
+			`language-${grammarIdForHighlight(normalizeLanguage(local.language), local.code ?? '')}`,
+			local.class,
+		]
 			.filter(Boolean)
 			.join(' ')
 
 	return (
 		<pre {...rest}>
-			<code
-				class={codeClass()}
-				innerHTML={innerHtml() ?? ''}
-			/>
+			<code class={codeClass()} innerHTML={innerHtml()} />
 		</pre>
 	)
 }

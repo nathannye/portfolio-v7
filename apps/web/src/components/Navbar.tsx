@@ -43,7 +43,7 @@ export default function Navbar() {
 	return (
 		<header
 			class={cx(
-				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 right-0 max-lg:justify-between duration-800 ease-expo-out after:duration-800 after:ease-expo-out pb-6',
+				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 w-[calc(100vw-var(--scrollbar))] max-lg:justify-between duration-800 ease-expo-out after:duration-800 after:ease-expo-out pb-6',
 				nav.scrolled && 'after:scale-y-100',
 				nav.hidden && '-translate-y-full',
 			)}

@@ -74,6 +74,7 @@ const DEFAULT_OPTIONS = {
 	headings: ['h2', 'h3', 'h4'] as PortableTextHeading[],
 	lists: ['bullet', 'number'] as PortableTextList[],
 	decorators: [
+		'code',
 		'bold',
 		'italic',
 		'underline',

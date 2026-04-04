@@ -2,13 +2,15 @@ import { getDocumentBySlug, PortableText, SanityPage } from '@local/sanity'
 import { Link, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { Show } from 'solid-js'
+import ArticleMarkup from '~/components/margin/ArticleMarkup'
 import MarginHero from '~/components/margin/MarginHero'
+import PageMeta from '~/components/PageMeta'
 
 const getMargin = query(async (slug: string) => {
 	'use server'
 	return await getDocumentBySlug('margin', slug, {
 		extraQuery:
-			'[0]{title, slug, excerpt, tags, firstPublished, body, mainImage}',
+			'[0]{title, slug, "description": pt::text(excerpt), excerpt, tags, firstPublished, body, mainImage}',
 	})
 }, 'margin-details')
 
@@ -20,8 +22,18 @@ export default function ProjectPage({ params }) {
 			{(data) => {
 				return (
 					<div>
-						<Title>{data.title} • Nathan Nye</Title>
-						<Link rel="canonical" href={`https://nye.dev${data.slug}`} />
+						<PageMeta
+							description={data.description}
+							title={data.title}
+							slug={data.slug}
+						/>
+						<ArticleMarkup
+							datePublished={data.firstPublished}
+							description={data.excerpt}
+							keywords={data.keywords}
+							title={data.title}
+							_updatedAt={data._updatedAt}
+						/>
 						<MarginHero {...data} />
 						<div class="px-margin-1">
 							<Show when={data.excerpt}>

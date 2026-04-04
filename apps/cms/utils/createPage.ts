@@ -84,6 +84,16 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 					{
 						name: 'code',
 						type: 'code',
+						options: {
+							languageAlternatives: [
+								{ title: 'JavaScript', value: 'javascript' },
+								{ title: 'JSX', value: 'jsx' },
+								{ title: 'TypeScript', value: 'typescript' },
+								{ title: 'TSX', value: 'tsx' },
+								{ title: 'HTML', value: 'html' },
+								{ title: 'CSS', value: 'css' },
+							],
+						},
 					},
 					{
 						name: 'image',

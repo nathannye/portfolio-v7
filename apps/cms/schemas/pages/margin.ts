@@ -42,5 +42,11 @@ export default createPage({
 			name: 'firstPublished',
 			type: 'date',
 		},
+		{
+			name: 'keywords',
+			type: 'array',
+			of: [{ type: 'string' }],
+			options: { layout: 'tags' },
+		},
 	],
 })

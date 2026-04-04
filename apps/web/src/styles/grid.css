@@ -5,8 +5,8 @@
 	--max-scaling-width: 2560;
 
 	--grid-columns: 5;
-	--grid-gutter: 1.5rem;
-	--grid-margin: 3rem;
+	--grid-gutter: 1.2rem;
+	--grid-margin: 4rem;
 
 	--screen-width: min(calc(100vw - var(--scrollbar)), var(--infinity));
 

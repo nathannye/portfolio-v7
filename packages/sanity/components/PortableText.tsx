@@ -25,7 +25,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			<PrismCodeBlock
 				code={props.value.code ?? ''}
 				language={props.value.language}
-				class="!bg-inverted/3 mb-20 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre block rounded-lg"
+				class="!bg-inverted/4 mb-20 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre block rounded-lg"
 			/>
 		),
 		image: (props) => (

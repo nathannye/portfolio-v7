@@ -1,5 +1,10 @@
 body {
+	--sbw: calc(100vw - 100%);
 	@apply font-sans bg-primary text-inverted;
+}
+
+html {
+	scrollbar-gutter: both-edges;
 }
 
 ::selection {

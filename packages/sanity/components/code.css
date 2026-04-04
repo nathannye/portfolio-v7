@@ -43,7 +43,7 @@ pre[class*="language-"] {
 .language-css > code,
 .language-sass > code,
 .language-scss > code {
-	color: #f76d47;
+	color: #dc6544;
 }
 
 [class*="language-"] .namespace {
@@ -115,7 +115,7 @@ pre[class*="language-"] {
 }
 
 .token.hexcode {
-	color: #f76d47;
+	color: #dc6544;
 }
 
 .token.id {
@@ -137,7 +137,7 @@ pre[class*="language-"] {
 }
 
 .token.number {
-	color: #f76d47;
+	color: #dc6544;
 }
 
 .token.operator {
@@ -185,7 +185,7 @@ pre[class*="language-"] {
 }
 
 .token.unit {
-	color: #f76d47;
+	color: #dc6544;
 }
 
 .token.url {
