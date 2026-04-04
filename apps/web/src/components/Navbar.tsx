@@ -1,4 +1,4 @@
-import { A } from '@solidjs/router'
+import { A, useLocation } from '@solidjs/router'
 import cx from 'classix'
 import { createSignal, onCleanup, onMount } from 'solid-js'
 import { nav, setNav } from '~/stores/navStore'
@@ -7,7 +7,8 @@ import { onScroll } from '~/utils'
 export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
-
+	const location = useLocation()
+	console.log(location)
 	const getTime = () => {
 		return new Intl.DateTimeFormat('en-US', {
 			timeStyle: 'short',
@@ -51,7 +52,10 @@ export default function Navbar() {
 			<A
 				href="/"
 				aria-label="Home"
-				class="eyebrow lg:w-grid-1 shrink-0 font-[165] lg:w-grid-3-w relative z-2"
+				class={cx(
+					'eyebrow lg:w-grid-1 shrink-0 font-[165] lg:w-grid-3-w relative z-2',
+					location.pathname === '/' && 'pointer-events-none select-none',
+				)}
 			>
 				Nathan Nye
 			</A>

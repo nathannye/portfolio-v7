@@ -48,13 +48,21 @@ export default function Home() {
 							</Show>
 
 							<div class="w-full flex flex-col gap-y-95">
-								<ListSection title="Work" itemCount={projects.length}>
+								<ListSection index={0} title="Work" itemCount={projects.length}>
 									<div class="mt-10">
 										<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
-											<div class="w-grid-3-w">Title</div>
-											<div class="w-grid-2-w">Partners in Crime</div>
-											<div class="w-grid-2-w">Kudos</div>
-											<div class="w-grid-2-w">Press</div>
+											<div data-header class="w-grid-3-w opacity-0">
+												Title
+											</div>
+											<div data-header class="w-grid-2-w opacity-0">
+												Partners in Crime
+											</div>
+											<div data-header class="w-grid-2-w opacity-0">
+												Kudos
+											</div>
+											<div data-header class="w-grid-2-w opacity-0">
+												Press
+											</div>
 										</div>
 										<ul>
 											<For each={projects}>
@@ -63,11 +71,17 @@ export default function Home() {
 										</ul>
 									</div>
 								</ListSection>
-								<ListSection title="Margins" itemCount={margins.length}>
+								<ListSection index={1} title="Margins" itemCount={margins.length}>
 									<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
-										<div class="w-grid-3-w">Title</div>
-										<div class="w-grid-2-w">Published</div>
-										<div class="w-grid-3-w">Category</div>
+										<div data-header class="w-grid-3-w opacity-0">
+											Title
+										</div>
+										<div data-header class="w-grid-2-w opacity-0">
+											Published
+										</div>
+										<div data-header class="w-grid-3-w opacity-0">
+											Category
+										</div>
 									</div>
 									<div class="mt-10">
 										<ul>
