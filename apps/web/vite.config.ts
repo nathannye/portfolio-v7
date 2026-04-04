@@ -31,6 +31,7 @@ export default defineConfig({
 					projectId: 'b53ej91c',
 					dataset: 'production',
 					apiVersion: '2026-01-21',
+					useCdn: false,
 					perspective: 'published',
 				})
 
