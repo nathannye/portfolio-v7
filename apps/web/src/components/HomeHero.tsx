@@ -9,7 +9,7 @@ export default function HomeHero(props: HomeHeroProps) {
 	const parts = () => props.headline.split(/(\{[^}]+\})/)
 
 	return (
-		<header class="pt-[28vh] lg:pt-[25vh] mb-120 px-margin-1">
+		<header class="pt-[28vh] lg:pt-[31vh] mb-190 px-margin-1">
 			<h1 class="heading-3 lg:px-grid-3-w">
 				<For each={parts()}>
 					{(part) => {
@@ -22,7 +22,7 @@ export default function HomeHero(props: HomeHeroProps) {
 					}}
 				</For>
 			</h1>
-			<p class="body-1 opacity-70 mt-44 lg:w-grid-5 lg:ml-grid-3-w max-lg:pr-grid-1">
+			<p class="body-1 opacity-70 mt-44 lg:w-grid-5 lg:ml-grid-3-w ">
 				{props.blurb}
 			</p>
 		</header>

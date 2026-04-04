@@ -58,7 +58,7 @@ export default function Home() {
 										</div>
 										<ul>
 											<For each={projects}>
-												{(project) => <ProjectListItem {...project} />}
+												{(project, i) => <ProjectListItem {...project} index={i()} />}
 											</For>
 										</ul>
 									</div>
@@ -72,7 +72,7 @@ export default function Home() {
 									<div class="mt-10">
 										<ul>
 											<For each={margins}>
-												{(margin) => <MarginListItem {...margin} />}
+												{(margin, i) => <MarginListItem {...margin} index={i()} />}
 											</For>
 										</ul>
 									</div>

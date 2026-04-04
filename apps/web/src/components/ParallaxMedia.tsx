@@ -21,8 +21,7 @@ export default function ParallaxMedia(props: ParallaxMediaProps) {
 			wrapper,
 			(progress) => {
 				const isMobile = Resizer.isMobile
-				const d = isMobile ? DISTANCE * 1.3 : DISTANCE
-				const val = progress * (d / 2)
+				const val = progress * (DISTANCE / 2)
 				el.style.transform = `translateY(${val}%)`
 			},
 			{
