@@ -11,8 +11,8 @@ export default function Footer() {
 		<footer class="mt-90 px-margin-1">
 			<div class="lg:pl-grid-3-w lg:pr-grid-6-w border-t border-inverted/10 pt-90">
 				<p class="heading-4">
-					Got something crazy? <br />
-					Shoot me an email{' '}
+					Got something crazy in mind? <br />
+					My inbox is open!{' '}
 					<a href="mailto:nathan@nye.dev" class="underline text-accent">
 						nathan@nye.dev
 					</a>{' '}
@@ -20,7 +20,7 @@ export default function Footer() {
 			</div>
 
 			<div class="flex max-lg:flex-wrap gap-y-10 justify-between pt-140 w-full pb-4 eyebrow">
-				<div aria-hidden="true" class="opacity-90 max-lg:hidden w-grid-3-w">
+				<div aria-hidden="true" class="opacity-50 max-lg:hidden w-grid-3-w">
 					v7
 				</div>
 

@@ -13,13 +13,13 @@ const getProject = query(async (slug: string) => {
 	})
 }, 'project-details')
 
+const slices = {
+	mediaDuo: lazy(() => import('~/slices/MediaDuo')),
+}
+
 export default function ProjectPage({ params }) {
 	let el
 	const fetcher = createAsync(() => getProject(params.slug))
-
-	const slices = {
-		mediaDuo: lazy(() => import('~/slices/MediaDuo')),
-	}
 
 	return (
 		<div ref={el}>
