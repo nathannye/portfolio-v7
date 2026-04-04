@@ -5,13 +5,6 @@
   "devDependencies": {
     "@types/prismjs": "^1.26.5"
   },
-  "scripts": {
-    "generate": "pnpm sanity-yaml",
-    "import": "pnpm exec tsx ./importer/import.ts",
-    "cleanup-assets": "pnpm exec tsx ./cleanup/index.ts",
-    "dedup-docs": "pnpm exec tsx ./dedup-docs/index.ts",
-    "ref-replace": "pnpm exec tsx ./ref-replace/cli.ts"
-  },
   "dependencies": {
     "@portabletext/solid": "^1.0.8",
     "@sanity/client": "^7.15.0",
