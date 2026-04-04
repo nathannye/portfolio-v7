@@ -8,7 +8,6 @@ export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
 	const location = useLocation()
-	console.log(location)
 	const getTime = () => {
 		return new Intl.DateTimeFormat('en-US', {
 			timeStyle: 'short',
