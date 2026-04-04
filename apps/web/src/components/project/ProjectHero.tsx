@@ -37,7 +37,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 						<dt class="pr-20">Role</dt>
 						<dd>{list(props.role)}</dd>
 					</dl>
-					<dl class="flex shrink-0 gap-gutter-1">
+					<dl class="flex shrink-0 max-lg:w-grid-3-w gap-gutter-1">
 						<dt class="w-80 lg:w-grid-1">Stack</dt>
 						<dd>{list(props.stack)}</dd>
 					</dl>
@@ -58,7 +58,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 						</Dynamic>
 					</dd>
 					<Show when={props.partners}>
-						<dl class="flex shrink-0 flex lg:justify-end w-grid-4 gap-gutter-1 ">
+						<dl class="flex shrink-0 flex lg:justify-end w-grid-3-w lg:w-grid-4 gap-gutter-1 ">
 							<dt class="max-lg:hidden">Partners in crime</dt>
 							<dt aria-label="With" class="lg:hidden w-80">
 								w /{' '}
