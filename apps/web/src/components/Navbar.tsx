@@ -51,7 +51,7 @@ export default function Navbar() {
 			<A
 				href="/"
 				aria-label="Home"
-				class="eyebrow w-grid-1 shrink-0 font-[165] lg:w-grid-3-w relative z-2"
+				class="eyebrow lg:w-grid-1 shrink-0 font-[165] lg:w-grid-3-w relative z-2"
 			>
 				Nathan Nye
 			</A>
@@ -63,7 +63,7 @@ export default function Navbar() {
 					</a>
 				</dd>
 			</dl>
-			<dl class="flex max-lg:justify-end opacity-80 max-lg:text-right max-lg:w-full eyebrow gap-x-gutter-1 relative z-2">
+			<dl class="flex max-lg:hidden opacity-80 max-lg:text-right max-lg:w-full eyebrow gap-x-gutter-1 relative z-2">
 				<dt>Denver, CO</dt>
 				<dd>MST {time()}</dd>
 			</dl>
