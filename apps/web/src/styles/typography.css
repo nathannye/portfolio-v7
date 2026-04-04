@@ -8,7 +8,7 @@
 @utility heading-2 {
 	font-size: max(var(--min-font-size), 6.4rem);
 	letter-spacing: -0.02em;
-	line-height: 1.27;
+	line-height: 1.2;
 	@apply font-serif;
 }
 
@@ -20,6 +20,17 @@
 
 	@media screen and (max-width: 1024px) {
 		font-size: max(var(--min-font-size), 5.2rem);
+	}
+}
+
+@utility heading-4 {
+	font-size: max(var(--min-font-size), 2.8rem);
+	letter-spacing: -0.02em;
+	line-height: 1.27;
+	@apply font-serif;
+
+	@media screen and (max-width: 1024px) {
+		font-size: max(var(--min-font-size), 3.9rem);
 	}
 }
 
@@ -35,7 +46,7 @@
 
 @utility body-1 {
 	font-size: max(var(--min-font-size), 1.9rem);
-	letter-spacing: -0.02em;
+	letter-spacing: -0.009em;
 	line-height: 1.52;
 	@apply font-serif;
 

@@ -1,5 +1,6 @@
 import { HiDocumentText } from 'react-icons/hi'
 import type { IconType } from 'react-icons/lib'
+import { MdFormatQuote } from 'react-icons/md'
 import {
 	type DocumentDefinition,
 	defineField,
@@ -83,6 +84,30 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 					{
 						name: 'code',
 						type: 'code',
+					},
+					{
+						name: 'image',
+						type: 'image',
+					},
+					{
+						name: 'video',
+						type: 'mux.video',
+					},
+					{
+						name: 'callout',
+						icon: MdFormatQuote,
+						type: 'object',
+						fields: [
+							{
+								name: 'title',
+								type: 'string',
+							},
+							{
+								name: 'quote',
+								type: 'text',
+								rows: 6,
+							},
+						],
 					},
 				],
 			}),

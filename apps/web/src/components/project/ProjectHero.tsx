@@ -27,29 +27,29 @@ export default function ProjectHero(props: ProjectHeroProps) {
 	return (
 		<header class="px-margin-1">
 			<div class="h-[50vh] min-h-500 flex-center flex-col">
-				<h1 class="heading-2">{props.title}</h1>
+				<h1 class="heading-2 text-center">{props.title}</h1>
 				<p class="heading-5 font-bold font-serif opacity-70 mt-12">{props.year}</p>
 			</div>
 
-			<dl class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 eyebrow">
-				<div class="flex">
+			<dl class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 gap-y-20 eyebrow max-lg:flex-col">
+				<div class="flex max-lg:w-full">
 					<dl class="flex shrink-0 w-grid-2-w">
 						<dt class="pr-20">Role</dt>
 						<dd>{list(props.role)}</dd>
 					</dl>
 					<dl class="flex shrink-0 gap-gutter-1">
-						<dt class="w-grid-1">Stack</dt>
+						<dt class="w-80 lg:w-grid-1">Stack</dt>
 						<dd>{list(props.stack)}</dd>
 					</dl>
 				</div>
-				<div class="flex justify-between shrink-0 w-grid-5-w">
-					<dd>
+				<div class="flex justify-between max-lg:w-full shrink-0 lg:w-grid-5-w">
+					<dd class="max-lg:w-grid-2-w shrink-0">
 						<Dynamic
 							component={props.liveLink ? 'a' : 'div'}
 							rel="noopener noreferrer"
 							target="_blank"
 							class={cx(
-								'text-accent pl-gutter-1 underline',
+								'text-accent lg:pl-gutter-1 underline',
 								!props.liveLink && 'invisible',
 							)}
 							href={props.liveLink}
@@ -58,8 +58,11 @@ export default function ProjectHero(props: ProjectHeroProps) {
 						</Dynamic>
 					</dd>
 					<Show when={props.partners}>
-						<dl class="flex shrink-0 flex justify-end w-grid-4 gap-gutter-1 ">
-							<dt>Partners in crime</dt>
+						<dl class="flex shrink-0 flex lg:justify-end w-grid-4 gap-gutter-1 ">
+							<dt class="max-lg:hidden">Partners in crime</dt>
+							<dt aria-label="With" class="lg:hidden w-80">
+								w /{' '}
+							</dt>
 							<dd>{partnerList(props.partners)}</dd>
 						</dl>
 					</Show>

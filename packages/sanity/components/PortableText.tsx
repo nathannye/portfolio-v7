@@ -3,6 +3,7 @@ import { Dynamic } from 'solid-js/web'
 import { sanityLink } from '../utils/link'
 import { PrismCodeBlock } from './PrismCodeBlock'
 import './code.css'
+import SanityImage from './SanityImage'
 
 export interface PortableTextProps {
 	value: any
@@ -24,13 +25,19 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			<PrismCodeBlock
 				code={props.value.code ?? ''}
 				language={props.value.language}
-				class="!bg-inverted/3 !font-mono [&_span]:!shadow-none p-20 !text-[1.2rem] whitespace-pre block rounded-lg"
+				class="!bg-inverted/3 mb-20 !font-mono [&_span]:!shadow-none p-20 !text-[1.2rem] whitespace-pre block rounded-lg"
 			/>
+		),
+		image: (props) => <SanityImage class="w-grid-8-w my-30" src={props.value} />,
+		callout: (props) => (
+			<div class="w-grid-6-w mb-80 rounded-sm bg-inverted/20 p-15">
+				<h3 class="heading-5 font-[150]">{props.value.title}</h3>
+				<p class="body-3 mt-12 font-[120]">{props.value.quote}</p>
+			</div>
 		),
 	},
 	block: {
 		normal: (props) => {
-			// Fallback to a standard paragraph
 			return <p class="body-1 mb-30">{props.children}</p>
 		},
 		code: (props) => {
@@ -41,27 +48,11 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			)
 		},
 		blockquote: (props) => <blockquote>{props.children}</blockquote>,
-		h2: (props) => <h2 class="heading-3 mb-10 lg:w-[80%]">{props.children}</h2>,
-		h3: (props) => (
-			<h3 class="text-36 lg:text-44 leading-0.9 mb-12 -tracking-2 font-bold mt-[.75em]">
-				{props.children}
-			</h3>
+		h2: (props) => (
+			<h2 class="heading-3 mt-80 mb-10 lg:w-[80%]">{props.children}</h2>
 		),
-		h4: (props) => (
-			<h4 class="text-28 lg:text-36 leading-0.9 mb-8 -tracking-2 font-bold mt-[.75em]">
-				{props.children}
-			</h4>
-		),
-		h5: (props) => (
-			<h5 class="text-20 lg:text-28 leading-0.9 mb-6 -tracking-2 font-bold mt-[.75em]">
-				{props.children}
-			</h5>
-		),
-		h6: (props) => (
-			<h6 class="text-16 lg:text-20 leading-0.9 mb-6 -tracking-2 font-bold mt-[.75em]">
-				{props.children}
-			</h6>
-		),
+		h3: (props) => <h3 class="heading-4 mt-80 mb-10">{props.children}</h3>,
+		h4: (props) => <h4 class="heading-5 mt-80 mb-10">{props.children}</h4>,
 	},
 	marks: {
 		strong: (props) => <strong>{props.children}</strong>,

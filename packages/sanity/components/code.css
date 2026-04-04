@@ -91,7 +91,7 @@ pre[class*="language-"] {
 }
 
 .token.comment {
-	color: #aabfc9;
+	color: #869eaa;
 }
 
 .token.constant {
@@ -103,7 +103,7 @@ pre[class*="language-"] {
 }
 
 .token.doctype {
-	color: #aabfc9;
+	color: #869eaa;
 }
 
 .token.entity {
@@ -145,7 +145,7 @@ pre[class*="language-"] {
 }
 
 .token.prolog {
-	color: #aabfc9;
+	color: #869eaa;
 }
 
 .token.property {

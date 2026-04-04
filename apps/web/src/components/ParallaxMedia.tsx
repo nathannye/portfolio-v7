@@ -5,8 +5,8 @@ import { onTrack } from '~/utils'
 
 interface ParallaxMediaProps {
 	children: any
-	class: string
-	speed: number
+	class?: string
+	speed?: number
 }
 
 export default function ParallaxMedia(props: ParallaxMediaProps) {

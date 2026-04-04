@@ -1,4 +1,3 @@
-
 export const portableLink = {
 	name: 'link',
 	title: 'Link',
@@ -10,11 +9,11 @@ export const portableLink = {
 			title: 'URL',
 			description: 'The URL of the link',
 		},
-		// {
-		// 	name: 'page',
-		// 	type: 'reference',
-		// 	to: [...ALL_PAGES],
-		// },
+		{
+			name: 'page',
+			type: 'reference',
+			to: [{ type: 'project' }, { type: 'margin' }],
+		},
 		{
 			name: 'linkType',
 			type: 'string',
