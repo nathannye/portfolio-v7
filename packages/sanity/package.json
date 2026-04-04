@@ -2,9 +2,6 @@
   "name": "@local/sanity",
   "type": "module",
   "main": "./index.ts",
-  "devDependencies": {
-    "@types/prismjs": "^1.26.5"
-  },
   "dependencies": {
     "@portabletext/solid": "^1.0.8",
     "@sanity/client": "^7.15.0",
