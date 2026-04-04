@@ -3,6 +3,7 @@ import SanityImage from '@local/sanity/components/SanityImage'
 import type { SanityImageAssetDocument } from '@sanity/client'
 import cx from 'classix'
 import { For } from 'solid-js'
+import { fadeIn } from '~/animations/fade-in'
 import MuxVideo from '~/components/MuxVideo'
 import ParallaxMedia from '~/components/ParallaxMedia'
 import Slice from '~/components/Slice'
@@ -66,7 +67,7 @@ export default function MediaDuo(props: MediaDuoProps) {
 			)}
 		>
 			<For each={props.media}>
-				{(item) => {
+				{(item, index) => {
 					const { media, columns } = item
 					const columnClass = columnMap?.[columns] || 'w-full'
 
@@ -74,22 +75,29 @@ export default function MediaDuo(props: MediaDuoProps) {
 
 					if (media.mediaType === 'image') {
 						return (
-							<ParallaxMedia
-								class={cx(columnClass, 'w-full')}
-								speed={getSpeed(columns)}
+							<div
+								data-index={index()}
+								use:fadeIn
+								class={cx(columnClass, 'w-full translate-y-60 opacity-0')}
 							>
-								<SanityImage
-									class="w-full max-h-[75vh] lg:max-h-[110vh] h-auto object-cover"
-									desktopWidth={desktopWidth}
-									mobileWidth={mobileWidth}
-									src={media.image}
-								/>
-							</ParallaxMedia>
+								<ParallaxMedia class="size-full" speed={getSpeed(columns)}>
+									<SanityImage
+										class="w-full max-h-[75vh] lg:max-h-[110vh] h-auto object-cover"
+										desktopWidth={desktopWidth}
+										mobileWidth={mobileWidth}
+										src={media.image}
+									/>
+								</ParallaxMedia>
+							</div>
 						)
 					}
 					if (media.mediaType === 'video') {
 						return (
-							<div class={columnClass}>
+							<div
+								data-index={index()}
+								use:fadeIn
+								class={cx(columnClass, 'translate-y-60 opacity-0')}
+							>
 								<MuxVideo
 									posterDesktopWidth={desktopWidth}
 									posterMobileWidth={mobileWidth}
