@@ -25,14 +25,14 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			<PrismCodeBlock
 				code={props.value.code ?? ''}
 				language={props.value.language}
-				class="!bg-inverted/3 mb-20 !font-mono [&_span]:!shadow-none p-20 !text-[1.2rem] whitespace-pre block rounded-lg"
+				class="!bg-inverted/3 mb-20 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre block rounded-lg"
 			/>
 		),
 		image: (props) => (
-			<SanityImage class="!ml-0 w-grid-10-w my-30" src={props.value} />
+			<SanityImage class="lg:!ml-grid-1-w lg:!w-grid-12 my-40" src={props.value} />
 		),
 		callout: (props) => (
-			<div class="w-grid-6-w mb-80 rounded-sm bg-inverted/20 p-15">
+			<div class="lg:w-grid-6-w mb-80 rounded-sm bg-inverted/20 p-15">
 				<h3 class="heading-5 font-[150]">{props.value.title}</h3>
 				<p class="body-3 mt-12 font-[120]">{props.value.quote}</p>
 			</div>
@@ -42,27 +42,27 @@ const createDefaultComponents = (): PortableTextComponents => ({
 		normal: (props) => {
 			return <p class="body-2 mb-30 opacity-80">{props.children}</p>
 		},
-		code: (props) => {
-			return (
-				<code class="bg-inverted/20 inline-block p-2 rounded-sm">
-					{props.children}
-				</code>
-			)
-		},
+
 		blockquote: (props) => <blockquote>{props.children}</blockquote>,
 		h2: (props) => (
-			<h2 class="heading-3 mt-80 mb-10 lg:w-[75%]">{props.children}</h2>
+			<h2 class="heading-3 mt-80 mb-10 lg:!max-w-[50%]">{props.children}</h2>
 		),
 		h3: (props) => <h3 class="heading-4 mt-80 mb-10">{props.children}</h3>,
 		h4: (props) => <h4 class="heading-5 mt-80 mb-10">{props.children}</h4>,
 	},
 	marks: {
-		strong: (props) => <strong>{props.children}</strong>,
+		strong: (props) => <strong class="font-[220]">{props.children}</strong>,
 		em: (props) => <em>{props.children}</em>,
-		code: (props) => <code>{props.children}</code>,
 		underline: (props) => (
 			<span style={{ 'text-decoration': 'underline' }}>{props.children}</span>
 		),
+		code: (props) => {
+			return (
+				<code class="bg-inverted/5 font-mono inline-block px-3 py-1 rounded-sm">
+					{props.children}
+				</code>
+			)
+		},
 		'strike-through': (props) => <del>{props.children}</del>,
 		link: (props) => {
 			const link = sanityLink({ ...props.value, link: props.value })

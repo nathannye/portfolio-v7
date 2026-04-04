@@ -25,12 +25,12 @@ export default function ProjectPage({ params }) {
 						<MarginHero {...data} />
 						<div class="px-margin-1">
 							<Show when={data.excerpt}>
-								<div class="w-grid-8 [&_p]:!body-2 mb-90 opacity-90 ml-grid-2-w">
+								<div class="lg:w-grid-8 border-inverted/10 py-30 border-y [&_p]:!body-2 mb-90 opacity-90 lg:ml-grid-2-w">
 									<PortableText value={data.excerpt} />
 								</div>
 							</Show>
 							<Show when={data.body}>
-								<div class="w-grid-8 opacity-90 [&>*]:ml-grid-2-w">
+								<div class="opacity-90 lg:[&>*]:w-grid-7 lg:[&>*]:ml-grid-2-w">
 									<PortableText value={data.body} />
 								</div>
 							</Show>

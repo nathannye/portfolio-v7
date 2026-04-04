@@ -1,7 +1,7 @@
 code[class*="language-"],
 pre[class*="language-"] {
 	text-align: left;
-	white-space: pre;
+	white-space: pre-line;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;
@@ -59,11 +59,11 @@ pre[class*="language-"] {
 }
 
 .token.attr-value {
-	color: #f6a434;
+	color: #d39236;
 }
 
 .token.attribute {
-	color: #f6a434;
+	color: #d39236;
 }
 
 .token.boolean {
@@ -153,11 +153,11 @@ pre[class*="language-"] {
 }
 
 .token.pseudo-class {
-	color: #f6a434;
+	color: #d39236;
 }
 
 .token.pseudo-element {
-	color: #f6a434;
+	color: #d39236;
 }
 
 .token.punctuation {
@@ -173,7 +173,7 @@ pre[class*="language-"] {
 }
 
 .token.string {
-	color: #f6a434;
+	color: #d39236;
 }
 
 .token.symbol {
