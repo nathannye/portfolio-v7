@@ -32,17 +32,17 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 						href={props.slug.fullUrl}
 						class="inline-flex shrink-0 items-baseline gap-12 lg:gap-8"
 					>
-						<h3 data-stagger class="heading-5">
+						<h3 data-fade class="heading-5">
 							{props.title}
 						</h3>
-						<span data-stagger class="opacity-50 font-[120] max-lg:text-[2rem]">
+						<span data-fade class="opacity-50 font-[120] max-lg:text-[2rem]">
 							{props.year}
 						</span>
 					</A>
 				</div>
 				<div class="flex">
 					<div
-						data-stagger
+						data-fade
 						class={cx(
 							'w-grid-2-w shrink-0 opacity-90 eyebrow',
 							!props.partners?.length && 'invisible max-lg:hidden',

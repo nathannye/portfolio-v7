@@ -13,21 +13,7 @@ export const listItemAnimation = (el: HTMLElement) => {
 	onMount(() => {
 		if (!el) return
 		const tl = gsap.timeline({ paused: true }).timeScale(1.24)
-		const staggers = q('[data-stagger]')
-
-		const splits = Array.from(staggers).map(
-			(stagger) =>
-				new SplitText(stagger, {
-					type: 'words,lines',
-					linesClass: 'overflow-hidden',
-				}),
-		)
-
-		splits.forEach((split, index) => {
-			gsap.set(split.words, {
-				yPercent: 100,
-			})
-		})
+		const staggers = q('[data-fade]')
 
 		tl.to(
 			el,
@@ -39,29 +25,16 @@ export const listItemAnimation = (el: HTMLElement) => {
 			},
 			BASE_DELAY,
 		)
-		splits.forEach((split, index) => {
-			const delay = BASE_DELAY + index * 0.1
-			tl
-				.to(
-					split.words,
-					{
-						yPercent: 0,
-						stagger: 0.02,
-						duration: 1.35,
-						ease: 'power4.out',
-					},
-					delay,
-				)
-				.from(
-					split.words,
-					{
-						duration: 1.35,
-						color: '#159c88',
-						ease: 'power2.out',
-					},
-					'<',
-				)
-		})
+		tl.from(
+			staggers,
+			{
+				opacity: 0,
+				duration: 1.35,
+				ease: 'power2.out',
+				stagger: 0.08,
+			},
+			'<',
+		)
 
 		onIntersect(el, {
 			onEnter: () => {
