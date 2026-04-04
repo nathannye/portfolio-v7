@@ -11,6 +11,9 @@ export default defineConfig({
 		solidStart(),
 		tailwindcss(),
 		nitro({
+			prerender: {
+				crawlLinks: true,
+			},
 			preset: 'vercel',
 			routeRules: {
 				'/**': {
