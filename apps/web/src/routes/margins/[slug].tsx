@@ -30,7 +30,7 @@ export default function ProjectPage({ params }) {
 								</div>
 							</Show>
 							<Show when={data.body}>
-								<div class="w-grid-8 opacity-90 ml-grid-2-w">
+								<div class="w-grid-8 opacity-90 [&>*]:ml-grid-2-w">
 									<PortableText value={data.body} />
 								</div>
 							</Show>

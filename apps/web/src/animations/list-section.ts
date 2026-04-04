@@ -11,7 +11,9 @@ export const listSectionAnimation = (el: HTMLElement) => {
 	onMount(() => {
 		if (!el) return
 
-		const boxes = q('[data-counter-boxes]')
+		const boxes = q('[data-box]')
+		const firstBox = boxes[0]
+		const otherBoxes = boxes.slice(1)
 		const bracketOpen = q('[data-bracket-open]')
 		const bracketClose = q('[data-bracket-close]')
 		const bracketText = q('[data-bracket-text]')
@@ -27,21 +29,20 @@ export const listSectionAnimation = (el: HTMLElement) => {
 			ease: 'power2.out',
 		})
 
-		// Bracket animation
 		tl
 			.to(
-				[bracketOpen, bracketText],
+				[bracketOpen, bracketClose],
 				{
 					duration: 1.4,
 					opacity: 1,
 					stagger: 0.2,
 					ease:
-						"rough({strength: 5, points: 20, template: power0.inOut, taper: 'none', randomize: true, clamp: true})",
+						"rough({strength: 2, points: 14, template: power0.inOut, taper: 'none', randomize: true, clamp: true})",
 				},
-				0.4,
+				0.1,
 			)
 			.to(
-				bracketClose,
+				bracketText,
 				{
 					duration: 1.4,
 					opacity: 1,
@@ -49,6 +50,26 @@ export const listSectionAnimation = (el: HTMLElement) => {
 					ease: 'power2.out',
 				},
 				0,
+			)
+			.to(
+				firstBox,
+				{
+					opacity: 1,
+					duration: 0.8,
+					ease:
+						"rough({strength: 3, points: 23, template: power0.inOut, taper: 'none', randomize: true, clamp: true})",
+				},
+				0,
+			)
+			.to(
+				otherBoxes,
+				{
+					opacity: 1,
+					duration: 1.6,
+					stagger: 0.07,
+					ease: 'power2.out',
+				},
+				0.8,
 			)
 
 		onIntersect(el, {

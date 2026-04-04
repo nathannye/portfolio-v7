@@ -56,9 +56,10 @@
 }
 
 @utility body-2 {
-	font-size: max(var(--min-font-size), 1.05rem);
+	font-size: max(var(--min-font-size), 1.65rem);
 	letter-spacing: -0.02em;
-	line-height: 1.27;
+	line-height: 1.37;
+	font-weight: 100;
 }
 
 @utility eyebrow {

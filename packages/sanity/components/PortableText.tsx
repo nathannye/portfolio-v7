@@ -28,7 +28,9 @@ const createDefaultComponents = (): PortableTextComponents => ({
 				class="!bg-inverted/3 mb-20 !font-mono [&_span]:!shadow-none p-20 !text-[1.2rem] whitespace-pre block rounded-lg"
 			/>
 		),
-		image: (props) => <SanityImage class="w-grid-8-w my-30" src={props.value} />,
+		image: (props) => (
+			<SanityImage class="!ml-0 w-grid-10-w my-30" src={props.value} />
+		),
 		callout: (props) => (
 			<div class="w-grid-6-w mb-80 rounded-sm bg-inverted/20 p-15">
 				<h3 class="heading-5 font-[150]">{props.value.title}</h3>
@@ -38,7 +40,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 	},
 	block: {
 		normal: (props) => {
-			return <p class="body-1 mb-30">{props.children}</p>
+			return <p class="body-2 mb-30 opacity-80">{props.children}</p>
 		},
 		code: (props) => {
 			return (
@@ -49,7 +51,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 		},
 		blockquote: (props) => <blockquote>{props.children}</blockquote>,
 		h2: (props) => (
-			<h2 class="heading-3 mt-80 mb-10 lg:w-[80%]">{props.children}</h2>
+			<h2 class="heading-3 mt-80 mb-10 lg:w-[75%]">{props.children}</h2>
 		),
 		h3: (props) => <h3 class="heading-4 mt-80 mb-10">{props.children}</h3>,
 		h4: (props) => <h4 class="heading-5 mt-80 mb-10">{props.children}</h4>,
@@ -73,12 +75,20 @@ const createDefaultComponents = (): PortableTextComponents => ({
 		},
 	},
 	list: {
-		bullet: (props) => <ul class="list-inside list-disc">{props.children}</ul>,
-		number: (props) => <ol class="list-inside list-decimal">{props.children}</ol>,
+		bullet: (props) => (
+			<ul class="flex flex-col gap-y-8 body-2 mb-30 list-disc">
+				{props.children}
+			</ul>
+		),
+		number: (props) => (
+			<ol class="flex flex-col gap-y-8 body-2 mb-30 list-decimal">
+				{props.children}
+			</ol>
+		),
 	},
 	listItem: {
-		bullet: (props) => <li>{props.children}</li>,
-		number: (props) => <li>{props.children}</li>,
+		bullet: (props) => <li class="pl-7">{props.children}</li>,
+		number: (props) => <li class="pl-7">{props.children}</li>,
 	},
 })
 
