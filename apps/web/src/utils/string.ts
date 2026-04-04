@@ -4,3 +4,5 @@ export const formatPartner = (partner: { name: string; country: string }) => {
 	}
 	return partner.name
 }
+
+export const list = (items: string[]) => (items ? items.join(', ') : '')

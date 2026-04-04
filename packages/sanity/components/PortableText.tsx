@@ -25,7 +25,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			<PrismCodeBlock
 				code={props.value.code ?? ''}
 				language={props.value.language}
-				class="!bg-inverted/4 mb-20 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre block rounded-lg"
+				class="!bg-inverted/4 mb-20 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre-line block rounded-lg"
 			/>
 		),
 		image: (props) => (
@@ -40,15 +40,17 @@ const createDefaultComponents = (): PortableTextComponents => ({
 	},
 	block: {
 		normal: (props) => {
-			return <p class="body-2 mb-30 opacity-80">{props.children}</p>
+			return <p class="body-2 mb-30 opacity-85">{props.children}</p>
 		},
 
 		blockquote: (props) => <blockquote>{props.children}</blockquote>,
 		h2: (props) => (
-			<h2 class="heading-3 mt-80 mb-10 lg:!max-w-[50%]">{props.children}</h2>
+			<h2 class="heading-3 mt-80 !text-balance mb-18 lg:!max-w-[50%]">
+				{props.children}
+			</h2>
 		),
-		h3: (props) => <h3 class="heading-4 mt-80 mb-10">{props.children}</h3>,
-		h4: (props) => <h4 class="heading-5 mt-80 mb-10">{props.children}</h4>,
+		h3: (props) => <h3 class="heading-4 mt-80 mb-18">{props.children}</h3>,
+		h4: (props) => <h4 class="heading-5 mt-80 mb-18">{props.children}</h4>,
 	},
 	marks: {
 		strong: (props) => <strong class="font-[220]">{props.children}</strong>,
@@ -76,19 +78,19 @@ const createDefaultComponents = (): PortableTextComponents => ({
 	},
 	list: {
 		bullet: (props) => (
-			<ul class="flex flex-col gap-y-8 body-2 mb-30 list-disc">
+			<ul class="flex flex-col gap-y-8 body-2 mb-30 max-lg:pl-25 list-disc">
 				{props.children}
 			</ul>
 		),
 		number: (props) => (
-			<ol class="flex flex-col gap-y-8 body-2 mb-30 list-decimal">
+			<ol class="flex flex-col gap-y-8 body-2 mb-30 max-lg:pl-25 list-decimal">
 				{props.children}
 			</ol>
 		),
 	},
 	listItem: {
-		bullet: (props) => <li class="pl-7">{props.children}</li>,
-		number: (props) => <li class="pl-7">{props.children}</li>,
+		bullet: (props) => <li class="pl-7 opacity-85">{props.children}</li>,
+		number: (props) => <li class="pl-7 opacity-85">{props.children}</li>,
 	},
 })
 

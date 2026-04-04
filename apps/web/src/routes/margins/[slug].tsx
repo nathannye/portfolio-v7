@@ -1,5 +1,4 @@
 import { getDocumentBySlug, PortableText, SanityPage } from '@local/sanity'
-import { Link, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { Show } from 'solid-js'
 import ArticleMarkup from '~/components/margin/ArticleMarkup'
@@ -9,8 +8,9 @@ import PageMeta from '~/components/PageMeta'
 const getMargin = query(async (slug: string) => {
 	'use server'
 	return await getDocumentBySlug('margin', slug, {
-		extraQuery:
-			'[0]{title, slug, "description": pt::text(excerpt), excerpt, tags, firstPublished, body, mainImage}',
+		extraQuery: `[0]{title, slug, "description": pt::text(excerpt), excerpt, tags, firstPublished, body, mainImage, 
+		"estimatedReadingTime": round(((length(pt::text(excerpt)) + length(pt::text(body)))/5/180) * 1.7) 
+		}`,
 	})
 }, 'margin-details')
 

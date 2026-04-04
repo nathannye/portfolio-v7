@@ -57,9 +57,9 @@
 
 @utility body-2 {
 	font-size: max(var(--min-font-size), 1.55rem);
-	letter-spacing: -0.02em;
-	line-height: 1.44;
-	font-weight: 100;
+	letter-spacing: -0.003em;
+	line-height: 1.575;
+	font-weight: 85;
 
 	@media screen and (max-width: 1024px) {
 		font-size: max(var(--min-font-size), 2.2rem);

@@ -1,5 +1,6 @@
 import { A } from '@solidjs/router'
 import { listItemAnimation } from '~/animations/list-item'
+import { formatTime } from '~/utils/time'
 
 type MarginListItemProps = {
 	title: string
@@ -8,14 +9,6 @@ type MarginListItemProps = {
 }
 
 export default function MarginListItem(props: MarginListItemProps) {
-	const formattedDate = () => {
-		if (!props.firstPublished) return ''
-		return new Intl.DateTimeFormat('en-US', {
-			year: 'numeric',
-			month: 'short',
-		}).format(new Date(props.firstPublished))
-	}
-
 	const list = (items: string[]) => (items ? items.join(', ') : '')
 
 	return (
@@ -38,7 +31,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 					data-fade
 					class="opacity-90 lg:w-grid-2-w eyebrow shrink-0 font-[120] max-lg:text-[2rem]"
 				>
-					{formattedDate()}
+					{formatTime(props.firstPublished)}
 				</div>
 				<div
 					data-fade
