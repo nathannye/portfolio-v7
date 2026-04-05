@@ -21,7 +21,7 @@ export default function ProjectPage({ params }) {
 		<SanityPage component="article" fetcher={fetcher}>
 			{(data) => {
 				return (
-					<div>
+					<div class="pb-80">
 						<PageMeta
 							description={data.description}
 							title={data.title}

@@ -1,5 +1,5 @@
 import { For } from 'solid-js'
-import { list } from '~/utils/string'
+import { marginHeroAnimation } from '~/animations/project-hero'
 
 type MarginHeroProps = {
 	title: string
@@ -10,7 +10,7 @@ type MarginHeroProps = {
 
 export default function MarginHero(props: MarginHeroProps) {
 	return (
-		<header class="px-margin-1 pt-[30vh] pb-[15vh]">
+		<header use:marginHeroAnimation class="px-margin-1 pt-[30vh] pb-[15vh]">
 			<div class="flex max-lg:flex-col-reverse gap-y-40">
 				<dl class="lg:w-grid-2-w max-lg:justify-between	 max-lg:flex gap-x-20 lg:pt-10 shrink-0">
 					<div

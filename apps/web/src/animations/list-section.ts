@@ -23,13 +23,6 @@ export const listSectionAnimation = (el: HTMLElement) => {
 
 		const tl = gsap.timeline({ paused: true })
 
-		tl.to([...title, ...headers], {
-			opacity: 1,
-			duration: 1.4,
-			stagger: 0.07,
-			ease: 'power2.out',
-		})
-
 		const lineDuration = 1.8
 		const lineEase = 'power3.out'
 
@@ -91,6 +84,16 @@ export const listSectionAnimation = (el: HTMLElement) => {
 						"rough({strength: 3, points: 23, template: power0.inOut, taper: 'none', randomize: true, clamp: true})",
 				},
 				0,
+			)
+			.to(
+				[...title, ...headers],
+				{
+					opacity: 1,
+					duration: 1.4,
+					stagger: 0.2,
+					ease: 'power2.out',
+				},
+				0.1,
 			)
 			.to(
 				otherBoxes,
