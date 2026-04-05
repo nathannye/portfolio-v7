@@ -62,7 +62,7 @@ export default function Navbar() {
 				Nathan Nye
 			</A>
 			<dl class="flex eyebrow max-lg:w-[85%] max-lg:justify-between gap-gutter-1 opacity-80 relative z-2">
-				<dt class="w-180 lg:w-grid-2 text-right">
+				<dt class="w-200 lg:w-grid-2 text-right">
 					Get in touch <span class="inline-block ml-10">→</span>
 				</dt>
 				<dd class="lg:w-grid-4-w">
