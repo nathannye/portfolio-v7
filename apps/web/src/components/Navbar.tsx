@@ -3,10 +3,24 @@ import cx from 'classix'
 import { createSignal, onCleanup, onMount } from 'solid-js'
 import { nav, setNav } from '~/stores/navStore'
 import { onScroll } from '~/utils'
+import { wrapArray } from '~/utils/array'
+import { copyToClipboard } from '~/utils/clipboard'
+
+const copyText = [
+	'Copied!',
+	'Copied!',
+	'Copied, again 👀',
+	'Copied, again 👀',
+	'Seriously?',
+	`You can stop anytime...`,
+]
 
 export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
+	const [copied, setCopied] = createSignal(false)
+	const [copyCount, setCopyCount] = createSignal(0)
+
 	const location = useLocation()
 	const getTime = () => {
 		return new Intl.DateTimeFormat('en-US', {
@@ -36,6 +50,15 @@ export default function Navbar() {
 		})
 	})
 
+	const handleCopy = () => {
+		copyToClipboard('nathan@nye.dev')
+		setCopied(true)
+		setCopyCount(copyCount() + 1)
+		setTimeout(() => {
+			setCopied(false)
+		}, 2000)
+	}
+
 	onCleanup(() => {
 		interval && clearInterval(interval)
 	})
@@ -62,10 +85,27 @@ export default function Navbar() {
 				<dt class="w-grid-2 text-right">
 					Get in touch <span class="inline-block ml-10">→</span>
 				</dt>
-				<dd class="lg:w-grid-3-w">
-					<a href="mailto:nathan@nye.dev" class="underline">
-						nathan@nye.dev
-					</a>
+				<dd class="lg:w-grid-4-w">
+					<button
+						type="button"
+						onClick={handleCopy}
+						aria-label="Copy email nathan@nye.dev to clipboard"
+						class="underline relative cursor-copy uppercase"
+					>
+						<div
+							class={cx('relative z-1 duration-200', copied() && 'opacity-0 pointer')}
+						>
+							nathan@nye.dev
+						</div>
+						<div
+							class={cx(
+								'opacity-0 whitespace-nowrap text-accent duration-200 absolute top-0 left-0',
+								copied() && 'opacity-100',
+							)}
+						>
+							{wrapArray(copyText, copyCount())}
+						</div>
+					</button>
 				</dd>
 			</dl>
 			<dl class="flex max-lg:hidden opacity-80 max-lg:text-right max-lg:w-full eyebrow gap-x-gutter-1 relative z-2">
