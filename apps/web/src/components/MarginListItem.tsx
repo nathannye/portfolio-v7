@@ -24,7 +24,10 @@ export default function MarginListItem(props: MarginListItemProps) {
 				class="pt-10 lg:pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full"
 				href={props.slug.fullUrl}
 			>
-				<h3 data-fade class="heading-5 lg:w-grid-3-w lg:pr-gutter-2 shrink-0">
+				<h3
+					data-fade
+					class="heading-5 text-balance lg:w-grid-3-w lg:pr-gutter-2 shrink-0"
+				>
 					{props.title}
 				</h3>
 				<div
