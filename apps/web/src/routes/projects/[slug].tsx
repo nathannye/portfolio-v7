@@ -55,7 +55,7 @@ export default function ProjectPage({ params }) {
 							<PageMeta
 								description={data.description}
 								title={data.title}
-								slug={data.slug}
+								slug={data.slug.fullUrl}
 							/>
 							<CreativeWorkMarkup {...data} />
 							<ProjectHero {...data} />

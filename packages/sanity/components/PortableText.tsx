@@ -42,7 +42,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 							{(item) => {
 								const { attrs, linkType } = sanityLink(item.link)
 								return (
-									<li class="after:origin-left relative after:absolute mb-10 after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10 hover:px-10 transition-all duration-375 before:inset-0 before:bg-inverted before:size-full before:absolute before:duration-375 ease-expo-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100 hover:text-primary before:-z-1">
+									<li class="after:origin-left relative after:absolute mb-10 after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10 hover:px-14 duration-475 before:inset-0 before:bg-inverted before:size-full before:absolute before:duration-475 ease-expo-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100 hover:text-primary before:-z-1">
 										<Dynamic
 											class="w-full body-2 flex gap-gutter-1 pt-15 lg:pt-10 pb-15 lg:pb-10 justify-between items-baseline"
 											component={linkType ? 'a' : 'div'}

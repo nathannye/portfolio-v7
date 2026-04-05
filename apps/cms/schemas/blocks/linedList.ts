@@ -1,9 +1,11 @@
+import { MdList } from 'react-icons/md'
 import ButtonSelector from '../../components/ButtonSelector'
 import { createPreview } from '../../utils/preview'
 
 export default {
 	name: 'linedList',
 	title: 'Lined List',
+	icon: MdList,
 	type: 'object',
 	preview: {
 		select: {
