@@ -88,8 +88,8 @@ export default function Navbar() {
 					</button>
 				</dd>
 			</dl>
-			<dl class="flex max-lg:hidden opacity-80 max-lg:text-right max-lg:w-full eyebrow gap-x-gutter-1 relative z-2">
-				<dt>Denver, CO</dt>
+			<dl class="flex max-lg:hidden opacity-80 lg:justify-end max-lg:text-right w-full eyebrow max-lg:gap-x-gutter-1 relative z-2">
+				<dt class="lg:w-grid-2">Denver, CO</dt>
 				<dd>MST {time()}</dd>
 			</dl>
 		</header>
