@@ -70,16 +70,19 @@ export default function Navbar() {
 						type="button"
 						onClick={handleCopy}
 						aria-label="Copy email nathan@nye.dev to clipboard"
-						class="underline relative cursor-pointer uppercase"
+						class="underline relative cursor-pointer uppercase max-lg:text-right"
 					>
 						<div
-							class={cx('relative z-1 duration-200', copied() && 'opacity-0 pointer')}
+							class={cx(
+								'relative z-1 duration-200 max-lg:w-grid-2-w',
+								copied() && 'opacity-0 pointer',
+							)}
 						>
 							nathan@nye.dev
 						</div>
 						<div
 							class={cx(
-								'opacity-0 whitespace-nowrap text-accent duration-200 absolute top-0 left-0',
+								'opacity-0 whitespace-nowrap text-accent duration-200 absolute top-0 right-0',
 								copied() && 'opacity-100',
 							)}
 						>
