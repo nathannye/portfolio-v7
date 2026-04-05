@@ -89,7 +89,7 @@ export default function Navbar() {
 				</dd>
 			</dl>
 			<dl class="flex max-lg:hidden opacity-80 lg:justify-end max-lg:text-right w-full eyebrow max-lg:gap-x-gutter-1 relative z-2">
-				<dt class="lg:w-grid-2">Denver, CO</dt>
+				<dt class="lg:w-grid-1-w">Denver, CO</dt>
 				<dd>MST {time()}</dd>
 			</dl>
 		</header>
