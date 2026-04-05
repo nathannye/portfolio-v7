@@ -33,9 +33,8 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 				<div class="w-full lg:w-grid-3-w">
 					<A
 						href={props.slug.fullUrl}
-						class="inline-flex hover:opacity-50 duration-225 shrink-0 w-full items-start lg:gap-20"
+						class="inline-flex hover:opacity-50 duration-225 shrink-0  items-start lg:gap-20"
 					>
-						<div class="opacity-90 font-[80] max-lg:hidden text-[1.4rem]">→</div>
 						<div class="flex gap-12 items-baseline">
 							<h3 data-fade class="heading-5">
 								{props.title}
