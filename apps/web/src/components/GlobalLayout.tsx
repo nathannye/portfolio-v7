@@ -1,3 +1,4 @@
+import { inject } from '@vercel/analytics'
 import type { JSX } from 'solid-js'
 import { onMount, Show } from 'solid-js'
 import { isServer } from 'solid-js/web'
@@ -27,6 +28,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 	useWindowResize(getScrollbarWidth)
 
 	onMount(() => {
+		inject()
 		getScrollbarWidth()
 	})
 

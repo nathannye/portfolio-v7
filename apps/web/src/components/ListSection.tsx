@@ -17,7 +17,7 @@ export default function ListSection(props: ListSectionProps) {
 			use:listSectionAnimation
 			class="px-margin-1"
 		>
-			<div class="flex items-start pt-2 border-t border-inverted/30 flex-col lg:flex-row gap-y-40">
+			<div class="flex items-start pt-2 after:bg-inverted/30 flex-col lg:flex-row gap-y-40">
 				<div class="max-lg:w-full">
 					<h2 class="w-full flex max-lg:justify-between lg:w-grid-3-w font-[160] mt-9 eyebrow shrink-0">
 						<span data-stagger class="inline-block">
