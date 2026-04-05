@@ -10,7 +10,7 @@ export default function HomeHero(props: HomeHeroProps) {
 
 	return (
 		<header class="pt-[28vh] lg:pt-[31vh] mb-190 px-margin-1">
-			<h1 class="heading-3 lg:px-grid-3-w">
+			<h1 class="heading-3 lg:pl-grid-3-w lg:pr-grid-2-w">
 				<For each={parts()}>
 					{(part) => {
 						const match = part.match(/^\{([^}]+)\}$/)
@@ -22,7 +22,7 @@ export default function HomeHero(props: HomeHeroProps) {
 					}}
 				</For>
 			</h1>
-			<p class="body-1 opacity-85 mt-44 lg:w-grid-5 lg:ml-grid-3-w ">
+			<p class="body-1 opacity-85 mt-44 lg:w-grid-6 lg:ml-grid-3-w ">
 				{props.blurb}
 			</p>
 		</header>

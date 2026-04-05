@@ -48,7 +48,7 @@ export default function Home() {
 							<Link rel="canonical" href={DOMAIN} />
 
 							<HomeHero {...page} />
-							<div class="w-full flex flex-col gap-y-95">
+							<div class="w-full flex mb-90 flex-col gap-y-95">
 								<ListSection index={0} title="Work" itemCount={projects.length}>
 									<div class="mt-10">
 										<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">

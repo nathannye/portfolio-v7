@@ -23,8 +23,8 @@ export const listSectionAnimation = (el: HTMLElement) => {
 
 		const tl = gsap.timeline({ paused: true })
 
-		const lineDuration = 1.8
-		const lineEase = 'power3.out'
+		const lineDuration = 2
+		const lineEase = 'power2.out'
 
 		tl
 			.to(
