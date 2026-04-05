@@ -10,7 +10,7 @@ export default function Footer() {
 	return (
 		<footer class="px-margin-1">
 			<div class="lg:pl-grid-3-w lg:pr-grid-6-w border-t border-inverted/10 pt-150">
-				<p class="heading-4">
+				<p class="max-lg:!text-[3.7rem] heading-4">
 					Got something crazy in mind? <br />
 					My inbox is open!{' '}
 					<a href="mailto:nathan@nye.dev" class="underline text-accent">
