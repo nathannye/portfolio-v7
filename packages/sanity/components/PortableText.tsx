@@ -28,6 +28,38 @@ const createDefaultComponents = (): PortableTextComponents => ({
 				class="!bg-inverted/4 mb-20 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre-line block rounded-lg"
 			/>
 		),
+		linedList: (props) => {
+			const sortedItems = () => {
+				if (props.sort === 'alpha') {
+					return props.items.sort((a, b) => a.title.localeCompare(b.title))
+				}
+				return props.items
+			}
+			return (
+				<ul class="w-full flex flex-col">
+					<For each={sortedItems()}>
+						{(item) => {
+							const { attrs, linkType } = sanityLink(item.link)
+							return (
+								<li class="after:origin-left relative after:absolute mb-10 after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10 hover:px-10 transition-all duration-400 before:inset-0 before:bg-inverted before:size-full before:absolute before:duration-400 ease-expo-out before:origin-bottom before:scale-y-0 hover:before:scale-y-100 hover:text-primary before:-z-1">
+									<Dynamic
+										class="w-full flex gap-gutter-1 pt-10 pb-10 items-baseline"
+										component={linkType ? 'a' : 'div'}
+										{...attrs}
+									>
+										<h3 class="heading-5 w-grid-4-w">{item.title}</h3>
+										{/* <p class="opacity-70 w-grid-3-w">{item.description}</p> */}
+										<span class="opacity-90 heading-5 font-[90] text-right w-grid-1-w">
+											→
+										</span>
+									</Dynamic>
+								</li>
+							)
+						}}
+					</For>
+				</ul>
+			)
+		},
 		image: (props) => (
 			<SanityImage class="lg:!ml-grid-1-w lg:!w-grid-12 my-40" src={props.value} />
 		),

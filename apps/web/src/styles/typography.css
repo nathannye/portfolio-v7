@@ -44,7 +44,7 @@
 	font-weight: 140;
 
 	@media screen and (max-width: 1024px) {
-		font-size: max(var(--min-font-size), 2.7rem);
+		font-size: max(var(--min-font-size), 2.2rem);
 	}
 }
 

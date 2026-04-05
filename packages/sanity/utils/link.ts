@@ -1,32 +1,43 @@
-import type { SanityLinkProps } from '../types'
-
-export const sanityLink = (props: SanityLinkProps) => {
-	const { label, link, advanced } = props || {}
-	const advancedOptions = advanced || link?.advanced || {}
-
-	const isExternal = link?.linkType === 'external'
-	const newTab = advancedOptions?.newTab
-
-	let rel = undefined as string | undefined
-	if (isExternal) {
-		let parts = ['noopener']
-		if (advancedOptions?.noFollow) {
-			parts.push('nofollow')
-		}
-		if (advancedOptions?.noReferrer) {
-			parts.push('noreferrer')
-		}
-		rel = parts.length > 0 ? parts.join(' ') : undefined
+const buildRel = (noFollow?: boolean, noReferrer?: boolean) => {
+	const parts = []
+	if (noFollow) {
+		parts.push('nofollow')
 	}
+	if (noReferrer) {
+		parts.push('noreferrer')
+	}
+	return parts.length > 0 ? parts.join(' ') : undefined
+}
+
+export const sanityLink = (props: {
+	linkType: 'internal' | 'external'
+	url?: string
+	page?: {
+		slug: {
+			current: string
+			fullUrl: string
+		}
+	}
+	advanced: {
+		noFollow?: boolean
+		noReferrer?: boolean
+		newTab?: boolean
+	}
+}) => {
+	const { linkType, url, page, advanced } = props || {}
+	const advancedOptions = advanced || {}
+
+	const isExternal = linkType === 'external'
 
 	return {
-		label,
-		isExternal,
-		url: isExternal ? link.url : undefined,
+		url: isExternal ? url : page?.slug?.current,
+		linkType,
 		attrs: {
-			target: newTab ? '_blank' : undefined,
-			rel,
-			href: isExternal ? link?.url : link?.slug?.current,
+			target: isExternal ? '_blank' : undefined,
+			rel: isExternal
+				? buildRel(advancedOptions?.noFollow, advancedOptions?.noReferrer)
+				: undefined,
+			href: isExternal ? url : page?.slug?.fullUrl,
 		},
 	}
 }

@@ -104,20 +104,8 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 						type: 'mux.video',
 					},
 					{
-						name: 'callout',
-						icon: MdFormatQuote,
-						type: 'object',
-						fields: [
-							{
-								name: 'title',
-								type: 'string',
-							},
-							{
-								name: 'quote',
-								type: 'text',
-								rows: 6,
-							},
-						],
+						name: 'linedList',
+						type: 'linedList',
 					},
 				],
 			}),

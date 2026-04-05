@@ -1,7 +1,12 @@
+import LinkOptions from '../../components/LinkOptions/LinkOptions'
+
 export const portableLink = {
 	name: 'link',
 	title: 'Link',
 	type: 'object',
+	components: {
+		input: LinkOptions,
+	},
 	fields: [
 		{
 			name: 'url',
