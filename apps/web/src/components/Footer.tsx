@@ -19,12 +19,15 @@ export default function Footer() {
 				</p>
 			</div>
 
-			<div class="flex max-lg:flex-wrap gap-y-10 justify-between pt-140 w-full pb-4 eyebrow">
-				<div aria-hidden="true" class="opacity-50 max-lg:hidden w-grid-3-w">
+			<div class="flex max-lg:flex-wrap gap-y-10 pt-140 w-full pb-4 eyebrow">
+				<div
+					aria-hidden="true"
+					class="opacity-50 shrink-0 max-lg:hidden w-grid-2-w"
+				>
 					v7
 				</div>
 
-				<div class="w-full shrink-0lg:w-grid-6-w">
+				<div class="w-full shrink-0 lg:w-grid-6-w">
 					<a
 						rel="noopener noreferrer"
 						target="_blank"
@@ -37,7 +40,7 @@ export default function Footer() {
 				<div class="flex opacity-90">
 					<div class="w-grid-2-w shrink-0">Face • Acid Grotesk</div>
 					<div class="w-grid-2-w shrink-0">Solid Start • Sanity</div>
-					<div class="w-grid-1 text-right shrink-0">© {year()}</div>
+					<div class="w-grid-2 text-right shrink-0">© {year()}</div>
 				</div>
 			</div>
 		</footer>
