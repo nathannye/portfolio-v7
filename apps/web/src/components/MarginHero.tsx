@@ -22,13 +22,11 @@ export default function MarginHero(props: MarginHeroProps) {
 					</div>
 
 					<div class="eyebrow max-lg:flex max-lg:pl-gutter-1 max-lg:w-grid-3-w gap-x-20">
-						<dt class="max-lg:w-grid-1-w">Categories</dt>
+						<dt class="max-lg:w-grid-1-w mb-6">Categories</dt>
 						<dd>
 							<ul>
 								<For each={props.tags}>
-									{(tag) => (
-										<li class="eyebrow not-last:mb-5 opacity-50">#{tag.name}</li>
-									)}
+									{(tag) => <li class="eyebrow opacity-50">#{tag.name}</li>}
 								</For>
 							</ul>
 						</dd>

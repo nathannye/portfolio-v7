@@ -8,11 +8,11 @@ export const listItemAnimation = (el: HTMLElement) => {
 	gsap.registerPlugin(SplitText)
 	const { itemIndex, q } = parseAnimation(el)
 
-	const BASE_DELAY = 0.1775 * itemIndex
+	const BASE_DELAY = 0.325 * itemIndex
 
 	onMount(() => {
 		if (!el) return
-		const tl = gsap.timeline({ paused: true }).timeScale(1.24)
+		const tl = gsap.timeline({ paused: true, delay: BASE_DELAY }).timeScale(1.24)
 		const staggers = q('[data-fade]')
 		const wrapper = q('[data-wrapper]')
 
@@ -34,7 +34,7 @@ export const listItemAnimation = (el: HTMLElement) => {
 					duration: 2,
 					ease: 'power4.out',
 				},
-				BASE_DELAY,
+				0.1,
 			)
 		tl.from(
 			staggers,
@@ -44,7 +44,7 @@ export const listItemAnimation = (el: HTMLElement) => {
 				ease: 'power2.out',
 				stagger: 0.08,
 			},
-			'<',
+			0.1,
 		)
 
 		onIntersect(el, {
