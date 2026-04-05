@@ -15,13 +15,13 @@ export default function BracketedText(props: BracketedTextProps) {
 				props.class,
 			)}
 		>
-			<span data-bracket-open class="opacity-0 -translate-x-4">
+			<span data-bracket-open class="opacity-0">
 				{'['}
 			</span>
 			<span data-bracket-text class="inline-block opacity-0">
 				{props.children}
 			</span>
-			<span data-bracket-close class="opacity-0 -translate-x-10">
+			<span data-bracket-close class="opacity-0">
 				{']'}
 			</span>
 		</div>

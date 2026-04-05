@@ -22,7 +22,7 @@ export default function HomeHero(props: HomeHeroProps) {
 					}}
 				</For>
 			</h1>
-			<p class="body-1 opacity-70 mt-44 lg:w-grid-5 lg:ml-grid-3-w ">
+			<p class="body-1 opacity-85 mt-44 lg:w-grid-5 lg:ml-grid-3-w ">
 				{props.blurb}
 			</p>
 		</header>

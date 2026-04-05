@@ -10,6 +10,10 @@
 	letter-spacing: -0.02em;
 	line-height: 1.2;
 	@apply font-serif;
+
+	@media screen and (max-width: 1024px) {
+		font-size: max(var(--min-font-size), 5.3rem);
+	}
 }
 
 @utility heading-3 {
