@@ -7,6 +7,7 @@ import { defineConfig } from 'vite'
 import { DOMAIN } from './src/config'
 
 export default defineConfig({
+	
 	plugins: [
 		solidStart(),
 		tailwindcss(),

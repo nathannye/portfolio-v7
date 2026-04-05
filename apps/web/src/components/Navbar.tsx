@@ -1,25 +1,14 @@
 import { A, useLocation } from '@solidjs/router'
 import cx from 'classix'
 import { createSignal, onCleanup, onMount } from 'solid-js'
+import { useCopyEmail } from '~/hooks/useCopyEmail'
 import { nav, setNav } from '~/stores/navStore'
 import { onScroll } from '~/utils'
-import { wrapArray } from '~/utils/array'
-import { copyToClipboard } from '~/utils/clipboard'
-
-const copyText = [
-	'Copied!',
-	'Copied!',
-	'Copied, again 👀',
-	'Copied, again 👀',
-	'Seriously?',
-	`You can stop anytime...`,
-]
 
 export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
-	const [copied, setCopied] = createSignal(false)
-	const [copyCount, setCopyCount] = createSignal(0)
+	const { copied, copyText, handleCopy } = useCopyEmail()
 
 	const location = useLocation()
 	const getTime = () => {
@@ -49,15 +38,6 @@ export default function Navbar() {
 			}
 		})
 	})
-
-	const handleCopy = () => {
-		copyToClipboard('nathan@nye.dev')
-		setCopied(true)
-		setCopyCount(copyCount() + 1)
-		setTimeout(() => {
-			setCopied(false)
-		}, 2000)
-	}
 
 	onCleanup(() => {
 		interval && clearInterval(interval)
@@ -90,7 +70,7 @@ export default function Navbar() {
 						type="button"
 						onClick={handleCopy}
 						aria-label="Copy email nathan@nye.dev to clipboard"
-						class="underline relative cursor-copy uppercase"
+						class="underline relative cursor-pointer uppercase"
 					>
 						<div
 							class={cx('relative z-1 duration-200', copied() && 'opacity-0 pointer')}
@@ -103,7 +83,7 @@ export default function Navbar() {
 								copied() && 'opacity-100',
 							)}
 						>
-							{wrapArray(copyText, copyCount())}
+							{copyText()}
 						</div>
 					</button>
 				</dd>

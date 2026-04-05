@@ -1,7 +1,10 @@
+import cx from 'classix'
 import { createSignal, onMount } from 'solid-js'
+import { useCopyEmail } from '~/hooks/useCopyEmail'
 
 export default function Footer() {
 	const [year, setYear] = createSignal<number | null>(null)
+	const { copied, copyText, handleCopy, copyCount } = useCopyEmail()
 
 	onMount(() => {
 		setYear(new Date().getFullYear())
@@ -13,9 +16,23 @@ export default function Footer() {
 				<p class="max-lg:!text-[3.7rem] heading-4">
 					Got something crazy in mind? <br />
 					My inbox is open!{' '}
-					<a href="mailto:nathan@nye.dev" class="underline text-accent">
-						nathan@nye.dev
-					</a>{' '}
+					<button
+						type="button"
+						onClick={handleCopy}
+						class="underline text-accent relative cursor-pointer"
+					>
+						<div class={cx('relative z-1 duration-200', copied() && 'opacity-0 ')}>
+							nathan@nye.dev
+						</div>
+						<div
+							class={cx(
+								'opacity-0 whitespace-nowrap text-accent duration-200 absolute top-0 left-0',
+								copied() && 'opacity-100',
+							)}
+						>
+							{copyText()}
+						</div>
+					</button>
 				</p>
 			</div>
 
