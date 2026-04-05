@@ -1,11 +1,13 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
-import { Meta, Title } from '@solidjs/meta'
+import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { For, Show } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection/ListSection'
 import MarginListItem from '~/components/Margin/MarginListItem'
+import PageMeta from '~/components/PageMeta'
 import ProjectListItem from '~/components/Project/ProjectListItem'
+import { DOMAIN } from '~/config'
 
 const getData = query(async () => {
 	'use server'
@@ -43,10 +45,9 @@ export default function Home() {
 								name="description"
 								content="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
 							/>
-							<Show when={page}>
-								<HomeHero {...page} />
-							</Show>
+							<Link rel="canonical" href={DOMAIN} />
 
+							<HomeHero {...page} />
 							<div class="w-full flex flex-col gap-y-95">
 								<ListSection index={0} title="Work" itemCount={projects.length}>
 									<div class="mt-10">
