@@ -30,12 +30,12 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 				data-wrapper
 				class="pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
 			>
-				<div class="w-grid-3-w">
+				<div class="w-full lg:w-grid-3-w">
 					<A
 						href={props.slug.fullUrl}
 						class="inline-flex hover:opacity-50 duration-225 shrink-0 w-full items-start lg:gap-20"
 					>
-						<div class="opacity-90 font-[80] text-[1.4rem]">→</div>
+						<div class="opacity-90 font-[80] max-lg:hidden text-[1.4rem]">→</div>
 						<div class="flex gap-12 items-baseline">
 							<h3 data-fade class="heading-5">
 								{props.title}
