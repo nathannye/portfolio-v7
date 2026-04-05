@@ -26,7 +26,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 			>
 				<h3
 					data-fade
-					class="heading-5 text-balance lg:w-grid-3-w lg:pr-gutter-2 shrink-0"
+					class="heading-5 lg:text-balance w-grid-4 lg:w-grid-3-w lg:pr-gutter-2 shrink-0"
 				>
 					{props.title}
 				</h3>

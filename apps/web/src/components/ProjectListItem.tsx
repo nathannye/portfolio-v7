@@ -33,21 +33,24 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 				<div class="w-grid-3-w">
 					<A
 						href={props.slug.fullUrl}
-						class="inline-flex shrink-0 items-baseline gap-12 lg:gap-8"
+						class="inline-flex hover:opacity-50 duration-225 shrink-0 w-full items-start lg:gap-20"
 					>
-						<h3 data-fade class="heading-5">
-							{props.title}
-						</h3>
-						<span data-fade class="opacity-50 font-[120] max-lg:text-[2rem]">
-							{props.year}
-						</span>
+						<div class="opacity-90 font-[80] text-[1.4rem]">→</div>
+						<div class="flex gap-12 items-baseline">
+							<h3 data-fade class="heading-5">
+								{props.title}
+							</h3>
+							<span data-fade class="opacity-50 font-[120] max-lg:text-[2rem]">
+								{props.year}
+							</span>
+						</div>
 					</A>
 				</div>
 				<div class="flex">
 					<div
 						data-fade
 						class={cx(
-							'w-grid-2-w shrink-0 opacity-90 eyebrow',
+							'w-grid-3-w lg:w-grid-2-w shrink-0 opacity-90 eyebrow',
 							!props.partners?.length && 'invisible max-lg:hidden',
 						)}
 					>
@@ -64,7 +67,7 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 								return (
 									<a
 										data-stagger
-										class="underline"
+										class="underline hover:text-accent duration-225"
 										target="_blank"
 										rel="noopener noreferrer"
 										href={press.url}
