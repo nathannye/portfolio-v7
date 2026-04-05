@@ -40,7 +40,7 @@ export default function Footer() {
 				<div class="flex opacity-90">
 					<div class="w-grid-2-w shrink-0">Face • Acid Grotesk</div>
 					<div class="w-grid-2-w shrink-0">Solid Start • Sanity</div>
-					<div class="w-grid-2 text-right shrink-0">© {year()}</div>
+					<div class="w-grid-1 lg:w-grid-2 text-right shrink-0">© {year()}</div>
 				</div>
 			</div>
 		</footer>
