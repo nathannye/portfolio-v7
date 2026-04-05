@@ -30,7 +30,7 @@ export const listSectionAnimation = (el: HTMLElement) => {
 			ease: 'power2.out',
 		})
 
-		const lineDuration = 1.4
+		const lineDuration = 1.8
 		const lineEase = 'power3.out'
 
 		tl
@@ -61,7 +61,6 @@ export const listSectionAnimation = (el: HTMLElement) => {
 				},
 				0.3,
 			)
-
 			.to(
 				[bracketOpen, bracketClose],
 				{
