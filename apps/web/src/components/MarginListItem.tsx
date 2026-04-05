@@ -9,7 +9,8 @@ type MarginListItemProps = {
 }
 
 export default function MarginListItem(props: MarginListItemProps) {
-	const list = (items: string[]) => (items ? items.join(', ') : '')
+	const list = (items: string[]) =>
+		items ? items.map((item) => `#${item}`).join(', ') : ''
 
 	return (
 		<li
@@ -21,7 +22,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 			class="w-full opacity-0 relative after:origin-left after:scale-x-[var(--scale)] after:absolute after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10"
 		>
 			<A
-				class="pt-10 lg:pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full"
+				class="pt-17 lg:pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full"
 				href={props.slug.fullUrl}
 			>
 				<h3
@@ -38,7 +39,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 				</div>
 				<div
 					data-fade
-					class="opacity-90 eyebrow w-grid-3 shrink-0 font-[120] max-lg:text-[2rem]"
+					class="opacity-50 lg:opacity-90 eyebrow w-grid-3 max-lg:mt-20 shrink-0 font-[120] max-lg:text-[2rem]"
 				>
 					{list(props.tags)}
 				</div>

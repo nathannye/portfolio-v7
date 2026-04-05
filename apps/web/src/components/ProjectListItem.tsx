@@ -28,7 +28,7 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 		>
 			<div
 				data-wrapper
-				class="pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
+				class="pt-17 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
 			>
 				<div class="w-full lg:w-grid-3-w">
 					<A
