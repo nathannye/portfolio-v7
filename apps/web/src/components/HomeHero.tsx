@@ -10,7 +10,7 @@ export default function HomeHero(props: HomeHeroProps) {
 
 	return (
 		<header class="pt-[28vh] lg:pt-[31vh] mb-190 px-margin-1">
-			<h1 class="heading-3 lg:pl-grid-3-w lg:pr-grid-2-w">
+			<h1 class="heading-3 lg:pl-grid-3-w lg:pr-grid-3-w">
 				<For each={parts()}>
 					{(part) => {
 						const match = part.match(/^\{([^}]+)\}$/)
