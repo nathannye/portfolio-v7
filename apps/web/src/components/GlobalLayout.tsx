@@ -40,7 +40,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 			<Navbar />
 			<WebSiteMarkup />
 
-			<div ref={el}>
+			<div ref={el} data-page>
 				<main class="min-h-[100lvh]" use:scroll>
 					{children}
 				</main>

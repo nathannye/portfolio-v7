@@ -57,7 +57,7 @@ export function usePageTransition() {
 		}
 
 		await animateOut()
-		await gsap.to('main', {
+		await gsap.to('[data-page]', {
 			opacity: 0,
 			ease: 'power2.out',
 			cursor: 'wait',
@@ -65,14 +65,14 @@ export function usePageTransition() {
 		})
 
 		Scroll.lenis?.scrollTo(0, { immediate: true })
-		setNav('hidden', false)
-		setNav('scrolled', false)
 
 		navigate(e.to, { ...e.options, resolve: false, scroll: false })
 		await whenRoutingSettled(isRouting)
+		setNav('hidden', false)
+		setNav('scrolled', false)
 		transitioning = false
 
-		gsap.to('main', {
+		gsap.to('[data-page]', {
 			opacity: 1,
 			cursor: 'default',
 			duration: MAIN_IN_DURATION,

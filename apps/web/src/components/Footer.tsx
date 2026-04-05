@@ -8,8 +8,8 @@ export default function Footer() {
 	})
 
 	return (
-		<footer class="mt-90 px-margin-1">
-			<div class="lg:pl-grid-3-w lg:pr-grid-6-w border-t border-inverted/10 pt-90">
+		<footer class="px-margin-1">
+			<div class="lg:pl-grid-3-w lg:pr-grid-6-w border-t border-inverted/10 pt-150">
 				<p class="heading-4">
 					Got something crazy in mind? <br />
 					My inbox is open!{' '}

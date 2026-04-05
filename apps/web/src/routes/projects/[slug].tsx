@@ -1,16 +1,34 @@
-import { getDocumentBySlug, SanityComponents, SanityPage } from '@local/sanity'
+import { getDocumentBySlug, getDocumentByType, SanityComponents, SanityPage } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { lazy, Show } from 'solid-js'
+import PageMeta from '~/components/PageMeta'
 import CreativeWorkMarkup from '~/components/Project/CreativeWorkMarkup'
 import ProjectHero from '~/components/Project/ProjectHero'
+import ProjectNavButtons from '~/components/Project/ProjectNavButtons'
 
 const getProject = query(async (slug: string) => {
 	'use server'
-	return await getDocumentBySlug('project', slug, {
-		extraQuery:
-			'[0]{title, slug, role, slices, stack, year, mainImage, partners, liveLink, _createdAt, _updatedAt, description}',
-	})
+
+	const [project, allProjects] = await Promise.all([
+		getDocumentBySlug('project', slug, {
+			extraQuery:
+				'[0]{title, slug, role, slices, stack, year, mainImage, partners, liveLink, _createdAt, _updatedAt, description}',
+		}),
+		getDocumentByType('project', {
+			extraQuery: '{title, slug, year} | order(year desc)',
+		}),
+	])
+
+	const index = allProjects.findIndex((p: { slug: { current: string } }) => p.slug.current === slug)
+
+	const total = allProjects.length
+
+	return {
+		...project,
+		previous: allProjects[(index - 1 + total) % total],
+		next: allProjects[(index + 1) % total],
+	}
 }, 'project-details')
 
 const slices = {
@@ -27,11 +45,11 @@ export default function ProjectPage({ params }) {
 				{(data) => {
 					return (
 						<>
-							<Title>{data.title} • Nathan Nye</Title>
-							<Link rel="canonical" href={`https://nye.dev${data.slug}`} />
-							<Show when={data.description?.length}>
-								<Meta name="description" content={data.description} />
-							</Show>
+							<PageMeta
+								description={data.description}
+								title={data.title}
+								slug={data.slug}
+							/>
 							<CreativeWorkMarkup {...data} />
 							<ProjectHero {...data} />
 							<div
@@ -43,6 +61,7 @@ export default function ProjectPage({ params }) {
 							>
 								<SanityComponents componentList={slices} components={data.slices} />
 							</div>
+							<ProjectNavButtons previous={data.previous} next={data.next} />
 						</>
 					)
 				}}
