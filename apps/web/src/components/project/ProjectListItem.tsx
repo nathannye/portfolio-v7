@@ -26,7 +26,10 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 			}}
 			class="w-full opacity-0 relative after:origin-left after:scale-x-[var(--scale)] after:absolute after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10"
 		>
-			<div class="pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full ">
+			<div
+				data-wrapper
+				class="pt-8 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
+			>
 				<div class="w-grid-3-w">
 					<A
 						href={props.slug.fullUrl}

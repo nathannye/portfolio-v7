@@ -27,7 +27,7 @@ export default function ListSection(props: ListSectionProps) {
 					'--before-translate': '0%',
 				}}
 				class={cx(
-					'flex items-start relative pt-2 after:bg-inverted/30 flex-col lg:flex-row gap-y-40',
+					'flex items-start overflow-hidden relative pt-2 after:bg-inverted/30 flex-col lg:flex-row gap-y-40',
 					styles['list-section'],
 				)}
 			>
