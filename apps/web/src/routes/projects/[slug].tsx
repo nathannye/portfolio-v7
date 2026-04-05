@@ -1,11 +1,16 @@
-import { getDocumentBySlug, getDocumentByType, SanityComponents, SanityPage } from '@local/sanity'
+import {
+	getDocumentBySlug,
+	getDocumentByType,
+	SanityComponents,
+	SanityPage,
+} from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { lazy, Show } from 'solid-js'
+import CreativeWorkMarkup from '~/components/CreativeWorkMarkup'
 import PageMeta from '~/components/PageMeta'
-import CreativeWorkMarkup from '~/components/Project/CreativeWorkMarkup'
-import ProjectHero from '~/components/Project/ProjectHero'
-import ProjectNavButtons from '~/components/Project/ProjectNavButtons'
+import ProjectHero from '~/components/ProjectHero'
+import ProjectNavButtons from '~/components/ProjectNavButtons'
 
 const getProject = query(async (slug: string) => {
 	'use server'
@@ -20,7 +25,9 @@ const getProject = query(async (slug: string) => {
 		}),
 	])
 
-	const index = allProjects.findIndex((p: { slug: { current: string } }) => p.slug.current === slug)
+	const index = allProjects.findIndex(
+		(p: { slug: { current: string } }) => p.slug.current === slug,
+	)
 
 	const total = allProjects.length
 
