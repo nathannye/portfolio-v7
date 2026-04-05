@@ -19,6 +19,7 @@ export const listSectionAnimation = (el: HTMLElement) => {
 		const bracketText = q('[data-bracket-text]')
 		const title = q('[data-stagger]')
 		const headers = q('[data-header]')
+		const wrapper = q('[data-wrapper]')
 
 		const tl = gsap.timeline({ paused: true })
 
@@ -29,7 +30,38 @@ export const listSectionAnimation = (el: HTMLElement) => {
 			ease: 'power2.out',
 		})
 
+		const lineDuration = 1.4
+		const lineEase = 'power3.out'
+
 		tl
+			.to(
+				wrapper,
+				{
+					'--before-progress': 1,
+					duration: lineDuration,
+					ease: lineEase,
+				},
+				0,
+			)
+			.to(
+				wrapper,
+				{
+					'--before-translate': '100%',
+					duration: lineDuration,
+					ease: lineEase,
+				},
+				0.1,
+			)
+			.to(
+				wrapper,
+				{
+					'--after-progress': 1,
+					duration: lineDuration,
+					ease: lineEase,
+				},
+				0.3,
+			)
+
 			.to(
 				[bracketOpen, bracketClose],
 				{

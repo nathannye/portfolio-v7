@@ -1,8 +1,8 @@
 import { getDocumentBySlug, PortableText, SanityPage } from '@local/sanity'
 import { createAsync, query } from '@solidjs/router'
 import { Show } from 'solid-js'
-import ArticleMarkup from '~/components/margin/ArticleMarkup'
-import MarginHero from '~/components/margin/MarginHero'
+import ArticleMarkup from '~/components/Margin/ArticleMarkup'
+import MarginHero from '~/components/Margin/MarginHero'
 import PageMeta from '~/components/PageMeta'
 
 const getMargin = query(async (slug: string) => {

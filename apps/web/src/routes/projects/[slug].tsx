@@ -2,8 +2,8 @@ import { getDocumentBySlug, SanityComponents, SanityPage } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { lazy, Show } from 'solid-js'
-import CreativeWorkMarkup from '~/components/project/CreativeWorkMarkup'
-import ProjectHero from '~/components/project/ProjectHero'
+import CreativeWorkMarkup from '~/components/Project/CreativeWorkMarkup'
+import ProjectHero from '~/components/Project/ProjectHero'
 
 const getProject = query(async (slug: string) => {
 	'use server'

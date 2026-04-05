@@ -3,9 +3,9 @@ import { Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { For, Show } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
-import ListSection from '~/components/ListSection'
-import MarginListItem from '~/components/margin/MarginListItem'
-import ProjectListItem from '~/components/project/ProjectListItem'
+import ListSection from '~/components/ListSection/ListSection'
+import MarginListItem from '~/components/Margin/MarginListItem'
+import ProjectListItem from '~/components/Project/ProjectListItem'
 
 const getData = query(async () => {
 	'use server'
