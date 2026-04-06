@@ -8,6 +8,7 @@ import { scroll } from '~/subscribers/scroll'
 import { usePageTransition } from '~/utils'
 import { setCssVariable } from '~/utils/css'
 import Footer from './Footer'
+import GlCanvas from './GlCanvas'
 import GridOverlay from './GridOverlay'
 import Navbar from './Navbar'
 import WebSiteMarkup from './WebSiteMarkup'
@@ -46,6 +47,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 				</main>
 				<Footer />
 			</div>
+			<GlCanvas />
 		</>
 	)
 }
