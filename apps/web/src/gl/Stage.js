@@ -28,10 +28,8 @@ export default class Stage {
 
 	resize() {
 		resizeScreen()
-		if (this.camera) this.camera.resize()
-		// this.scene.resize()
-
-		// this.renderer.resize()
+		this.camera.resize()
+		this.renderer.resize()
 
 		// call this so that when you stop scrolling and resize, its still in sync
 		this.scroll()

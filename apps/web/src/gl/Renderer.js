@@ -10,7 +10,7 @@ export default class Renderer extends WebGLRenderer {
 		this.toneMapping = CineonToneMapping
 		this.toneMappingExposure = 0.8
 
-		this.setClearColor(0x000000, 0)
+		this.setClearColor(0xf4f5f4, 1)
 		this.setPixelRatio(Math.min(1.5, window.devicePixelRatio))
 	}
 

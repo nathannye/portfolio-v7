@@ -34,7 +34,7 @@ export default function GlCanvas() {
 	// })
 
 	return (
-		<div data-gl="canvas" class={cx('fixed h-[100lvh] w-full inset-0')}>
+		<div data-gl="canvas" class={cx('fixed h-[100lvh] -z-1 w-full inset-0')}>
 			<div class="size-full [&_canvas]:size-full" ref={el} />
 		</div>
 	)
