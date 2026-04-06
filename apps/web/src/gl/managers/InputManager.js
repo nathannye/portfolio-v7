@@ -1,7 +1,7 @@
 import { lerp } from '~/utils/math'
 import screen from '../utils/screen'
 
-class InputManager {
+export default class InputManager {
 	constructor() {
 		this._x = 0
 		this._y = 0
@@ -45,5 +45,3 @@ class InputManager {
 		this._lerpedY = lerp(this._lerpedY, this._y, 0.0535)
 	}
 }
-
-export default new InputManager()

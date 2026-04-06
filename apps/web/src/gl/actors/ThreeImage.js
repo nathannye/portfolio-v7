@@ -1,4 +1,3 @@
-import { MeshBasicMaterial } from 'three'
 import TrackedPlane from '../utils/TrackedPlane'
 
 export default class ThreeImage extends TrackedPlane {

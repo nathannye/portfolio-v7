@@ -1,5 +1,3 @@
-// import { setLoadingStore } from '~/stores/loadingStore'
-import { isServer } from 'solid-js/web'
 import Camera from './Camera'
 import InputManager from './managers/InputManager'
 
@@ -20,10 +18,8 @@ export default class Stage {
 
 		container.appendChild(this.renderer.domElement)
 
-		InputManager.addEvents()
-		// LoadManager.start().then(() => {
-		// 	// setLoadingStore('loaded', true)
-		// })
+		this.inputManager = new InputManager()
+		this.inputManager.addEvents()
 	}
 
 	resize() {
@@ -42,8 +38,7 @@ export default class Stage {
 	}
 
 	render() {
-		// InputManager.render()
-
+		this.inputManager.render()
 		this.renderer.render(this.scene, this.camera)
 	}
 

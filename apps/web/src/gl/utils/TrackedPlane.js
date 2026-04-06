@@ -2,7 +2,6 @@ import { Mesh, PlaneGeometry, ShaderMaterial } from 'three'
 import { Resizer } from '~/app/resizer'
 import { Scroll } from '~/app/scroll'
 import { clientRectGl } from '~/utils/clientRect'
-import { clamp, map } from '~/utils/math'
 
 export default class TrackedPlane extends Mesh {
 	#resizeUnsub = Resizer.add(this.#resize.bind(this))
