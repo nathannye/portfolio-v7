@@ -16,7 +16,6 @@ export default class Stage {
 	}
 
 	init(container) {
-		if (isServer) return
 		this.resize()
 
 		container.appendChild(this.renderer.domElement)
@@ -29,7 +28,6 @@ export default class Stage {
 
 	resize() {
 		resizeScreen()
-		console.log(this)
 		if (this.camera) this.camera.resize()
 		// this.scene.resize()
 
@@ -46,9 +44,9 @@ export default class Stage {
 	}
 
 	render() {
-		InputManager.render()
+		// InputManager.render()
 
-		this.renderer.render(Scene, Camera)
+		this.renderer.render(this.scene, this.camera)
 	}
 
 	destroy() {

@@ -5,7 +5,6 @@ export default class Camera extends PerspectiveCamera {
 	constructor(fov = 45, near = 0.1, far = 100) {
 		super(fov, screen.ratio.x, near, far)
 
-		// this.position.set(16, 9, 15)
 		this.position.set(0, 0, 2)
 	}
 
@@ -27,5 +26,3 @@ export default class Camera extends PerspectiveCamera {
 		screen.glViewSize = this.glViewSize
 	}
 }
-
-

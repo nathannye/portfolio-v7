@@ -13,17 +13,19 @@ export default function GlCanvas() {
 	onMount(() => {
 		if (isServer) return
 		stage = new Stage()
+
+		if (!stage) return
 		stage.init(el)
 		stage.resize()
-		// Raf.add(() => Stage.render())
+		Raf.add(() => stage.render())
 
-		// useWindowResize(() => {
-		// 	Stage.resize()
-		// })
+		useWindowResize(() => {
+			stage.resize()
+		})
 
-		// onScroll((scroll) => {
-		// 	Stage.scroll(scroll)
-		// })
+		onScroll((scroll) => {
+			stage.scroll(scroll)
+		})
 	})
 
 	// onCleanup(() => {
@@ -33,7 +35,7 @@ export default function GlCanvas() {
 
 	return (
 		<div data-gl="canvas" class={cx('fixed h-[100lvh] w-full inset-0')}>
-			<div class={'size-full'} ref={el} />
+			<div class="size-full [&_canvas]:size-full" ref={el} />
 		</div>
 	)
 }

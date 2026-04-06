@@ -1,6 +1,6 @@
 body {
 	--sbw: calc(100vw - 100%);
-	@apply font-sans bg-primary text-inverted;
+	@apply font-sans text-inverted;
 }
 
 html {
