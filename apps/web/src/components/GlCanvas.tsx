@@ -1,37 +1,42 @@
+import { useLocation } from '@solidjs/router'
 import cx from 'classix'
-import { onCleanup, onMount } from 'solid-js'
+import { createEffect, createSignal, onCleanup, onMount } from 'solid-js'
 import { isServer } from 'solid-js/web'
 import Stage from '~/gl/Stage'
 import { useWindowResize } from '~/hooks/useResize'
+import { gl, setGl } from '~/stores/glStore'
 import { Raf } from '~/subscribers/raf'
 import { onScroll } from '~/utils'
 
 export default function GlCanvas() {
 	let el: HTMLDivElement | undefined
-	let stage: Stage | undefined
+
+	const location = useLocation()
 
 	onMount(() => {
 		if (isServer) return
-		stage = new Stage()
+		setGl('stage', new Stage())
+		gl.stage?.init(el)
 
-		if (!stage) return
-		stage.init(el)
-		stage.resize()
-		Raf.add(() => stage.render())
+		if (!gl.stage) return
+		gl.stage?.init(el)
+		gl.stage?.resize()
+		Raf.add(() => gl.stage?.render())
 
 		useWindowResize(() => {
-			stage.resize()
+			gl.stage?.resize()
 		})
 
 		onScroll((scroll) => {
-			stage.scroll(scroll)
+			gl.stage?.scroll(scroll)
 		})
 	})
 
-	// onCleanup(() => {
-	// 	if (isServer) return
-	// 	Stage.destroy()
-	// })
+	createEffect(() => {
+		if (gl.stage && location.pathname && !isServer) {
+			gl.stage?.navigate(location.pathname)
+		}
+	})
 
 	return (
 		<div data-gl="canvas" class={cx('fixed h-[100lvh] -z-1 w-full inset-0')}>

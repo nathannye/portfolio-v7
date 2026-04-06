@@ -1,3 +1,4 @@
+import { setMouse } from '~/stores/mouseStore'
 import { lerp } from '~/utils/math'
 import screen from '../utils/screen'
 
@@ -43,5 +44,8 @@ export default class InputManager {
 	render() {
 		this._lerpedX = lerp(this._lerpedX, this._x, 0.0535)
 		this._lerpedY = lerp(this._lerpedY, this._y, 0.0535)
+
+		setMouse('x', this.normalizedCoords.x)
+		setMouse('y', this.normalizedCoords.y)
 	}
 }

@@ -1,11 +1,11 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import { For, Show } from 'solid-js'
+import { For } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection/ListSection'
 import MarginListItem from '~/components/MarginListItem'
-import PageMeta from '~/components/PageMeta'
+import ProjectImageTracker from '~/components/ProjectImageTracker'
 import ProjectListItem from '~/components/ProjectListItem'
 import { DOMAIN } from '~/config'
 
@@ -34,69 +34,73 @@ export default function Home() {
 	const data = createAsync(() => getData())
 
 	return (
-		<div ref={el}>
-			<SanityPage fetcher={data}>
-				{(d) => {
-					const [projects, margins, page] = d
-					return (
-						<>
-							<Title>Nathan Nye • Creative Developer</Title>
-							<Meta
-								name="description"
-								content="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
-							/>
-							<Link rel="canonical" href={DOMAIN} />
+		<>
+			<ProjectImageTracker />
+			<div ref={el}>
+				<SanityPage fetcher={data}>
+					{(d) => {
+						const [projects, margins, page] = d
+						return (
+							<>
+								<Title>Nathan Nye • Creative Developer</Title>
+								<Meta
+									name="description"
+									content="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
+								/>
+								<Link rel="canonical" href={DOMAIN} />
 
-							<HomeHero {...page} />
-							<div class="w-full flex mb-90 flex-col gap-y-95">
-								<ListSection index={0} title="Work" itemCount={projects.length}>
-									<div class="mt-10">
-										<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
+								<HomeHero {...page} />
+
+								<div class="w-full flex mb-90 flex-col gap-y-95">
+									<ListSection index={0} title="Work" itemCount={projects.length}>
+										<div class="mt-10">
+											<div class="flex pb-50 max-lg:hidden eyebrow opacity-50">
+												<div data-header class="w-grid-3-w opacity-0">
+													Title
+												</div>
+												<div data-header class="w-grid-2-w opacity-0">
+													Partners in Crime
+												</div>
+												<div data-header class="w-grid-2-w opacity-0">
+													Kudos
+												</div>
+												<div data-header class="w-grid-2-w opacity-0">
+													Press
+												</div>
+											</div>
+											<ul>
+												<For each={projects}>
+													{(project, i) => <ProjectListItem {...project} index={i()} />}
+												</For>
+											</ul>
+										</div>
+									</ListSection>
+									<ListSection index={1} title="Margins" itemCount={margins.length}>
+										<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
 											<div data-header class="w-grid-3-w opacity-0">
 												Title
 											</div>
 											<div data-header class="w-grid-2-w opacity-0">
-												Partners in Crime
+												Published
 											</div>
-											<div data-header class="w-grid-2-w opacity-0">
-												Kudos
-											</div>
-											<div data-header class="w-grid-2-w opacity-0">
-												Press
+											<div data-header class="w-grid-3-w opacity-0">
+												Category
 											</div>
 										</div>
-										<ul>
-											<For each={projects}>
-												{(project, i) => <ProjectListItem {...project} index={i()} />}
-											</For>
-										</ul>
-									</div>
-								</ListSection>
-								<ListSection index={1} title="Margins" itemCount={margins.length}>
-									<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
-										<div data-header class="w-grid-3-w opacity-0">
-											Title
+										<div class="mt-10">
+											<ul>
+												<For each={margins}>
+													{(margin, i) => <MarginListItem {...margin} index={i()} />}
+												</For>
+											</ul>
 										</div>
-										<div data-header class="w-grid-2-w opacity-0">
-											Published
-										</div>
-										<div data-header class="w-grid-3-w opacity-0">
-											Category
-										</div>
-									</div>
-									<div class="mt-10">
-										<ul>
-											<For each={margins}>
-												{(margin, i) => <MarginListItem {...margin} index={i()} />}
-											</For>
-										</ul>
-									</div>
-								</ListSection>
-							</div>
-						</>
-					)
-				}}
-			</SanityPage>
-		</div>
+									</ListSection>
+								</div>
+							</>
+						)
+					}}
+				</SanityPage>
+			</div>
+		</>
 	)
 }

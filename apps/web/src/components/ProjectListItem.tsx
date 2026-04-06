@@ -1,7 +1,12 @@
+import { sanityImageToUrl } from '@local/sanity'
+import type { SanityImageAssetDocument } from '@sanity/client'
 import { A } from '@solidjs/router'
 import cx from 'classix'
-import { For } from 'solid-js'
+import { For, onMount } from 'solid-js'
 import { listItemAnimation } from '~/animations/list-item'
+import ProjectImageFlipper from '~/gl/actors/project-image-flipper/ProjectImageFlipper'
+import { useWebglNode } from '~/hooks/useWebglNode'
+import { setProjectCursor } from '~/stores/projectCursorStore'
 import { formatPartner } from '~/utils/string'
 
 type ProjectListItemProps = {
@@ -9,13 +14,22 @@ type ProjectListItemProps = {
 	year: number
 	slug: string
 	index: number
+	mainImage: SanityImageAssetDocument
 }
 
 export default function ProjectListItem(props: ProjectListItemProps) {
 	const list = (items: string[]) => (items ? items.join(', ') : '')
+	const imageUrl = sanityImageToUrl(props.mainImage, 1000)
+	setProjectCursor('images', props.index, imageUrl)
 
-	const partnerList = (partners) =>
+	const partnerList = (partners: string[]) =>
 		partners ? partners.map((partner) => formatPartner(partner)).join(', ') : ''
+
+	const handleMouseEnter = () => {
+		setProjectCursor('index', props.index)
+	}
+
+	const { setRef } = useWebglNode(ProjectImageFlipper)
 
 	return (
 		<li
@@ -32,10 +46,14 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 			>
 				<div class="w-full lg:w-grid-3-w">
 					<A
+						ref={setRef}
 						href={props.slug.fullUrl}
-						class="inline-flex hover:opacity-50 duration-225 shrink-0  items-start lg:gap-20"
+						class="relative inline-flex hover:opacity-50 duration-225 shrink-0 pointer-events-auto items-start lg:gap-20"
+						onMouseEnter={handleMouseEnter}
+						data-gl-image={imageUrl}
+						data-index={props.index}
 					>
-						<div class="flex gap-12 items-baseline">
+						<div class="flex gap-12 pointer-events-none items-baseline">
 							<h3 data-fade class="heading-5">
 								{props.title}
 							</h3>

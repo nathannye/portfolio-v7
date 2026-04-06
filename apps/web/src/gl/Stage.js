@@ -1,3 +1,4 @@
+import { isServer } from 'solid-js/web'
 import Camera from './Camera'
 import InputManager from './managers/InputManager'
 
@@ -10,7 +11,6 @@ export default class Stage {
 		this.renderer = new Renderer()
 		this.camera = new Camera()
 		this.scene = new Scene()
-		console.log(this)
 	}
 
 	init(container) {
@@ -39,7 +39,15 @@ export default class Stage {
 
 	render() {
 		this.inputManager.render()
+		this.scene.children.forEach(
+			(actor) => typeof actor.render === 'function' && actor.render(),
+		)
 		this.renderer.render(this.scene, this.camera)
+	}
+
+	navigate(path) {
+		console.log('navigate', path)
+		this.scene.createActorsByPath(path)
 	}
 
 	destroy() {
