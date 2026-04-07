@@ -6,11 +6,13 @@ import {
 } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import { lazy, Show } from 'solid-js'
+import gsap from 'gsap'
+import { lazy, onMount, Show } from 'solid-js'
 import CreativeWorkMarkup from '~/components/CreativeWorkMarkup'
 import PageMeta from '~/components/PageMeta'
 import ProjectHero from '~/components/ProjectHero'
 import ProjectNavButtons from '~/components/ProjectNavButtons'
+import { onPageLeave, TRANSITION } from '~/utils'
 
 const getProject = query(async (slug: string) => {
 	'use server'
@@ -46,8 +48,22 @@ export default function ProjectPage({ params }) {
 	let el
 	const fetcher = createAsync(() => getProject(params.slug))
 
+	onMount(() => {
+		gsap.to(el, {
+			opacity: 1,
+			...TRANSITION,
+		})
+
+		onPageLeave(el, async () => {
+			return await gsap.to(el, {
+				opacity: 0,
+				...TRANSITION,
+			})
+		})
+	})
+
 	return (
-		<div ref={el}>
+		<div ref={el} class="opacity-0">
 			<SanityPage fetcher={fetcher}>
 				{(data) => {
 					return (
