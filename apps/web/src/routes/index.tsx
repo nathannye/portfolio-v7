@@ -56,12 +56,12 @@ export default function Home() {
 					const [projects, margins, page] = d
 					return (
 						<>
-							<Title>Nathan Nye • Creative Developer</Title>
-							<Meta
-								name="description"
-								content="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
+							<PageMeta
+								titleOverride="Nathan Nye • Creative Developer"
+								description="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
+								title="Nathan Nye • Creative Developer"
+								slug="/"
 							/>
-							<Link rel="canonical" href={DOMAIN} />
 
 							<HomeHero {...page} />
 							<div class="w-full flex mb-90 flex-col gap-y-95">

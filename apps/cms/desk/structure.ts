@@ -1,6 +1,11 @@
 import { AiFillTag } from 'react-icons/ai'
 import { IoBusiness } from 'react-icons/io5'
-import { MdDocumentScanner, MdEditDocument, MdHome } from 'react-icons/md'
+import {
+	MdDocumentScanner,
+	MdEditDocument,
+	MdHome,
+	MdSearch,
+} from 'react-icons/md'
 import { setupPages } from '../utils/structure-utils'
 
 export const structure = (S, context: any) => {
@@ -19,5 +24,7 @@ export const structure = (S, context: any) => {
 			div(),
 			pageList('Margins', 'margin', MdDocumentScanner),
 			pageList('Tags', 'tag', AiFillTag),
+			div(),
+			singlePage('SEO', 'seo', MdSearch),
 		])
 }
