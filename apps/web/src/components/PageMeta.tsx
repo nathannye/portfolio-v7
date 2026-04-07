@@ -8,6 +8,9 @@ type PageMetaProps = {
 	slug: string
 	description?: string
 	titleOverride?: string
+	imageUrl?: string
+	ogImageWidth?: number
+	ogImageHeight?: number
 }
 
 type GlobalMeta = {
@@ -24,6 +27,10 @@ const getGlobalMeta = query(async () => {
 
 export default function PageMeta(props: PageMetaProps) {
 	const globalMeta = createAsync(() => getGlobalMeta())
+
+	const imageWidth = props.ogImageWidth || 1200
+	const imageHeight = props.ogImageHeight || 630
+
 	return (
 		<Show when={globalMeta()}>
 			<Show when={!props.titleOverride}>
@@ -41,11 +48,14 @@ export default function PageMeta(props: PageMetaProps) {
 			<Meta name="twitter:site" content={globalMeta().twitterHandle} />
 			<Meta name="twitter:creator" content={globalMeta().twitterHandle} />
 			<Meta name="twitter:url" content={`${globalMeta().siteUrl}${props.slug}`} />
-			{/* <Meta name="og:image" content={`https://nye.dev/og-image.png`} />
-			<Meta name="og:image:width" content="1200" />
-			<Meta name="og:image:height" content="630" /> */}
-			{/* <Meta name="og:image:alt" content="Nathan Nye" /> */}
-			{/* <Meta name="og:image:type" content="image/png" /> */}
+			<Show when={props.imageUrl}>
+				<Meta name="og:image" content={props.imageUrl} />
+				<Meta name="og:image:width" content={imageWidth} />
+				<Meta name="og:image:height" content={imageHeight} />
+				<Meta name="og:image:alt" content="Nathan Nye" />
+				<Meta name="og:image:type" content="image/png" />
+				<Meta name="twitter:image" content={props.imageUrl} />
+			</Show>
 			<Meta name="twitter:title" content={props.title} />
 			<Link rel="canonical" href={`https://nye.dev${props.slug}`} />
 			<Show when={props.description}>

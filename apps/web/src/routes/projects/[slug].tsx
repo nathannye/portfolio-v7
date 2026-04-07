@@ -66,12 +66,23 @@ export default function ProjectPage({ params }) {
 		<div ref={el} class="opacity-0">
 			<SanityPage fetcher={fetcher}>
 				{(data) => {
+					const [_type, id, dimensions, fileType] =
+						data.mainImage?.asset?._id.split('-')
+
+					const [width, height] = dimensions.split('x').map(Number)
+					const aspectRatio = Math.round(width / height)
+					const maxOgWidth = 1200
+					const ogHeight = Math.round(maxOgWidth / aspectRatio)
+					const ogImageUrl = `${data.mainImage?.asset?.url}?w=${maxOgWidth}&h=${ogHeight}&format=png`
 					return (
 						<>
 							<PageMeta
 								description={data.description}
 								title={data.title}
 								slug={data.slug.fullUrl}
+								imageUrl={ogImageUrl}
+								ogImageWidth={maxOgWidth}
+								ogImageHeight={ogHeight}
 							/>
 							<CreativeWorkMarkup {...data} />
 							<ProjectHero {...data} />
