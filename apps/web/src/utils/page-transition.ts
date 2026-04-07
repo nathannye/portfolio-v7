@@ -1,5 +1,6 @@
 import { useBeforeLeave } from '@solidjs/router'
 import { createStore } from 'solid-js/store'
+import { setNav } from '~/stores/navStore'
 import { Scroll } from '~/subscribers/scroll'
 
 export const TRANSITION = {
@@ -42,6 +43,10 @@ export function usePageTransition() {
 
 		await animateOut({ to, from }).then(() => {
 			Scroll.lenis?.scrollTo(0, { immediate: true })
+			Scroll.lenis?.stop()
+			Scroll.lenis?.start()
+			setNav('hidden', false)
+			setNav('scrolled', false)
 			root.style.cursor = 'default'
 			body.style.pointerEvents = 'auto'
 		})
