@@ -61,6 +61,9 @@ export default function Home() {
 								description="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
 								title="Nathan Nye • Creative Developer"
 								slug="/"
+								imageUrl={`${DOMAIN}/og.png`}
+								ogImageWidth={1200}
+								ogImageHeight={600}
 							/>
 
 							<HomeHero {...page} />

@@ -1,7 +1,7 @@
 import { getDocumentByType } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
-import { Show } from 'solid-js'
+import { type Accessor, Show } from 'solid-js'
 
 type PageMetaProps = {
 	title: string
@@ -26,7 +26,7 @@ const getGlobalMeta = query(async () => {
 }, 'global-meta')
 
 export default function PageMeta(props: PageMetaProps) {
-	const globalMeta = createAsync(() => getGlobalMeta())
+	const globalMeta = createAsync(() => getGlobalMeta()) as Accessor<GlobalMeta>
 
 	const imageWidth = props.ogImageWidth || 1200
 	const imageHeight = props.ogImageHeight || 630
@@ -50,8 +50,8 @@ export default function PageMeta(props: PageMetaProps) {
 			<Meta name="twitter:url" content={`${globalMeta().siteUrl}${props.slug}`} />
 			<Show when={props.imageUrl}>
 				<Meta name="og:image" content={props.imageUrl} />
-				<Meta name="og:image:width" content={imageWidth} />
-				<Meta name="og:image:height" content={imageHeight} />
+				<Meta name="og:image:width" content={imageWidth.toString()} />
+				<Meta name="og:image:height" content={imageHeight.toString()} />
 				<Meta name="og:image:alt" content="Nathan Nye" />
 				<Meta name="og:image:type" content="image/png" />
 				<Meta name="twitter:image" content={props.imageUrl} />
