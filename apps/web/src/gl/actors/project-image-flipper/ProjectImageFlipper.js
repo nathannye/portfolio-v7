@@ -16,24 +16,39 @@ let activeFlipper = null
 let switchTimeline = null
 let leaveTimer = null
 
-/** Kill progress tweens on every flipper so leave animations do not fight transitions. */
 const flipperInstances = new Set()
 /** index → flipper (from `data-index` on the link) */
 const flippersByIndex = new Map()
 
-function killAllProgressTweens() {
+/** Who should animate out: active selection, or any plane still visible if leave-timer cleared `activeFlipper`. */
+function resolveOutgoingFlipper(next) {
+	if (activeFlipper && activeFlipper !== next) return activeFlipper
+	let best = null
+	let bestP = -1
 	for (const f of flipperInstances) {
-		gsap.killTweensOf(f.plane.material.uniforms.uProgress)
+		if (f === next || !f.plane.visible) continue
+		const p = f.plane.material.uniforms.uProgress.value
+		if (p > bestP) {
+			bestP = p
+			best = f
+		}
 	}
+	return bestP > 0.02 ? best : null
 }
 
-/** At most one extra plane besides the new active one: hide all except `prev` (exiting) and `next` (incoming). */
-function suppressOtherFlippers(prev, next) {
+/** Kill + hide everyone except the two participating in this handoff. */
+function killForeignFlippers(prev, next) {
 	for (const f of flipperInstances) {
-		if (f === next || f === prev) continue
+		if (f === prev || f === next) continue
 		gsap.killTweensOf(f.plane.material.uniforms.uProgress)
 		f.plane.material.uniforms.uProgress.value = 0
 		f.plane.visible = false
+	}
+}
+
+function killAllProgressTweens() {
+	for (const f of flipperInstances) {
+		gsap.killTweensOf(f.plane.material.uniforms.uProgress)
 	}
 }
 
@@ -61,10 +76,12 @@ function transitionTo(next) {
 
 	clearLeaveTimer()
 	killSwitchTimeline()
-	killAllProgressTweens()
 
-	const prev = activeFlipper
-	suppressOtherFlippers(prev, next)
+	const prev = resolveOutgoingFlipper(next)
+	killForeignFlippers(prev, next)
+
+	if (prev) gsap.killTweensOf(prev.plane.material.uniforms.uProgress)
+	gsap.killTweensOf(next.plane.material.uniforms.uProgress)
 
 	activeFlipper = next
 
@@ -78,36 +95,39 @@ function transitionTo(next) {
 	if (prev && prev !== next) {
 		const uPrev = prev.plane.material.uniforms.uProgress
 		prev.plane.visible = true
+		const fromPrev = uPrev.value
 		switchTimeline = gsap.timeline({ defaults: { overwrite: 'auto' } })
-		// Same start time: one plane transitioning out, one active / coming in (up to 2 visible).
-		switchTimeline.to(
+		// Overlap: outgoing eases from its current progress; incoming from hidden.
+		switchTimeline.fromTo(
 			uPrev,
+			{ value: fromPrev },
 			{
 				value: 0,
-				duration: 0.45,
-				ease: 'expo.out',
+				duration: 0.48,
+				ease: 'power2.in',
 				onComplete: () => {
 					prev.plane.visible = false
 				},
 			},
 			0,
 		)
-		switchTimeline.to(
+		switchTimeline.fromTo(
 			uNext,
+			{ value: 0 },
 			{
 				value: 1,
-				duration: 0.55,
-				ease: 'expo.out',
+				duration: 0.58,
+				ease: 'power3.out',
 			},
 			0,
 		)
 	} else {
 		switchTimeline = gsap.timeline({ defaults: { overwrite: 'auto' } })
-		switchTimeline.to(uNext, {
-			value: 1,
-			duration: 0.68,
-			ease: 'expo.out',
-		})
+		switchTimeline.fromTo(
+			uNext,
+			{ value: uNext.value },
+			{ value: 1, duration: 0.68, ease: 'power3.out' },
+		)
 	}
 }
 
