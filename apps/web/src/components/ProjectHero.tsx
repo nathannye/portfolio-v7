@@ -28,7 +28,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 		<header class="px-margin-1 pt-15">
 			<div class="h-[50vh] min-h-500 flex-center flex-col">
 				<h1 class="heading-2 text-center">{props.title}</h1>
-				<p class="heading-5 font-bold font-serif opacity-70 mt-12">{props.year}</p>
+				<p class="heading-5 font-bold font-serif opacity-90 mt-12">{props.year}</p>
 			</div>
 
 			<dl class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 gap-y-20 eyebrow max-lg:flex-col">
