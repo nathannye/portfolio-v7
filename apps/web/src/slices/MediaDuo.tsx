@@ -40,8 +40,9 @@ export default function MediaDuo(props: MediaDuoProps) {
 
 		if (columns !== 'full') {
 			const num = Number.parseInt(columns, 10)
-			desktopWidth = Math.round((14 / num) * 100)
-			mobileWidth = Math.round((5 / num) * 100)
+			console.log('num', num)
+			desktopWidth = Math.round((num / 14) * 100)
+			mobileWidth = Math.round((num / 5) * 100)
 		}
 
 		return {
