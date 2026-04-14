@@ -5,7 +5,6 @@ import { onMount, Show } from 'solid-js'
 import ArticleMarkup from '~/components/ArticleMarkup'
 import MarginHero from '~/components/MarginHero'
 import PageMeta from '~/components/PageMeta'
-import { onPageLeave, TRANSITION } from '~/utils'
 
 const getMargin = query(async (slug: string) => {
 	'use server'
@@ -19,20 +18,6 @@ const getMargin = query(async (slug: string) => {
 export default function MarginPage({ params }) {
 	let el
 	const fetcher = createAsync(() => getMargin(params.slug))
-
-	onMount(() => {
-		gsap.to(el, {
-			opacity: 1,
-			...TRANSITION,
-		})
-
-		onPageLeave(el, async () => {
-			return await gsap.to(el, {
-				opacity: 0,
-				...TRANSITION,
-			})
-		})
-	})
 
 	return (
 		<div ref={el} class="opacity-0">

@@ -1,4 +1,5 @@
 import { useBeforeLeave } from '@solidjs/router'
+import gsap from 'gsap'
 import { createStore } from 'solid-js/store'
 import { setNav } from '~/stores/navStore'
 import { Scroll } from '~/subscribers/scroll'
@@ -26,8 +27,10 @@ export const [transitionStore, setTransitionStore] = createStore({
 })
 
 export async function animateOut({ to, from }: { to: string; from: string }) {
-	await Promise.all(outTransitions.map(async (fn) => await fn({ to, from })))
-	reset()
+	return await gsap.to('[data-page]', {
+		opacity: 0,
+		...TRANSITION,
+	})
 }
 
 export function usePageTransition() {
