@@ -31,19 +31,19 @@ export default function ProjectHero(props: ProjectHeroProps) {
 				<p class="heading-5 font-bold font-serif opacity-90 mt-12">{props.year}</p>
 			</div>
 
-			<dl class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 gap-y-20 eyebrow max-lg:flex-col">
+			<div class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 gap-y-20 eyebrow max-lg:flex-col">
 				<div class="flex max-lg:w-full">
-					<div class="flex shrink-0 w-grid-2-w">
+					<dl class="flex shrink-0 w-grid-2-w">
 						<dt class="pr-20">Role</dt>
 						<dd>{list(props.role)}</dd>
-					</div>
-					<div class="flex shrink-0 max-lg:w-grid-3-w gap-gutter-1">
+					</dl>
+					<dl class="flex shrink-0 max-lg:w-grid-3-w gap-gutter-1">
 						<dt class="w-80 lg:w-grid-1">Stack</dt>
 						<dd>{list(props.stack)}</dd>
-					</div>
+					</dl>
 				</div>
 				<div class="flex justify-between max-lg:w-full shrink-0 lg:w-grid-5-w">
-					<dd class="max-lg:w-grid-2-w shrink-0">
+					<div class="max-lg:w-grid-2-w shrink-0">
 						<Dynamic
 							component={props.liveLink ? 'a' : 'div'}
 							rel="noopener noreferrer"
@@ -56,16 +56,16 @@ export default function ProjectHero(props: ProjectHeroProps) {
 						>
 							<Show when={props.liveLink}>Live Link</Show>
 						</Dynamic>
-					</dd>
+					</div>
 					<Show when={props.partners}>
-						<div class="flex shrink-0 flex lg:justify-end w-grid-3-w lg:w-grid-4 gap-gutter-1 ">
+						<dl class="flex shrink-0 lg:justify-end w-grid-3-w lg:w-grid-4 gap-gutter-1">
 							<dt class="max-lg:hidden">Partners in crime</dt>
 							<dt class="lg:hidden w-80">w / </dt>
 							<dd>{partnerList(props.partners)}</dd>
-						</div>
+						</dl>
 					</Show>
 				</div>
-			</dl>
+			</div>
 			<ParallaxMedia class="mt-margin-1 w-full aspect-[1/1.5] lg:aspect-[1/.75]">
 				<SanityImage
 					desktopWidth={95}
