@@ -63,6 +63,8 @@ export default function PageMeta(props: PageMetaProps) {
 				<Meta name="og:description" content={props.description} />
 				<Meta name="twitter:description" content={props.description} />
 			</Show>
+			<Link rel="preconnect" href="https://image.mux.com" />
+			<Link rel="preconnect" href="https://cdn.sanity.io" />
 		</Show>
 	)
 }
