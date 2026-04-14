@@ -7,11 +7,12 @@ import {
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'
-import { createEffect, lazy, onMount, Show } from 'solid-js'
+import { createEffect, lazy } from 'solid-js'
 import CreativeWorkMarkup from '~/components/CreativeWorkMarkup'
 import PageMeta from '~/components/PageMeta'
 import ProjectHero from '~/components/ProjectHero'
 import ProjectNavButtons from '~/components/ProjectNavButtons'
+import { onPageLeave, TRANSITION } from '~/utils'
 
 const getProject = query(async (slug: string) => {
 	'use server'
