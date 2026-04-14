@@ -60,9 +60,7 @@ export default function ProjectHero(props: ProjectHeroProps) {
 					<Show when={props.partners}>
 						<dl class="flex shrink-0 flex lg:justify-end w-grid-3-w lg:w-grid-4 gap-gutter-1 ">
 							<dt class="max-lg:hidden">Partners in crime</dt>
-							<dt aria-label="With" class="lg:hidden w-80">
-								w /{' '}
-							</dt>
+							<dt class="lg:hidden w-80">w / </dt>
 							<dd>{partnerList(props.partners)}</dd>
 						</dl>
 					</Show>
