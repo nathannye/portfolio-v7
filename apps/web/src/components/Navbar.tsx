@@ -1,6 +1,7 @@
 import { A, useLocation } from '@solidjs/router'
 import cx from 'classix'
 import { createSignal, onCleanup, onMount } from 'solid-js'
+import { isServer } from 'solid-js/web'
 import { useCopyEmail } from '~/hooks/useCopyEmail'
 import { nav, setNav } from '~/stores/navStore'
 import { onScroll } from '~/utils'
@@ -9,6 +10,17 @@ export default function Navbar() {
 	let interval: any
 	const [time, setTime] = createSignal<string | null>(null)
 	const { copied, copyText, handleCopy } = useCopyEmail()
+
+	const timeZoneLabel = () => {
+		if (!isServer) return 'MST'
+		const full = new Date().toLocaleString('en-US', {
+			timeZone: 'America/Denver',
+			timeZoneName: 'short',
+		})
+
+		const tz = full.split(' ').pop()
+		return tz
+	}
 
 	const location = useLocation()
 	const getTime = () => {
@@ -46,7 +58,7 @@ export default function Navbar() {
 	return (
 		<header
 			class={cx(
-				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 w-[calc(100vw-var(--scrollbar))] max-lg:justify-between duration-800 ease-expo-out after:duration-800 after:ease-expo-out pb-6',
+				'eyebrow after:origin-top after:scale-y-0 z-20 after:absolute after:inset-0 after:size-full after:bg-primary flex after:z-1 pt-8 px-margin-1 fixed top-0 left-0 w-[calc(100vw-var(--scrollbar))] max-lg:justify-between transition-transform after:transition-transform duration-800 ease-expo-out after:duration-800 after:ease-expo-out pb-6',
 				nav.scrolled && 'after:scale-y-100',
 				nav.hidden && '-translate-y-full',
 			)}
@@ -93,7 +105,9 @@ export default function Navbar() {
 			</dl>
 			<dl class="flex max-lg:hidden opacity-80 lg:justify-end max-lg:text-right w-full eyebrow max-lg:gap-x-gutter-1 relative z-2">
 				<dt class="lg:w-grid-1-w">Denver, CO</dt>
-				<dd>MST {time()}</dd>
+				<dd>
+					{timeZoneLabel()} {time()}
+				</dd>
 			</dl>
 		</header>
 	)
