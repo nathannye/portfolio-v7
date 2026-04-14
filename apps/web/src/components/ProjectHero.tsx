@@ -33,14 +33,14 @@ export default function ProjectHero(props: ProjectHeroProps) {
 
 			<dl class="pt-11 [&_dd]:font-[150] [&_dt]:opacity-50 flex items-center pb-8 justify-between border-t border-b border-inverted/10 gap-y-20 eyebrow max-lg:flex-col">
 				<div class="flex max-lg:w-full">
-					<dl class="flex shrink-0 w-grid-2-w">
+					<div class="flex shrink-0 w-grid-2-w">
 						<dt class="pr-20">Role</dt>
 						<dd>{list(props.role)}</dd>
-					</dl>
-					<dl class="flex shrink-0 max-lg:w-grid-3-w gap-gutter-1">
+					</div>
+					<div class="flex shrink-0 max-lg:w-grid-3-w gap-gutter-1">
 						<dt class="w-80 lg:w-grid-1">Stack</dt>
 						<dd>{list(props.stack)}</dd>
-					</dl>
+					</div>
 				</div>
 				<div class="flex justify-between max-lg:w-full shrink-0 lg:w-grid-5-w">
 					<dd class="max-lg:w-grid-2-w shrink-0">
@@ -58,11 +58,11 @@ export default function ProjectHero(props: ProjectHeroProps) {
 						</Dynamic>
 					</dd>
 					<Show when={props.partners}>
-						<dl class="flex shrink-0 flex lg:justify-end w-grid-3-w lg:w-grid-4 gap-gutter-1 ">
+						<div class="flex shrink-0 flex lg:justify-end w-grid-3-w lg:w-grid-4 gap-gutter-1 ">
 							<dt class="max-lg:hidden">Partners in crime</dt>
 							<dt class="lg:hidden w-80">w / </dt>
 							<dd>{partnerList(props.partners)}</dd>
-						</dl>
+						</div>
 					</Show>
 				</div>
 			</dl>
