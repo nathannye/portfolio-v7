@@ -1,7 +1,7 @@
 import { getDocumentBySlug, PortableText, SanityPage } from '@local/sanity'
-import { createAsync, query } from '@solidjs/router'
+import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'
-import { onMount, Show } from 'solid-js'
+import { createEffect, onMount, Show } from 'solid-js'
 import ArticleMarkup from '~/components/ArticleMarkup'
 import MarginHero from '~/components/MarginHero'
 import PageMeta from '~/components/PageMeta'
@@ -16,11 +16,15 @@ const getMargin = query(async (slug: string) => {
 	})
 }, 'margin-details')
 
-export default function MarginPage({ params }) {
-	let el
-	const fetcher = createAsync(() => getMargin(params.slug))
+export default function MarginPage() {
+	const params = useParams()
+	const location = useLocation()
+	const fetcher = createAsync(() => getMargin(params.slug as string))
 
-	onMount(() => {
+	createEffect(() => {
+		const el = document.querySelector('[data-page]')
+		if (!location.pathname || !el) return
+
 		gsap.to(el, {
 			opacity: 1,
 			...TRANSITION,
@@ -35,7 +39,7 @@ export default function MarginPage({ params }) {
 	})
 
 	return (
-		<div ref={el} class="opacity-0">
+		<div>
 			<SanityPage component="article" fetcher={fetcher}>
 				{(data) => {
 					return (

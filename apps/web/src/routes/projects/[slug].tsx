@@ -5,9 +5,9 @@ import {
 	SanityPage,
 } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
-import { createAsync, query } from '@solidjs/router'
+import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'
-import { lazy, onMount, Show } from 'solid-js'
+import { createEffect, lazy, onMount, Show } from 'solid-js'
 import CreativeWorkMarkup from '~/components/CreativeWorkMarkup'
 import PageMeta from '~/components/PageMeta'
 import ProjectHero from '~/components/ProjectHero'
@@ -44,11 +44,15 @@ const slices = {
 	mediaDuo: lazy(() => import('~/slices/MediaDuo')),
 }
 
-export default function ProjectPage({ params }) {
-	let el
+export default function ProjectPage() {
+	const params = useParams()
+	const location = useLocation()
 	const fetcher = createAsync(() => getProject(params.slug))
 
-	onMount(() => {
+	createEffect(() => {
+		const el = document.querySelector('[data-page]')
+		if (!location.pathname || !el) return
+
 		gsap.to(el, {
 			opacity: 1,
 			...TRANSITION,
@@ -63,43 +67,42 @@ export default function ProjectPage({ params }) {
 	})
 
 	return (
-		<div ref={el} class="opacity-0">
-			<SanityPage fetcher={fetcher}>
-				{(data) => {
-					const [_type, id, dimensions, fileType] =
-						data.mainImage?.asset?._id.split('-')
+		<SanityPage fetcher={fetcher}>
+			{(data) => {
+				const [_type, id, dimensions, fileType] =
+					data.mainImage?.asset?._id.split('-')
 
-					const [width, height] = dimensions.split('x').map(Number)
-					const aspectRatio = Math.round(width / height)
-					const maxOgWidth = 1200
-					const ogHeight = Math.round(maxOgWidth / aspectRatio)
-					const ogImageUrl = `${data.mainImage?.asset?.url}?w=${maxOgWidth}&h=${ogHeight}&format=png`
-					return (
-						<>
-							<PageMeta
-								description={data.description}
-								title={data.title}
-								slug={data.slug.fullUrl}
-								imageUrl={ogImageUrl}
-								ogImageWidth={maxOgWidth}
-								ogImageHeight={ogHeight}
-							/>
-							<CreativeWorkMarkup {...data} />
-							<ProjectHero {...data} />
-							<div
-								style={{
-									'--gap': '9rem',
-									'--gap-mobile': '14rem',
-								}}
-								class="flex flex-col mt-[var(--gap-mobile)] lg:mt-[var(--gap)] w-full gap-y-[var(--gap-mobile)] lg:gap-y-[var(--gap)] grid-contain px-margin-1"
-							>
-								<SanityComponents componentList={slices} components={data.slices} />
-							</div>
-							<ProjectNavButtons previous={data.previous} next={data.next} />
-						</>
-					)
-				}}
-			</SanityPage>
-		</div>
+				const [width, height] = dimensions.split('x').map(Number)
+				const aspectRatio = Math.round(width / height)
+				const maxOgWidth = 1200
+				const ogHeight = Math.round(maxOgWidth / aspectRatio)
+				const ogImageUrl = `${data.mainImage?.asset?.url}?w=${maxOgWidth}&h=${ogHeight}&format=png`
+				return (
+					<>
+						<PageMeta
+							description={data.description}
+							title={data.title}
+							slug={data.slug.fullUrl}
+							imageUrl={ogImageUrl}
+							ogImageWidth={maxOgWidth}
+							ogImageHeight={ogHeight}
+						/>
+						<Link rel="preload" href={data.mainImage?.asset?.url} as="image" />
+						<CreativeWorkMarkup {...data} />
+						<ProjectHero {...data} />
+						<div
+							style={{
+								'--gap': '9rem',
+								'--gap-mobile': '14rem',
+							}}
+							class="flex flex-col mt-[var(--gap-mobile)] lg:mt-[var(--gap)] w-full gap-y-[var(--gap-mobile)] lg:gap-y-[var(--gap)] grid-contain px-margin-1"
+						>
+							<SanityComponents componentList={slices} components={data.slices} />
+						</div>
+						<ProjectNavButtons previous={data.previous} next={data.next} />
+					</>
+				)
+			}}
+		</SanityPage>
 	)
 }

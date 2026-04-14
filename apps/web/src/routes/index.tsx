@@ -1,8 +1,8 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
 import { Link, Meta, Title } from '@solidjs/meta'
-import { createAsync, query } from '@solidjs/router'
+import { createAsync, query, useLocation } from '@solidjs/router'
 import gsap from 'gsap'
-import { For, onMount, Show } from 'solid-js'
+import { createEffect, For, onMount, Show } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection/ListSection'
 import MarginListItem from '~/components/MarginListItem'
@@ -32,10 +32,14 @@ const getData = query(async () => {
 }, 'projects')
 
 export default function Home() {
-	let el
 	const data = createAsync(() => getData())
+	const location = useLocation()
+	let el: HTMLElement | undefined
 
-	onMount(() => {
+	createEffect(() => {
+		const el = document.querySelector('[data-page]')
+		if (!location.pathname || !el) return
+
 		gsap.to(el, {
 			opacity: 1,
 			...TRANSITION,
@@ -50,7 +54,7 @@ export default function Home() {
 	})
 
 	return (
-		<div ref={el} class="opacity-0">
+		<div ref={el}>
 			<SanityPage fetcher={data}>
 				{(d) => {
 					const [projects, margins, page] = d
