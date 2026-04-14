@@ -65,6 +65,27 @@ export default function PageMeta(props: PageMetaProps) {
 			</Show>
 			<Link rel="preconnect" href="https://image.mux.com" />
 			<Link rel="preconnect" href="https://cdn.sanity.io" />
+			<Link
+				rel="preload"
+				href="/fonts/AcidGrotesk.woff2"
+				as="font"
+				type="font/woff2"
+				crossorigin=""
+			/>
+			<Link
+				rel="preload"
+				href="/fonts/ESFaceTRIAL-Medium.woff2"
+				as="font"
+				type="font/woff2"
+				crossorigin=""
+			/>
+			<Link
+				rel="preload"
+				href="/fonts/ESFaceTRIAL-Regular.woff2"
+				as="font"
+				type="font/woff2"
+				crossorigin=""
+			/>
 		</Show>
 	)
 }

@@ -34,7 +34,7 @@ export default function MuxVideo({
 	const { poster: posterUrl, playbackUrl: url } = getMuxUrls(playbackId)
 
 	const generatePosterAttrs = () => {
-		const responsiveWidths = [320, 640, 960, 1200, 1920]
+		const responsiveWidths = [100, 320, 640, 960, 1200, 1920]
 		const srcset = responsiveWidths
 			.map(
 				(width) =>
