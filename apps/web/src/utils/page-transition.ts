@@ -6,7 +6,7 @@ import { Scroll } from '~/subscribers/scroll'
 
 export const TRANSITION = {
 	duration: 0.575,
-	ease: 'power3.out',
+	ease: 'power2.out',
 }
 
 let outTransitions = [] as ((props: { to: string; from: string }) => any)[]

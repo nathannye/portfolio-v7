@@ -1,10 +1,12 @@
 import { getDocumentBySlug, PortableText, SanityPage } from '@local/sanity'
-import { createAsync, query } from '@solidjs/router'
+import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'
-import { onMount, Show } from 'solid-js'
+import { createEffect, Show } from 'solid-js'
 import ArticleMarkup from '~/components/ArticleMarkup'
 import MarginHero from '~/components/MarginHero'
 import PageMeta from '~/components/PageMeta'
+import { onPageLeave } from '~/utils'
+import { TRANSITION } from '~/utils/page-transition'
 
 const getMargin = query(async (slug: string) => {
 	'use server'
@@ -15,12 +17,30 @@ const getMargin = query(async (slug: string) => {
 	})
 }, 'margin-details')
 
-export default function MarginPage({ params }) {
-	let el
-	const fetcher = createAsync(() => getMargin(params.slug))
+export default function MarginPage() {
+	const params = useParams()
+	const location = useLocation()
+	const fetcher = createAsync(() => getMargin(params.slug as string))
+
+	createEffect(() => {
+		const el = document.querySelector('[data-page]')
+		if (!location.pathname || !el) return
+
+		gsap.to(el, {
+			opacity: 1,
+			...TRANSITION,
+		})
+
+		onPageLeave(el, async () => {
+			return await gsap.to(el, {
+				opacity: 0,
+				...TRANSITION,
+			})
+		})
+	})
 
 	return (
-		<div ref={el} class="opacity-0">
+		<div>
 			<SanityPage component="article" fetcher={fetcher}>
 				{(data) => {
 					return (
