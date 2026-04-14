@@ -1,5 +1,5 @@
 import cx from 'classix'
-import Hls from 'hls.js'
+import type Hls from 'hls.js'
 import { createEffect, onCleanup, onMount } from 'solid-js'
 import { onIntersect } from '~/utils'
 import { getMuxUrls } from '~/utils/mux'
@@ -27,7 +27,7 @@ export default function MuxVideo({
 	posterDesktopWidth,
 	posterMobileWidth,
 }: MuxVideoProps) {
-	let el!: HTMLVideoElement // ensure el is assigned before usage
+	let el!: HTMLVideoElement
 	let hlsRef: Hls
 
 	const playbackId = src.asset?.playbackId
@@ -48,15 +48,16 @@ export default function MuxVideo({
 		}
 	}
 
-	createEffect(() => {
-		if (!el || !playbackId || !Hls.isSupported()) return
+	createEffect(async () => {
+		if (!el || !playbackId) return
 
-		if (playbackId && Hls.isSupported()) {
-			const hls = new Hls()
-			hls.loadSource(url)
-			hls.attachMedia(el)
-			hlsRef = hls
-		}
+		const { default: HlsLib } = await import('hls.js')
+		if (!HlsLib.isSupported()) return
+
+		const hls = new HlsLib()
+		hls.loadSource(url)
+		hls.attachMedia(el)
+		hlsRef = hls
 	})
 
 	onCleanup(() => {
