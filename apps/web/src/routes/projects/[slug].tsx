@@ -4,7 +4,7 @@ import {
 	SanityComponents,
 	SanityPage,
 } from '@local/sanity'
-import { Link, Meta, Title } from '@solidjs/meta'
+import { Link } from '@solidjs/meta'
 import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'
 import { createEffect, lazy } from 'solid-js'

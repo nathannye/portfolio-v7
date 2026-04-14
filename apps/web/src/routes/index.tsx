@@ -1,14 +1,14 @@
 import { getDocumentByType, SanityPage } from '@local/sanity'
-import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query, useLocation } from '@solidjs/router'
 import gsap from 'gsap'
-import { createEffect, For, onMount, Show } from 'solid-js'
+import { createEffect, For } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection/ListSection'
 import MarginListItem from '~/components/MarginListItem'
 import PageMeta from '~/components/PageMeta'
 import ProjectListItem from '~/components/ProjectListItem'
 import { DOMAIN } from '~/config'
+import { onPageLeave, TRANSITION } from '~/utils'
 
 const getData = query(async () => {
 	'use server'
