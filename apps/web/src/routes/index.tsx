@@ -61,7 +61,7 @@ export default function Home() {
 						<>
 							<PageMeta
 								titleOverride="Nathan Nye • Creative Developer"
-								description="Creative developer and designer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
+								description="Creative developer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
 								title="Nathan Nye • Creative Developer"
 								slug="/"
 								imageUrl={`${DOMAIN}/og.png`}
