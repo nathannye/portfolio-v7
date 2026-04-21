@@ -49,7 +49,7 @@
 }
 
 @utility body-1 {
-	font-size: max(var(--min-font-size), 1.9rem);
+	font-size: max(var(--min-font-size), 1.7rem);
 	letter-spacing: -0.009em;
 	line-height: 1.52;
 	@apply font-serif;

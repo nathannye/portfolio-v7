@@ -17,7 +17,7 @@ export default createPage({
 		{
 			name: 'blurb',
 			type: 'text',
-			rows: 3,
+			rows: 8,
 		},
 	],
 })
