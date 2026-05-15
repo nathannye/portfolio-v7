@@ -5,6 +5,7 @@ import { Suspense } from 'solid-js'
 // import GlobalLayout from './components/GlobalLayout'
 import { useViewport } from './hooks/useViewport'
 import './app.css'
+import GlobalLayout from './components/GlobalLayout'
 
 export default function App() {
 	useViewport()
@@ -12,9 +13,9 @@ export default function App() {
 		<Router
 			root={(props) => (
 				<MetaProvider>
-					{/* <GlobalLayout> */}
-					<Suspense>{props.children}</Suspense>
-					{/* </GlobalLayout> */}
+					<GlobalLayout>
+						<Suspense>{props.children}</Suspense>
+					</GlobalLayout>
 				</MetaProvider>
 			)}
 		>
