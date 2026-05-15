@@ -1,4 +1,3 @@
-import cx from 'classix'
 import type { SanityImageProps } from '../types'
 import { urlFor } from '../utils/assets'
 

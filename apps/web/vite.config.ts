@@ -7,7 +7,8 @@ import { defineConfig } from 'vite'
 import { DOMAIN } from './src/config'
 
 export default defineConfig({
-	
+	envPrefix: ['SANITY_'],
+
 	plugins: [
 		solidStart(),
 		tailwindcss(),

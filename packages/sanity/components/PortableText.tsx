@@ -102,7 +102,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			const link = sanityLink({ ...props.value, link: props.value })
 
 			return (
-				<a class="underline" {...link.attrs}>
+				<a class="underline text-accent" {...link.attrs}>
 					{props.children}
 				</a>
 			)

@@ -1,4 +1,4 @@
-import { getDocumentByType } from '@local/sanity'
+import { getDocumentByType } from '@local/sanity/server'
 import { Link, Meta, Title } from '@solidjs/meta'
 import { createAsync, query } from '@solidjs/router'
 import { type Accessor, Show } from 'solid-js'
@@ -21,8 +21,8 @@ type GlobalMeta = {
 }
 
 const getGlobalMeta = query(async () => {
-	const seo = await getDocumentByType('seo')
-	return seo
+	'use server'
+	return await getDocumentByType('seo')
 }, 'global-meta')
 
 export default function PageMeta(props: PageMetaProps) {

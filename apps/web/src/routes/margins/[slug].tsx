@@ -1,4 +1,5 @@
-import { getDocumentBySlug, PortableText, SanityPage } from '@local/sanity'
+import { PortableText, SanityPage } from '@local/sanity'
+import { getDocumentBySlug } from '@local/sanity/server'
 import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'
 import { createEffect, Show } from 'solid-js'

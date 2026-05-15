@@ -2,11 +2,13 @@ import {
 	createImageUrlBuilder,
 	type SanityImageSource,
 } from '@sanity/image-url'
-import sanityClient from '../client'
+import { SANITY_CONFIG } from '../config'
 
 export const urlFor = (url: string) => {
 	if (!url) return null
-	return createImageUrlBuilder(sanityClient).image(url)
+	return createImageUrlBuilder({
+		...SANITY_CONFIG,
+	}).image(url)
 }
 
 /** Builds a CDN URL for any Sanity image object (or returns null). Used for WebGL textures, etc. */
@@ -25,7 +27,9 @@ export function sanityImageToUrl(
 		return `${base}?auto=format&w=${width}`
 	}
 	try {
-		return createImageUrlBuilder(sanityClient)
+		return createImageUrlBuilder({
+			...SANITY_CONFIG,
+		})
 			.image(source as SanityImageSource)
 			.width(width)
 			.auto('format')

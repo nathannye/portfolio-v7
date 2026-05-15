@@ -2,6 +2,11 @@
   "name": "@local/sanity",
   "type": "module",
   "main": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./server": "./server.ts",
+    "./components/*": "./components/*"
+  },
   "dependencies": {
     "@portabletext/solid": "^1.0.8",
     "@sanity/client": "^7.15.0",

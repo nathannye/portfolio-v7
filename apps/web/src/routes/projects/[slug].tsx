@@ -1,9 +1,5 @@
-import {
-	getDocumentBySlug,
-	getDocumentByType,
-	SanityComponents,
-	SanityPage,
-} from '@local/sanity'
+import { SanityComponents, SanityPage } from '@local/sanity'
+import { getDocumentBySlug, getDocumentByType } from '@local/sanity/server'
 import { Link } from '@solidjs/meta'
 import { createAsync, query, useLocation, useParams } from '@solidjs/router'
 import gsap from 'gsap'

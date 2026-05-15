@@ -1,4 +1,5 @@
-import { getDocumentByType, SanityPage } from '@local/sanity'
+import { SanityPage } from '@local/sanity'
+import { getDocumentByType } from '@local/sanity/server'
 import { createAsync, query, useLocation } from '@solidjs/router'
 import gsap from 'gsap'
 import { createEffect, For } from 'solid-js'
@@ -57,6 +58,7 @@ export default function Home() {
 			<SanityPage fetcher={data}>
 				{(d) => {
 					const [projects, margins, page] = d
+
 					return (
 						<>
 							<PageMeta
