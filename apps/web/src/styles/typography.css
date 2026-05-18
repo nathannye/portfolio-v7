@@ -6,7 +6,7 @@
 }
 
 @utility heading-2 {
-	font-size: max(var(--min-font-size), 6.4rem);
+	font-size: max(var(--min-font-size), 6rem);
 	letter-spacing: -0.02em;
 	line-height: 1.2;
 	@apply font-serif;
@@ -17,13 +17,13 @@
 }
 
 @utility heading-3 {
-	font-size: max(var(--min-font-size), 4rem);
+	font-size: max(var(--min-font-size), 3.8rem);
 	letter-spacing: -0.02em;
 	line-height: 1.27;
 	@apply font-serif;
 
 	@media screen and (max-width: 1024px) {
-		font-size: max(var(--min-font-size), 4.5rem);
+		font-size: max(var(--min-font-size), 3rem);
 	}
 }
 
@@ -34,7 +34,7 @@
 	@apply font-serif;
 
 	@media screen and (max-width: 1024px) {
-		font-size: max(var(--min-font-size), 3.9rem);
+		font-size: max(var(--min-font-size), 2.45rem);
 	}
 }
 
@@ -60,9 +60,9 @@
 }
 
 @utility body-2 {
-	font-size: max(var(--min-font-size), 1.55rem);
+	font-size: max(var(--min-font-size), 1.775rem);
 	letter-spacing: -0.003em;
-	line-height: 1.575;
+	line-height: 1.675;
 	font-weight: 85;
 
 	@media screen and (max-width: 1024px) {

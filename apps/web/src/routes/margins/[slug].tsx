@@ -66,7 +66,7 @@ export default function MarginPage() {
 									</div>
 								</Show>
 								<Show when={data.body}>
-									<div class="opacity-90 lg:[&>*]:w-grid-7 lg:[&>*]:ml-grid-2-w">
+									<div data-portable class="lg:[&>*]:w-grid-8 lg:[&>*]:ml-grid-2-w">
 										<PortableText value={data.body} />
 									</div>
 								</Show>
