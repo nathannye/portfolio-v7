@@ -12,7 +12,7 @@ html {
 }
 
 [data-portable] {
-	& *:not(img, h1, h2, h3, h4, h5, h6) {
+	& *:not(img, h1, h2, h3, h4, h5, h6, td, th, tr, thead, tbody) {
 		opacity: 0.75;
 
 		em {

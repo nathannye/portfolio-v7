@@ -69,6 +69,46 @@ const createDefaultComponents = (): PortableTextComponents => ({
 				<p class="body-3 mt-12 font-[120]">{props.value.quote}</p>
 			</div>
 		),
+		table: (props) => {
+			const rows = props.value?.rows ?? props.rows ?? []
+			if (!rows.length) return null
+
+			const [headerRow, ...bodyRows] = rows
+
+			return (
+				<div class="py-40 w-full">
+					<table class="!opacity-100 w-full">
+						<thead>
+							<tr>
+								<For each={headerRow.cells ?? []}>
+									{(cell) => (
+										<th
+											class="eyebrow text-left font-[180] pt-22 pb-2 pl-8 !opacity-100"
+											scope="col"
+										>
+											{cell}
+										</th>
+									)}
+								</For>
+							</tr>
+						</thead>
+						<tbody>
+							<For each={bodyRows}>
+								{(row) => (
+									<tr class="not-last:border-b not-last:border-inverted/10">
+										<For each={row.cells ?? []}>
+											{(cell) => (
+												<td class="body-2 pl-8 pt-22 pb-2 !opacity-70">{cell}</td>
+											)}
+										</For>
+									</tr>
+								)}
+							</For>
+						</tbody>
+					</table>
+				</div>
+			)
+		},
 	},
 	block: {
 		normal: (props) => {
@@ -89,7 +129,9 @@ const createDefaultComponents = (): PortableTextComponents => ({
 		),
 	},
 	marks: {
-		strong: (props) => <strong class="font-[220]">{props.children}</strong>,
+		strong: (props) => (
+			<strong class="font-[200] !opacity-100">{props.children}</strong>
+		),
 		em: (props) => <em>{props.children}</em>,
 		underline: (props) => (
 			<span style={{ 'text-decoration': 'underline' }}>{props.children}</span>

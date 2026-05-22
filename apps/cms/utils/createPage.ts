@@ -100,6 +100,10 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 						type: 'image',
 					},
 					{
+						name: 'table',
+						type: 'table',
+					},
+					{
 						name: 'video',
 						type: 'mux.video',
 					},
