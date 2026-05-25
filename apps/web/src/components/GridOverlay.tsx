@@ -36,7 +36,7 @@ export default function GridOverlay() {
 				visible() ? 'block' : 'hidden',
 			)}
 		>
-			<div class="px-margin-1 gap-gutter-1 grid-contain flex size-full">
+			<div class="px-margin-1 gap-gutter-1 mx-auto grid-contain flex size-full">
 				<For each={Array.from({ length: columns() }).fill(null)}>
 					{() => <div class="size-full bg-[red]/10" />}
 				</For>

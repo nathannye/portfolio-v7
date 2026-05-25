@@ -12,8 +12,26 @@ html {
 }
 
 [data-portable] {
-	& *:not(img, h1, h2, h3, h4, h5, h6, td, th, tr, thead, tbody) {
-		opacity: 0.75;
+	&
+		*:not(
+			img,
+			h1,
+			h2,
+			h3,
+			h4,
+			h5,
+			h6,
+			td,
+			th,
+			tr,
+			thead,
+			tbody,
+			ul,
+			ol,
+			a,
+			div:has(table)
+		) {
+		opacity: 0.7;
 
 		em {
 			opacity: 1 !important;

@@ -10,9 +10,12 @@ type MarginHeroProps = {
 
 export default function MarginHero(props: MarginHeroProps) {
 	return (
-		<header use:marginHeroAnimation class="px-margin-1 pt-[30vh] pb-[15vh]">
+		<header
+			use:marginHeroAnimation
+			class="px-margin-1 w-full grid-contain pt-[30vh] pb-[15vh]"
+		>
 			<div class="flex max-lg:flex-col-reverse gap-y-40">
-				<div class="lg:w-grid-2-w max-lg:justify-between	 max-lg:flex gap-x-20 lg:pt-10 shrink-0">
+				<div class="lg:w-grid-2-w  max-lg:justify-between max-lg:flex gap-x-20 lg:pt-10 shrink-0">
 					<dl
 						class="mb-30 eyebrow max-lg:pl-9 max-lg:flex"
 						aria-label={`Estimated reading time ${props.estimatedReadingTime} minutes`}

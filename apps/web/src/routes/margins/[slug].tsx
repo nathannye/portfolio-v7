@@ -45,7 +45,7 @@ export default function MarginPage() {
 			<SanityPage component="article" fetcher={fetcher}>
 				{(data) => {
 					return (
-						<div class="pb-80">
+						<div class="pb-80 flex flex-col items-center">
 							<PageMeta
 								description={data.description}
 								title={data.title}
@@ -59,7 +59,7 @@ export default function MarginPage() {
 								_updatedAt={data._updatedAt}
 							/>
 							<MarginHero {...data} />
-							<div class="px-margin-1">
+							<article class="px-margin-1 grid-contain w-full">
 								<Show when={data.excerpt}>
 									<div class="lg:w-grid-8 border-inverted/10 py-30 border-y [&_p]:!body-2 mb-90 opacity-90 lg:ml-grid-2-w">
 										<PortableText value={data.excerpt} />
@@ -70,7 +70,7 @@ export default function MarginPage() {
 										<PortableText value={data.body} />
 									</div>
 								</Show>
-							</div>
+							</article>
 						</div>
 					)
 				}}

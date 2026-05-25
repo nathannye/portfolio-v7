@@ -1,4 +1,9 @@
 html {
 	--min-font-size: 11px;
+
 	font-size: calc(0.3307vw + 0.3125em);
+
+	@media screen and (min-width: 1920px) {
+		font-size: 10px !important;
+	}
 }

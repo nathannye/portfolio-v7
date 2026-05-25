@@ -1,7 +1,6 @@
 import { MdDocumentScanner } from 'react-icons/md'
 import createPage from '../../utils/createPage'
 import { createPortableText } from '../../utils/portable-text/createPortableText'
-import { portableTextToString } from '../../utils/string'
 
 export default createPage({
 	name: 'margin',

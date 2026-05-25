@@ -83,7 +83,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 								<For each={headerRow.cells ?? []}>
 									{(cell) => (
 										<th
-											class="eyebrow text-left font-[180] pt-22 pb-2 pl-8 !opacity-100"
+											class="eyebrow text-left font-[180] pb-22 pl-8 !opacity-100"
 											scope="col"
 										>
 											{cell}
