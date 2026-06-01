@@ -38,6 +38,11 @@ export default createPage({
 			of: [{ type: 'reference', to: [{ type: 'tag' }] }],
 		},
 		{
+			name: 'categories',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'category' }] }],
+		},
+		{
 			name: 'firstPublished',
 			type: 'date',
 		},

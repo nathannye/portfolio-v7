@@ -1,6 +1,5 @@
-import { createAsync } from '@solidjs/router'
 import * as PrismNamespace from 'prismjs'
-import { type JSX, splitProps } from 'solid-js'
+import { createEffect, createMemo, createSignal, type JSX, splitProps } from 'solid-js'
 
 type PrismLib = typeof PrismNamespace & {
 	highlight: (code: string, grammar: object, language: string) => string
@@ -49,6 +48,7 @@ const LANGUAGE_ALIASES: Record<string, string> = {
 	html: 'markup',
 	css: 'css',
 	bash: 'bash',
+	groq: 'groq',
 }
 
 export function normalizeLanguage(language: string | null | undefined): string {
@@ -97,6 +97,9 @@ const LANGUAGE_LOADERS: Record<string, LangLoader> = {
 	yaml: async () => {
 		await import('prismjs/components/prism-yaml.js')
 	},
+	groq: async () => {
+		await import('@sanity/prism-groq')
+	},
 }
 
 async function loadPrismLanguage(id: string): Promise<void> {
@@ -118,26 +121,41 @@ export interface PrismCodeBlockProps {
 
 export function PrismCodeBlock(props: PrismCodeBlockProps): JSX.Element {
 	const [local, rest] = splitProps(props, ['code', 'language', 'class'])
+	const [innerHtml, setInnerHtml] = createSignal(escapeHtml(local.code ?? ''))
 
-	const innerHtml = createAsync(
-		async () => {
-			const code = local.code
-			const language = local.language
-			const normalized = normalizeLanguage(language)
-			const id = grammarIdForHighlight(normalized, code ?? '')
+	const source = createMemo(() => {
+		const code = local.code ?? ''
+		const normalized = normalizeLanguage(local.language)
+		return {
+			code,
+			id: grammarIdForHighlight(normalized, code),
+		}
+	})
+
+	createEffect(() => {
+		const { code, id } = source()
+		let cancelled = false
+
+		void (async () => {
 			await loadPrismLanguage(id)
+			if (cancelled) return
 			const grammar = Prism.languages[id]
 			if (grammar) {
-				return Prism.highlight(code ?? '', grammar, id)
+				setInnerHtml(Prism.highlight(code, grammar, id))
+				return
 			}
 			const plain = Prism.languages.plaintext
 			if (plain) {
-				return Prism.highlight(code ?? '', plain, 'plaintext')
+				setInnerHtml(Prism.highlight(code, plain, 'plaintext'))
+				return
 			}
-			return escapeHtml(code ?? '')
-		},
-		{ initialValue: '' },
-	)
+			setInnerHtml(escapeHtml(code))
+		})()
+
+		return () => {
+			cancelled = true
+		}
+	})
 
 	const codeClass = () =>
 		[

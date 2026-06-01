@@ -19,7 +19,15 @@ const sharedConfig = [
 	media(),
 	noteField(),
 	muxInput(),
-	codeInput(),
+	codeInput({
+		codeModes: [
+			{
+				name: 'groq', 
+				loader: () => import('@sanity/lezer-groq').then(m => m.groq())
+			}
+		], 
+
+	}),
 	crawlMeMaybe(),
 	table(),
 	visionTool(),

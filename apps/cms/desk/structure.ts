@@ -1,6 +1,7 @@
 import { AiFillTag } from 'react-icons/ai'
 import { IoBusiness } from 'react-icons/io5'
 import {
+	MdCategory,
 	MdDocumentScanner,
 	MdEditDocument,
 	MdHome,
@@ -23,7 +24,9 @@ export const structure = (S, context: any) => {
 			pageList('Partners', 'partner', IoBusiness),
 			div(),
 			pageList('Margins', 'margin', MdDocumentScanner),
+			div(),
 			pageList('Tags', 'tag', AiFillTag),
+			pageList('Categories', 'category', MdCategory),
 			div(),
 			singlePage('SEO', 'seo', MdSearch),
 		])

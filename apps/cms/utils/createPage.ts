@@ -92,7 +92,8 @@ export const createPage = (opts: PageAttributes): DocumentDefinition => {
 								{ title: 'TSX', value: 'tsx' },
 								{ title: 'HTML', value: 'html' },
 								{ title: 'CSS', value: 'css' },
-							],
+								{ title: 'Groq', value: 'groq' },
+							].sort((a, b) => a.title.localeCompare(b.title)),
 						},
 					},
 					{

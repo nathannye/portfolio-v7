@@ -20,6 +20,7 @@
     "@sanity/code-input": "^7.0.12",
     "@sanity/functions": "^1.2.1",
     "@sanity/icons": "^3.7.4",
+    "@sanity/lezer-groq": "^1.0.4",
     "@sanity/orderable-document-list": "^1.5.1",
     "@sanity/table": "^2.0.1",
     "@sanity/ui": "^3.1.13",

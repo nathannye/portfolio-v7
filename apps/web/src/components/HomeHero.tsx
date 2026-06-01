@@ -1,4 +1,5 @@
 import { For } from 'solid-js'
+import { fadeIn } from '~/animations/fade-in'
 
 type HomeHeroProps = {
 	headline: string
@@ -9,7 +10,7 @@ export default function HomeHero(props: HomeHeroProps) {
 	const parts = () => props.headline.split(/(\{[^}]+\})/)
 
 	return (
-		<header class="pt-[20vh] lg:pt-[24vh] mb-110 px-margin-1">
+		<header use:fadeIn class="pt-[20vh] lg:pt-[24vh] mb-110 px-margin-1 opacity-0">
 			<h1 class="heading-3 lg:pl-grid-3-w lg:pr-grid-3-w">
 				<For each={parts()}>
 					{(part) => {
