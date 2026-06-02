@@ -59,11 +59,11 @@ pre[class*="language-"] {
 }
 
 .token.attr-value {
-	color: #d39236;
+	color: #d19408;
 }
 
 .token.attribute {
-	color: #d39236;
+	color: #d19408;
 }
 
 .token.boolean {
@@ -153,11 +153,11 @@ pre[class*="language-"] {
 }
 
 .token.pseudo-class {
-	color: #d39236;
+	color: #d19408;
 }
 
 .token.pseudo-element {
-	color: #d39236;
+	color: #d19408;
 }
 
 .token.punctuation {
@@ -173,7 +173,7 @@ pre[class*="language-"] {
 }
 
 .token.string {
-	color: #d39236;
+	color: #d19408;
 }
 
 .token.symbol {

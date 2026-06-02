@@ -26,7 +26,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			<PrismCodeBlock
 				code={props.value.code ?? ''}
 				language={props.value.language}
-				class="!bg-inverted/4 mb-35 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.2rem] !text-[1.9rem] whitespace-pre-wrap !block rounded-lg"
+				class="!bg-inverted/4 mb-35 !font-mono [&_span]:!shadow-none p-20 lg:!text-[1.4rem] !text-[1.9rem] whitespace-pre-wrap !block rounded-lg"
 			/>
 		),
 		linedList: (props) => {
@@ -139,7 +139,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 		),
 		code: (props) => {
 			return (
-				<code class="bg-inverted/5 font-mono inline-block px-3 py-1 rounded-sm">
+				<code class="bg-inverted/10 !opacity-100 font-mono inline-block px-5 py-1 leading-[1.2em] rounded-md mx-3">
 					{props.children}
 				</code>
 			)
