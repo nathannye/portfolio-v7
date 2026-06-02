@@ -40,8 +40,8 @@
 
 @utility heading-5 {
 	font-size: max(var(--min-font-size), 1.5rem);
-	letter-spacing: -0.01em;
-	font-weight: 140;
+	letter-spacing: 0.012em;
+	font-weight: 120;
 
 	@media screen and (max-width: 1024px) {
 		font-size: max(var(--min-font-size), 2.2rem);
