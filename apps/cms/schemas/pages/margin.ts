@@ -36,6 +36,7 @@ export default createPage({
 			name: 'tags',
 			type: 'array',
 			of: [{ type: 'reference', to: [{ type: 'tag' }] }],
+			validation: (Rule) => Rule.min(1).max(4),
 		},
 		{
 			name: 'categories',
@@ -45,6 +46,7 @@ export default createPage({
 		{
 			name: 'firstPublished',
 			type: 'date',
+			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: 'keywords',
