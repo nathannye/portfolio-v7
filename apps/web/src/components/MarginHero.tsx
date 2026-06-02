@@ -1,5 +1,6 @@
-import { For } from 'solid-js'
+import { For, Show } from 'solid-js'
 import { marginHeroAnimation } from '~/animations/project-hero'
+import { formatTime } from '~/utils/time'
 
 type MarginHeroProps = {
 	title: string

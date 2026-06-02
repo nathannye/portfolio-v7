@@ -8,6 +8,7 @@ import MarginHero from '~/components/MarginHero'
 import PageMeta from '~/components/PageMeta'
 import { onPageLeave } from '~/utils'
 import { TRANSITION } from '~/utils/page-transition'
+import { formatTime } from '~/utils/time'
 
 const getMargin = query(async (slug: string) => {
 	'use server'
@@ -59,10 +60,18 @@ export default function MarginPage() {
 								_updatedAt={data._updatedAt}
 							/>
 							<MarginHero {...data} />
+
 							<article class="px-margin-1 grid-contain w-full">
 								<Show when={data.excerpt}>
-									<div class="lg:w-grid-8 border-inverted/10 py-30 border-y [&_p]:!body-2 mb-90 opacity-90 lg:ml-grid-2-w">
-										<PortableText value={data.excerpt} />
+									<div class="lg:w-grid-8 border-inverted/10 py-15 border-y mb-90 lg:ml-grid-2-w">
+										<Show when={data.firstPublished}>
+											<p class="!eyebrow opacity-70 w-full text-left !mb-70">
+												→ {formatTime(data.firstPublished)}
+											</p>
+										</Show>
+										<div class="[&_p]:!body-2 opacity-90">
+											<PortableText value={data.excerpt} />
+										</div>
 									</div>
 								</Show>
 								<Show when={data.body}>
