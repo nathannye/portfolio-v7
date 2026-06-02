@@ -17,6 +17,8 @@ html {
 			img,
 			code, 
 			pre,
+			pre > *,
+			code > *,
 			h1,
 			h2,
 			h3,
