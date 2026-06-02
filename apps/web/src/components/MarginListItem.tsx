@@ -10,7 +10,7 @@ type MarginListItemProps = {
 
 export default function MarginListItem(props: MarginListItemProps) {
 	const list = (items: string[]) =>
-		items ? items.map((item) => `#${item}`).join(', ') : ''
+		items ? items.sort((a, b) => a.localeCompare(b)).map((item) => `#${item}`).join(', ') : ''
 
 	return (
 		<li
