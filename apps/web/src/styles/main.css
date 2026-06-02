@@ -15,14 +15,17 @@ html {
 
 	ol ol li {
 		list-style-type: lower-alpha;
+		opacity: 1 !important;
 	}
 
 	ol ol ol li {
 		list-style-type: lower-roman;
+		opacity: 1 !important;
 	}
 
 	ol ol ol ol li {
 		list-style-type: decimal;
+		opacity: 1 !important;
 	}
 
 	p + pre {
