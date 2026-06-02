@@ -48,12 +48,11 @@ export const listItemAnimation = (el: HTMLElement) => {
 		)
 
 		onIntersect(el, {
+			once: true,
 			onEnter: () => {
 				tl.play()
 			},
-			onLeave: () => {
-				tl.progress(0).pause()
-			},
+
 		})
 	})
 }
