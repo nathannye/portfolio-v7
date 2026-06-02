@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@portabletext/solid": "^1.0.8",
+    "@portabletext/toolkit": "^2.0.18",
     "@sanity/client": "^7.15.0",
     "@sanity/image-url": "^2.0.3",
     "@sanity/prism-groq": "^1.1.2",

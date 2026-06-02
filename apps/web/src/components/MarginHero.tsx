@@ -28,7 +28,7 @@ export default function MarginHero(props: MarginHeroProps) {
 						<dt class="max-lg:w-grid-1-w mb-6">Categories</dt>
 						<dd>
 							<ul>
-								<For each={props.tags}>
+								<For each={props.tags.sort((a, b) => a.name.localeCompare(b.name))}>
 									{(tag) => <li class="eyebrow opacity-50">#{tag.name}</li>}
 								</For>
 							</ul>

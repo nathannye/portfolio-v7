@@ -1,3 +1,4 @@
+import { nestLists } from '@portabletext/toolkit'
 import { createMemo, For, type JSX } from 'solid-js'
 import { Dynamic } from 'solid-js/web'
 import { sanityLink } from '../utils/link'
@@ -61,7 +62,7 @@ const createDefaultComponents = (): PortableTextComponents => ({
 			)
 		},
 		image: (props) => (
-			<SanityImage class="lg:!ml-grid-1-w lg:!w-grid-12 my-40" src={props.value} />
+			<SanityImage class="lg:!ml-grid-2-w lg:!w-grid-8 my-40" src={props.value} />
 		),
 		callout: (props) => (
 			<div class="lg:w-grid-6-w mb-80 rounded-sm bg-inverted/20 p-15">
@@ -156,12 +157,24 @@ const createDefaultComponents = (): PortableTextComponents => ({
 	},
 	list: {
 		bullet: (props) => (
-			<ul class="flex flex-col gap-y-1 body-2 mb-30 max-lg:pl-25 list-disc">
+			<ul
+				classList={{
+					'flex flex-col gap-y-1 body-2 list-disc': true,
+					'mb-30 max-lg:pl-25': (props.value?.level ?? 1) === 1,
+					'mt-4 ml-20': (props.value?.level ?? 1) > 1,
+				}}
+			>
 				{props.children}
 			</ul>
 		),
 		number: (props) => (
-			<ol class="flex flex-col gap-y-8 body-2 mb-30 max-lg:pl-25 list-decimal">
+			<ol
+				classList={{
+					'flex flex-col gap-y-8 body-2 list-decimal': true,
+					'mb-30 max-lg:pl-25': (props.value?.level ?? 1) === 1,
+					'mt-4 ml-20': (props.value?.level ?? 1) > 1,
+				}}
+			>
 				{props.children}
 			</ol>
 		),
@@ -172,30 +185,8 @@ const createDefaultComponents = (): PortableTextComponents => ({
 	},
 })
 
-function nestLists(blocks: any[]) {
-	const tree: any[] = []
-	let currentList: any = null
-
-	for (let i = 0; i < blocks.length; i++) {
-		const block = blocks[i]
-		if (block.listItem) {
-			if (!currentList || currentList.listItem !== block.listItem) {
-				currentList = {
-					_type: '_list',
-					_key: `${block._key}-list`,
-					listItem: block.listItem,
-					children: [block],
-				}
-				tree.push(currentList)
-			} else {
-				currentList.children.push(block)
-			}
-		} else {
-			currentList = null
-			tree.push(block)
-		}
-	}
-	return tree
+function isToolkitList(block: { _type?: string }) {
+	return block._type === '@list' || block._type === '_list'
 }
 
 export function PortableText(props: PortableTextProps) {
@@ -214,7 +205,7 @@ export function PortableText(props: PortableTextProps) {
 	const blocks = createMemo(() => {
 		if (!props.value) return []
 		const val = Array.isArray(props.value) ? props.value : [props.value]
-		return nestLists(val.filter(Boolean))
+		return nestLists(val.filter(Boolean), 'html')
 	})
 
 	return (
@@ -227,11 +218,11 @@ export function PortableText(props: PortableTextProps) {
 function RenderNode(props: { block: any; components: PortableTextComponents }) {
 	const { block, components } = props
 
-	if (block._type === '_list') {
+	if (isToolkitList(block)) {
 		const ListComponent =
-			components.list[block.listItem] || components.list.bullet
+			components.list?.[block.listItem] || components.list?.bullet
 		return (
-			<Dynamic component={ListComponent}>
+			<Dynamic component={ListComponent} value={block}>
 				<For each={block.children}>
 					{(child) => <RenderNode block={child} components={components} />}
 				</For>
@@ -241,9 +232,9 @@ function RenderNode(props: { block: any; components: PortableTextComponents }) {
 
 	if (block.listItem) {
 		const ListItemComponent =
-			components.listItem[block.listItem] || components.listItem.bullet
+			components.listItem?.[block.listItem] || components.listItem?.bullet
 		return (
-			<Dynamic component={ListItemComponent}>
+			<Dynamic component={ListItemComponent} value={block}>
 				<RenderBlockContent block={block} components={components} />
 			</Dynamic>
 		)
@@ -279,6 +270,11 @@ function RenderBlockContent(props: {
 	return (
 		<For each={props.block.children}>
 			{(span) => {
+				if (isToolkitList(span)) {
+					return (
+						<RenderNode block={span} components={props.components} />
+					)
+				}
 				if (span._type !== 'span') {
 					const CustomComponent = props.components.types[span._type]
 					if (!CustomComponent) {
