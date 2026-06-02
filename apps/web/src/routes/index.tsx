@@ -91,7 +91,7 @@ export default function Home() {
 										</div>
 										<ul>
 											<For each={projects}>
-												{(project, i) => <ProjectListItem {...project} index={i()} />}
+												{(project, i) => <ProjectListItem {...project} index={i() - 4 } />}
 											</For>
 										</ul>
 									</div>
@@ -105,7 +105,7 @@ export default function Home() {
 											Published
 										</div>
 										<div data-header class="w-grid-3-w opacity-0">
-											Category
+											Topics
 										</div>
 									</div>
 									<div class="mt-10">

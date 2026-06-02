@@ -8,7 +8,7 @@ export const listItemAnimation = (el: HTMLElement) => {
 	gsap.registerPlugin(SplitText)
 	const { itemIndex, q } = parseAnimation(el)
 
-	const BASE_DELAY = 0.1 * itemIndex
+	const BASE_DELAY = 0.1 * Math.max(itemIndex, 0)
 
 	onMount(() => {
 		if (!el) return
