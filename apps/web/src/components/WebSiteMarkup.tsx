@@ -10,7 +10,7 @@ export default function WebSiteMarkup() {
 					'@type': 'Person',
 					name: 'Nathan Nye',
 					url: DOMAIN,
-					jobTitle: 'Creative Developer',
+					jobTitle: 'Frontend Engineer',
 					description:
 						'Freelance creative/frontend developer specializing in large-scale CMS builds, e-commerce, and interactive experiences.',
 					sameAs: ['https://github.com/nathannye'],
@@ -20,10 +20,10 @@ export default function WebSiteMarkup() {
 				{JSON.stringify({
 					'@context': 'https://schema.org',
 					'@type': 'WebSite',
-					name: 'Nathan Nye – Creative Developer',
+					name: 'Nathan Nye – Frontend Engineer',
 					url: DOMAIN,
 					description:
-						'Portfolio of creative developer Nathan Nye, showcasing web projects, interactive experiences, and frontend engineering work.',
+						'Frontend engineer building everything from award-winning marketing sites to sprawling CMS platforms. Focused on ambitious web projects that need to survive the real world.',
 					inLanguage: 'en',
 					author: {
 						'@id': `${DOMAIN}/#person`,

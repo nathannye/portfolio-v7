@@ -62,9 +62,9 @@ export default function Home() {
 					return (
 						<>
 							<PageMeta
-								titleOverride="Nathan Nye • Creative Developer"
-								description="Creative developer obsessed with CMS-driven web projects brought to life with kick-ass animation. Working with agencies and brands worldwide."
-								title="Nathan Nye • Creative Developer"
+								titleOverride="Nathan Nye • Frontend Engineer"
+								description="Frontend engineer building everything from award-winning marketing sites to sprawling CMS platforms. Focused on ambitious web projects that need to survive the real world."
+								title="Nathan Nye • Frontend Engineer"
 								slug="/"
 								imageUrl={`${DOMAIN}/og.png`}
 								ogImageWidth={1200}
@@ -91,7 +91,7 @@ export default function Home() {
 										</div>
 										<ul>
 											<For each={projects}>
-												{(project, i) => <ProjectListItem {...project} index={i() - 4 } />}
+												{(project, i) => <ProjectListItem {...project} index={i() - 4} />}
 											</For>
 										</ul>
 									</div>
