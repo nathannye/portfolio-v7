@@ -1,7 +1,7 @@
 import { MetaProvider } from '@solidjs/meta'
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
-import { injectSpeedInsights } from '@vercel/speed-insights'
+
 import { onMount, Suspense } from 'solid-js'
 // import GlobalLayout from './components/GlobalLayout'
 import { useViewport } from './hooks/useViewport'

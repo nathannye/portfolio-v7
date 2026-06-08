@@ -1,5 +1,6 @@
 import { useLocation } from '@solidjs/router'
 import { inject } from '@vercel/analytics'
+import { injectSpeedInsights } from '@vercel/speed-insights'
 import gsap from 'gsap'
 import type { JSX } from 'solid-js'
 import { createEffect, onMount, Show } from 'solid-js'
@@ -32,6 +33,9 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 
 	onMount(() => {
 		inject()
+		if (process.env.NODE_ENV === 'production') {
+			injectSpeedInsights()
+		}
 		getScrollbarWidth()
 	})
 
