@@ -1,4 +1,5 @@
 import { A } from '@solidjs/router'
+import { For, Show } from 'solid-js'
 import { listItemAnimation } from '~/animations/list-item'
 import { formatTime } from '~/utils/time'
 
@@ -10,7 +11,12 @@ type MarginListItemProps = {
 
 export default function MarginListItem(props: MarginListItemProps) {
 	const list = (items: string[]) =>
-		items ? items.sort((a, b) => a.localeCompare(b)).map((item) => `#${item}`).join(', ') : ''
+		items
+			? items
+					.sort((a, b) => a.localeCompare(b))
+					.map((item) => `#${item}`)
+					.join(', ')
+			: ''
 
 	return (
 		<li
@@ -37,12 +43,21 @@ export default function MarginListItem(props: MarginListItemProps) {
 				>
 					{formatTime(props.firstPublished)}
 				</div>
-				<div
+				<ul
 					data-fade
-					class="opacity-50 lg:opacity-90 eyebrow w-grid-3 max-lg:mt-20 shrink-0 font-[120] max-lg:text-[2rem]"
+					class="opacity-50 lg:opacity-90 eyebrow w-grid-3 max-lg:mt-20 max-lg:flex max-lg:gap-x-20 shrink-0 font-[120] max-lg:text-[2rem]"
 				>
-					{list(props.tags)}
-				</div>
+					<Show when={props?.tags?.length}>
+						<For each={props.tags.sort((a, b) => a.localeCompare(b))}>
+							{(tag) => (
+								<li>
+									<span class="opacity-40 lg:inline-block mr-2">#</span>
+									{tag}
+								</li>
+							)}
+						</For>
+					</Show>
+				</ul>
 			</A>
 		</li>
 	)

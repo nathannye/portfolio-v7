@@ -20,6 +20,7 @@ const getData = query(async () => {
 	})
 
 	const margins = getDocumentByType('margin', {
+		filter: ' && defined(slug.fullUrl)',
 		extraQuery:
 			'{title, slug, firstPublished, "tags":tags[]->name} | order(firstPublished desc)',
 	})
