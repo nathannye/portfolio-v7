@@ -28,10 +28,10 @@ export default function PackageListItem(props: PackageListItemProps) {
 			}}
 			class="w-full opacity-0 relative after:origin-left after:scale-x-[var(--scale)] after:absolute after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10"
 		>
-			<div class="pt-17  lg:pt-8 flex gap-y-5 items-baseline pb-40 lg:pb-20 w-full">
+			<div class="pt-17 lg:pt-8 flex gap-y-5 items-baseline pb-40 lg:pb-20 w-full">
 				<h3
 					data-fade
-					class="heading-5 lg:text-balance w-grid-2 lg:w-grid-3-w lg:pr-gutter-2 shrink-0"
+					class="heading-5 lg:text-balance w-grid-3 lg:w-grid-3-w lg:pr-gutter-2 shrink-0"
 				>
 					{props.title}
 				</h3>
@@ -45,21 +45,6 @@ export default function PackageListItem(props: PackageListItemProps) {
 						<ExternalLink href={props.npmLink} label="npm" />
 					</div>
 				</Show>
-				<ul
-					data-fade
-					class="opacity-50 lg:opacity-90 eyebrow w-grid-3 max-lg:mt-20 max-lg:flex max-lg:gap-x-20 shrink-0 font-[120] max-lg:text-[2rem]"
-				>
-					<Show when={props?.tags?.length}>
-						<For each={props.tags.sort((a, b) => a.localeCompare(b))}>
-							{(tag) => (
-								<li>
-									<span class="opacity-40 lg:inline-block mr-2">#</span>
-									{tag}
-								</li>
-							)}
-						</For>
-					</Show>
-				</ul>
 			</div>
 		</li>
 	)
