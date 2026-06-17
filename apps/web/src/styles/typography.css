@@ -23,7 +23,7 @@
 	@apply font-serif;
 
 	@media screen and (max-width: 1024px) {
-		font-size: max(var(--min-font-size), 4rem);
+		font-size: max(var(--min-font-size), 4.2rem);
 	}
 }
 
@@ -34,17 +34,17 @@
 	@apply font-serif;
 
 	@media screen and (max-width: 1024px) {
-		font-size: max(var(--min-font-size), 3rem);
+		font-size: max(var(--min-font-size), 3.2rem);
 	}
 }
 
 @utility heading-5 {
 	font-size: max(var(--min-font-size), 1.5rem);
 	letter-spacing: -0.001em;
-	font-weight: 120;
+	font-weight: 140;
 
 	@media screen and (max-width: 1024px) {
-		font-size: max(var(--min-font-size), 2.2rem);
+		font-size: max(var(--min-font-size), 2.675rem);
 	}
 }
 

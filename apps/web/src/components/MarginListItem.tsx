@@ -37,15 +37,12 @@ export default function MarginListItem(props: MarginListItemProps) {
 				>
 					{props.title}
 				</h3>
-				<div
-					data-fade
-					class="opacity-90 lg:w-grid-2-w eyebrow shrink-0 font-[120] max-lg:text-[2rem]"
-				>
+				<div data-fade class="opacity-90 lg:w-grid-2-w eyebrow shrink-0 eyebrow">
 					{formatTime(props.firstPublished)}
 				</div>
 				<ul
 					data-fade
-					class="opacity-50 lg:opacity-90 eyebrow w-grid-3 max-lg:mt-20 max-lg:flex max-lg:gap-x-20 shrink-0 font-[120] max-lg:text-[2rem]"
+					class="opacity-50 lg:opacity-90 eyebrow w-grid-3 max-lg:mt-20 max-lg:flex max-lg:gap-x-20 shrink-0 eyebrow"
 				>
 					<Show when={props?.tags?.length}>
 						<For each={props.tags.sort((a, b) => a.localeCompare(b))}>

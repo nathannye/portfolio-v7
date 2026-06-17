@@ -39,7 +39,7 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 							<h3 data-fade class="heading-5">
 								{props.title}
 							</h3>
-							<span data-fade class="opacity-50 font-[120] max-lg:text-[2rem]">
+							<span data-fade class="opacity-50 eyebrow">
 								{props.year}
 							</span>
 						</div>

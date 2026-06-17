@@ -4,6 +4,7 @@ import { createAsync, query, useLocation } from '@solidjs/router'
 import gsap from 'gsap'
 import { createEffect, For } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
+import ItemListWrapper from '~/components/ItemListWrapper'
 import ListSection from '~/components/ListSection/ListSection'
 import MarginListItem from '~/components/MarginListItem'
 import PackageListItem from '~/components/PackageListItem'
@@ -95,11 +96,11 @@ export default function Home() {
 												Press
 											</div>
 										</div>
-										<ul>
+										<ItemListWrapper>
 											<For each={projects}>
 												{(project, i) => <ProjectListItem {...project} index={i() - 4} />}
 											</For>
-										</ul>
+										</ItemListWrapper>
 									</div>
 								</ListSection>
 								<ListSection index={1} title="Writing" itemCount={margins.length}>
@@ -114,13 +115,11 @@ export default function Home() {
 											Topics
 										</div>
 									</div>
-									<div class="mt-10">
-										<ul>
-											<For each={margins}>
-												{(margin, i) => <MarginListItem {...margin} index={i()} />}
-											</For>
-										</ul>
-									</div>
+									<ItemListWrapper>
+										<For each={margins}>
+											{(margin, i) => <MarginListItem {...margin} index={i()} />}
+										</For>
+									</ItemListWrapper>
 								</ListSection>
 								<ListSection index={2} title="OSS Packages" itemCount={packages.length}>
 									<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
@@ -134,13 +133,11 @@ export default function Home() {
 											npm
 										</div>
 									</div>
-									<div class="mt-10">
-										<ul>
-											<For each={packages}>
-												{(pkg, i) => <PackageListItem {...pkg} index={i()} />}
-											</For>
-										</ul>
-									</div>
+									<ItemListWrapper>
+										<For each={packages}>
+											{(pkg, i) => <PackageListItem {...pkg} index={i()} />}
+										</For>
+									</ItemListWrapper>
 								</ListSection>
 							</div>
 						</>
