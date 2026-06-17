@@ -1,6 +1,7 @@
 import { A } from '@solidjs/router'
 import { For, Show } from 'solid-js'
 import { listItemAnimation } from '~/animations/list-item'
+import ListItem from './ListItem'
 
 type PackageListItemProps = {
 	title: string
@@ -20,15 +21,8 @@ const ExternalLink = (props: { href: string; label: string }) => {
 
 export default function PackageListItem(props: PackageListItemProps) {
 	return (
-		<li
-			use:listItemAnimation
-			data-index={props.index}
-			style={{
-				'--scale': 0,
-			}}
-			class="w-full opacity-0 relative after:origin-left after:scale-x-[var(--scale)] after:absolute after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10"
-		>
-			<div class="pt-17 lg:pt-8 flex gap-y-5 items-baseline pb-40 lg:pb-20 w-full">
+		<ListItem index={props.index}>
+			<div class="pt-17 lg:pt-10 flex gap-y-5 items-baseline pb-40 lg:pb-20 w-full">
 				<h3
 					data-fade
 					class="heading-5 lg:text-balance w-grid-3 lg:w-grid-3-w lg:pr-gutter-2 shrink-0"
@@ -46,6 +40,6 @@ export default function PackageListItem(props: PackageListItemProps) {
 					</div>
 				</Show>
 			</div>
-		</li>
+		</ListItem>
 	)
 }

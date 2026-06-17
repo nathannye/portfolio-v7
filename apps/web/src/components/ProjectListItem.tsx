@@ -3,6 +3,7 @@ import cx from 'classix'
 import { For } from 'solid-js'
 import { listItemAnimation } from '~/animations/list-item'
 import { formatPartner } from '~/utils/string'
+import ListItem from './ListItem'
 
 type ProjectListItemProps = {
 	title: string
@@ -18,17 +19,10 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 		partners ? partners.map((partner) => formatPartner(partner)).join(', ') : ''
 
 	return (
-		<li
-			use:listItemAnimation
-			data-index={props.index}
-			style={{
-				'--scale': 0,
-			}}
-			class="w-full opacity-0 relative after:origin-left after:scale-x-[var(--scale)] after:absolute after:top-0 after:right-0 after:left-0 afer:w-full after:h-px after:bg-inverted/10"
-		>
+		<ListItem index={props.index}>
 			<div
 				data-wrapper
-				class="pt-17 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
+				class="pt-17 lg:pt-10 flex max-lg:flex-col gap-y-5 items-baseline pb-40 lg:pb-20 w-full "
 			>
 				<div class="w-full lg:w-grid-3-w">
 					<A
@@ -80,6 +74,6 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 					</div>
 				</div>
 			</div>
-		</li>
+		</ListItem>
 	)
 }
