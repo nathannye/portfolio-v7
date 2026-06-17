@@ -6,6 +6,7 @@ import { createEffect, For } from 'solid-js'
 import HomeHero from '~/components/HomeHero'
 import ListSection from '~/components/ListSection/ListSection'
 import MarginListItem from '~/components/MarginListItem'
+import PackageListItem from '~/components/PackageListItem'
 import PageMeta from '~/components/PageMeta'
 import ProjectListItem from '~/components/ProjectListItem'
 import { DOMAIN } from '~/config'
@@ -25,12 +26,16 @@ const getData = query(async () => {
 			'{title, slug, firstPublished, "tags":tags[]->name} | order(firstPublished desc)',
 	})
 
+	const packages = getDocumentByType('package', {
+		extraQuery: '{title, githubLink, npmLink, description} | order(title asc)',
+	})
+
 	const page = getDocumentByType('home', {
 		extraQuery: '[0]{headline, blurb}',
 	})
 
-	return await Promise.all([projects, margins, page])
-}, 'projects')
+	return await Promise.all([projects, margins, packages, page])
+}, 'home')
 
 export default function Home() {
 	const data = createAsync(() => getData())
@@ -58,7 +63,7 @@ export default function Home() {
 		<div ref={el}>
 			<SanityPage fetcher={data}>
 				{(d) => {
-					const [projects, margins, page] = d
+					const [projects, margins, packages, page] = d
 
 					return (
 						<>
@@ -97,7 +102,7 @@ export default function Home() {
 										</ul>
 									</div>
 								</ListSection>
-								<ListSection index={1} title="Margins" itemCount={margins.length}>
+								<ListSection index={1} title="Writing" itemCount={margins.length}>
 									<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
 										<div data-header class="w-grid-3-w opacity-0">
 											Title
@@ -113,6 +118,26 @@ export default function Home() {
 										<ul>
 											<For each={margins}>
 												{(margin, i) => <MarginListItem {...margin} index={i()} />}
+											</For>
+										</ul>
+									</div>
+								</ListSection>
+								<ListSection index={2} title="OSS Packages" itemCount={packages.length}>
+									<div class="flex pb-50 mt-10 max-lg:hidden eyebrow opacity-50">
+										<div data-header class="w-grid-3-w opacity-0">
+											Title
+										</div>
+										<div data-header class="w-grid-2-w opacity-0">
+											GitHub
+										</div>
+										<div data-header class="w-grid-3-w opacity-0">
+											npm
+										</div>
+									</div>
+									<div class="mt-10">
+										<ul>
+											<For each={packages}>
+												{(pkg, i) => <PackageListItem {...pkg} index={i()} />}
 											</For>
 										</ul>
 									</div>

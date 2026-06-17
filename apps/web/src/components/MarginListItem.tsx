@@ -51,7 +51,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 						<For each={props.tags.sort((a, b) => a.localeCompare(b))}>
 							{(tag) => (
 								<li>
-									<span class="opacity-40 lg:inline-block mr-2">#</span>
+									<span class="opacity-60 lg:inline-block mr-2">#</span>
 									{tag}
 								</li>
 							)}
