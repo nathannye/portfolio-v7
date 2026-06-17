@@ -12,11 +12,13 @@ export default {
 			name: 'githubLink',
 			title: 'GitHub Link',
 			type: 'url',
+			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: 'npmLink',
 			title: 'npm Link',
 			type: 'url',
+			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: 'description',
