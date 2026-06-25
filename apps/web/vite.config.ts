@@ -6,6 +6,8 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import { DOMAIN } from './src/config'
 
+const DEFAULT_ISR_DURATION = 60
+
 export default defineConfig({
 	envPrefix: ['SANITY_'],
 
@@ -13,14 +15,23 @@ export default defineConfig({
 		solidStart(),
 		tailwindcss(),
 		nitro({
-			prerender: {
-				crawlLinks: true,
-			},
+			// prerender: {
+			// 	crawlLinks: true,
+			// },
 			preset: 'vercel',
 			routeRules: {
-				'/**': {
-					isr: 60,
+				'/_server/**': {
+					isr: false,
+					headers: {
+						'cache-control': 'no-store, no-cache, must-revalidate',
+						'cdn-cache-control': 'no-store',
+						vary: '*',
+					},
 				},
+				'/**': {
+					isr: DEFAULT_ISR_DURATION,
+				},
+				'/': { isr: DEFAULT_ISR_DURATION },
 			},
 		}),
 		crawlMeMaybeSitemap({
