@@ -15,23 +15,20 @@ export default defineConfig({
 		solidStart(),
 		tailwindcss(),
 		nitro({
-			// prerender: {
-			// 	crawlLinks: true,
-			// },
+			prerender: {
+				crawlLinks: true,
+			},
 			preset: 'vercel',
 			routeRules: {
-				'/_server/**': {
-					isr: false,
-					headers: {
-						'cache-control': 'no-store, no-cache, must-revalidate',
-						'cdn-cache-control': 'no-store',
-						vary: '*',
-					},
-				},
 				'/**': {
-					isr: DEFAULT_ISR_DURATION,
+					prerender: true,
 				},
-				'/': { isr: DEFAULT_ISR_DURATION },
+				'/projects/**': {
+					prerender: true,
+				},
+				'/margins/**': {
+					prerender: true,
+				},
 			},
 		}),
 		crawlMeMaybeSitemap({
