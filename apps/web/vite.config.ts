@@ -19,13 +19,7 @@ export default defineConfig({
 			preset: 'vercel',
 			routeRules: {
 				'/**': {
-					prerender: true,
-				},
-				'/projects/**': {
-					prerender: true,
-				},
-				'/margins/**': {
-					prerender: true,
+					isr: 60,
 				},
 			},
 		}),

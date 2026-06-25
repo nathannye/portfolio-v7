@@ -87,13 +87,13 @@ export default function Home() {
 											<div data-header class="w-grid-3-w opacity-0">
 												Title
 											</div>
-											<div data-header class="w-grid-2-w opacity-0">
+											<div data-header class="w-grid-3-w opacity-0">
 												Partners in Crime
 											</div>
-											<div data-header class="w-grid-2-w opacity-0">
+											<div data-header class="w-grid-1-w opacity-0">
 												Kudos
 											</div>
-											<div data-header class="w-grid-2-w opacity-0">
+											<div data-header class="w-grid-1-w opacity-0">
 												Press
 											</div>
 										</div>
@@ -109,7 +109,7 @@ export default function Home() {
 										<div data-header class="w-grid-3-w opacity-0">
 											Title
 										</div>
-										<div data-header class="w-grid-2-w opacity-0">
+										<div data-header class="w-grid-3-w opacity-0">
 											Published
 										</div>
 										<div data-header class="w-grid-3-w opacity-0">
@@ -127,7 +127,10 @@ export default function Home() {
 										<div data-header class="w-grid-3-w opacity-0">
 											Title
 										</div>
-										<div data-header class="w-grid-2-w opacity-0">
+										<div data-header class="w-grid-3-w opacity-0">
+											Version
+										</div>
+										<div data-header class="lg:w-grid-1-w opacity-0">
 											GitHub
 										</div>
 										<div data-header class="w-grid-3-w opacity-0">

@@ -43,14 +43,14 @@ export default function ProjectListItem(props: ProjectListItemProps) {
 					<div
 						data-fade
 						class={cx(
-							'w-grid-3-w lg:w-grid-2-w shrink-0 opacity-90 eyebrow',
+							'w-grid-3-w lg:w-grid-3-w shrink-0 opacity-90 eyebrow',
 							!props.partners?.length && 'invisible max-lg:hidden',
 						)}
 					>
 						<span class="inline-block opacity-50 mr-10 lg:hidden">W/</span>
 						{partnerList(props.partners)}
 					</div>
-					<div data-stagger class="w-grid-2-w shrink-0 opacity-90 eyebrow">
+					<div data-stagger class="w-grid-1-w shrink-0 opacity-90 eyebrow">
 						{list(props.awards)}
 					</div>
 					<div class="w-full opacity-90 max-lg:hidden eyebrow flex">

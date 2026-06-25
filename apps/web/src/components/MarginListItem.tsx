@@ -31,7 +31,7 @@ export default function MarginListItem(props: MarginListItemProps) {
 				>
 					{props.title}
 				</h3>
-				<div data-fade class="opacity-90 lg:w-grid-2-w eyebrow shrink-0 eyebrow">
+				<div data-fade class="opacity-90 lg:w-grid-3-w eyebrow shrink-0 eyebrow">
 					{formatTime(props.firstPublished)}
 				</div>
 				<ul
