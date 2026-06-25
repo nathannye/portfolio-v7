@@ -1,5 +1,8 @@
+import { FaBox } from 'react-icons/fa'
+
 export default {
 	name: 'package',
+	icon: FaBox,
 	title: 'Package',
 	type: 'document',
 	fields: [

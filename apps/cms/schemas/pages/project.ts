@@ -98,5 +98,10 @@ export default createPage({
 				},
 			],
 		},
+		{
+			name: 'behindTheScenes',
+			type: 'array',
+			of: [{ type: 'reference', to: [{ type: 'margin' }] }],
+		},
 	],
 })
