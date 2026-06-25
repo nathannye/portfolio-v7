@@ -6,8 +6,6 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 import { DOMAIN } from './src/config'
 
-const DEFAULT_ISR_DURATION = 60
-
 export default defineConfig({
 	envPrefix: ['SANITY_'],
 
