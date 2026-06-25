@@ -28,7 +28,8 @@ const getData = query(async () => {
 	})
 
 	const packages = getDocumentByType('package', {
-		extraQuery: '{title, githubLink, npmLink, description} | order(title asc)',
+		extraQuery:
+			'{title, githubLink, npmLink, description, packageName} | order(title asc)',
 	})
 
 	const page = getDocumentByType('home', {

@@ -10,6 +10,12 @@ export default {
 			name: 'title',
 			title: 'Title',
 			type: 'string',
+			validation: (Rule) => Rule.required(),
+		},
+		{
+			name: 'packageName',
+			type: 'string',
+			validation: (Rule) => Rule.required(),
 		},
 		{
 			name: 'githubLink',
