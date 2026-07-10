@@ -39,10 +39,25 @@ const getData = query(async () => {
 	return await Promise.all([projects, margins, packages, page])
 }, 'home')
 
+const getExplainer = query(async () => {
+	'use server'
+	const q = `*[_type == "margin" && defined(slug.current)]{slug, title, firstPublished}`
+	const unencodedQ = encodeURIComponent(q)
+
+	return await fetch(
+		`https://b53ej91c.api.sanity.io/v2026-05-14/data/query/production?query=${unencodedQ}&explain=true`,
+	).then((res) => res.json())
+}, 'explainer')
+
 export default function Home() {
 	const data = createAsync(() => getData())
+	const explainer = createAsync(() => getExplainer())
 	const location = useLocation()
 	let el: HTMLElement | undefined
+
+	createEffect(() => {
+		console.log(explainer())
+	})
 
 	createEffect(() => {
 		const el = document.querySelector('[data-page]')
