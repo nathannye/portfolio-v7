@@ -31,10 +31,6 @@ const getNpmPackage = query(async (packageName: string) => {
 export default function PackageListItem(props: PackageListItemProps) {
 	const npmPackage = createAsync(() => getNpmPackage(props.packageName))
 
-	createEffect(() => {
-		console.log({ npmPackage: npmPackage() })
-	})
-
 	return (
 		<Show when={npmPackage()}>
 			{(npm) => {
