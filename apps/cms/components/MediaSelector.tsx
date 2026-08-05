@@ -24,6 +24,9 @@ export default function MediaSelector(props) {
 
 	const imageMember = members.find((member: any) => member.name === 'image')
 	const videoMember = members.find((member: any) => member.name === 'video')
+	const disableParallaxMember = members.find(
+		(member: any) => member.name === 'disableParallax',
+	)
 
 	return (
 		<Stack space={3}>
@@ -60,6 +63,15 @@ export default function MediaSelector(props) {
 					/>
 				)}
 			</div>
+			{val === 'image' && disableParallaxMember && (
+				<MemberField
+					renderInput={renderInput}
+					renderField={renderField}
+					renderItem={renderItem}
+					renderPreview={renderPreview}
+					member={disableParallaxMember}
+				/>
+			)}
 		</Stack>
 	)
 }

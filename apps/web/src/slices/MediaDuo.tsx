@@ -10,9 +10,12 @@ import Slice from '~/components/Slice'
 
 interface MediaDuoProps {
 	media: {
-		mediaType: 'image' | 'video'
-		image: SanityImageAssetDocument
-		video: MuxVideoType
+		media: {
+			mediaType: 'image' | 'video'
+			image: SanityImageAssetDocument
+			video: MuxVideoType
+			disableParallax?: boolean
+		}
 		columns: string
 	}[]
 }
@@ -75,20 +78,28 @@ export default function MediaDuo(props: MediaDuoProps) {
 					const { desktopWidth, mobileWidth } = getWidthAttrs(columns)
 
 					if (media.mediaType === 'image') {
+						const image = (
+							<SanityImage
+								class="w-full max-h-[75vh] lg:max-h-[110vh] h-auto object-cover"
+								desktopWidth={desktopWidth}
+								mobileWidth={mobileWidth}
+								src={media.image}
+							/>
+						)
+
 						return (
 							<div
 								data-index={index()}
 								use:fadeIn
 								class={cx(columnClass, 'w-full translate-y-60 opacity-0')}
 							>
-								<ParallaxMedia class="size-full" speed={getSpeed(columns)}>
-									<SanityImage
-										class="w-full max-h-[75vh] lg:max-h-[110vh] h-auto object-cover"
-										desktopWidth={desktopWidth}
-										mobileWidth={mobileWidth}
-										src={media.image}
-									/>
-								</ParallaxMedia>
+								{media.disableParallax ? (
+									image
+								) : (
+									<ParallaxMedia class="size-full" speed={getSpeed(columns)}>
+										{image}
+									</ParallaxMedia>
+								)}
 							</div>
 						)
 					}

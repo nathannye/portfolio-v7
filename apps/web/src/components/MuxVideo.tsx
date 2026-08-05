@@ -85,7 +85,7 @@ export default function MuxVideo({
 
 	return (
 		<div class="relative w-full">
-			<div class={cx('relative aspect-video', className)}>
+			<div class={cx('relative', className)}>
 				<img
 					src={posterUrl}
 					alt="Video Poster"

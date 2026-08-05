@@ -52,5 +52,11 @@ export default {
 				collapsed: false,
 			},
 		},
+		{
+			name: 'disableParallax',
+			type: 'boolean',
+			title: 'Disable Parallax',
+			initialValue: false,
+		},
 	],
 }

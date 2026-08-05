@@ -6,6 +6,7 @@ export type SanityMedia = {
 	mediaType: 'image' | 'video'
 	image: SanityImageAssetDocument
 	video: MuxVideo
+	disableParallax?: boolean
 }
 
 export type SanityImageProps = {
