@@ -40,7 +40,7 @@ export default function GlobalLayout({ children }: { children: JSX.Element }) {
 	})
 
 	createEffect(() => {
-		console.log(location.pathname)
+
 		if (location.pathname && !isServer) {
 			gsap.to(el, {
 				opacity: 1,

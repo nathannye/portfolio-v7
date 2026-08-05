@@ -87,11 +87,9 @@ export function onTrack(
 		viewport.size.height
 		viewport.size.width
 		setBounds(computeBounds(track, { top, bottom }))
-		console.log('fired effect')
 	})
 
 	useWindowResize(() => {
-		console.log('resize')
 		setBounds(computeBounds(track, { top, bottom }))
 	})
 

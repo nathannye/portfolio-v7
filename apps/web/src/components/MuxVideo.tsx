@@ -18,6 +18,13 @@ interface MuxVideoProps {
 	posterMobileWidth?: number | string
 }
 
+const aspectToCss = (aspect: string) => {
+	if (!aspect) return ''
+	const [width, height] = aspect.split(':').map(Number)
+
+	return `${width / height}`
+}
+
 export default function MuxVideo({
 	src,
 	priority = false,
@@ -29,6 +36,8 @@ export default function MuxVideo({
 }: MuxVideoProps) {
 	let el!: HTMLVideoElement
 	let hlsRef: Hls
+
+	const aspect = aspectToCss(src?.asset?.data?.aspect_ratio)
 
 	const playbackId = src.asset?.playbackId
 	const { poster: posterUrl, playbackUrl: url } = getMuxUrls(playbackId)
@@ -71,20 +80,23 @@ export default function MuxVideo({
 			onEnter: () => {
 				if (el) {
 					el.play()
-					console.log('video::paused', el.paused)
 				}
 			},
 			onLeave: () => {
 				if (el) {
 					el.pause()
-					console.log('video::paused', el.paused)
 				}
 			},
 		})
 	})
 
 	return (
-		<div class="relative w-full">
+		<div
+			style={{
+				'--aspect': aspect,
+			}}
+			class={cx('relative w-full aspect-[var(--aspect)]')}
+		>
 			<div class={cx('relative', className)}>
 				<img
 					src={posterUrl}
