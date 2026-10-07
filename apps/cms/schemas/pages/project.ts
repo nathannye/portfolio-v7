@@ -62,7 +62,7 @@ export default createPage({
 				},
 			],
 			options: {
-				list: ['Design', 'Dev'],
+				list: ['Design', 'Dev', '3D Renders & Modeling'],
 			},
 		},
 		{

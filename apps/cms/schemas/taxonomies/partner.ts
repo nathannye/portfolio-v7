@@ -25,6 +25,10 @@ export default {
 						value: 'de',
 					},
 					{
+						title: 'Canada',
+						value: 'ca',
+					},
+					{
 						title: 'United States',
 						value: 'us',
 					},
