@@ -1,7 +1,7 @@
-import { getDocumentByType } from '@local/sanity/server'
 import { Link, Meta, Title } from '@solidjs/meta'
-import { createAsync, query } from '@solidjs/router'
+import { createAsync } from '@solidjs/router'
 import { type Accessor, Show } from 'solid-js'
+import { getGlobalSeo, type GlobalSeo } from '~/queries/seo'
 
 type PageMetaProps = {
 	title: string
@@ -13,20 +13,8 @@ type PageMetaProps = {
 	ogImageHeight?: number
 }
 
-type GlobalMeta = {
-	title: string
-	description: string
-	twitterHandle: string
-	siteUrl: string
-}
-
-const getGlobalMeta = query(async () => {
-	'use server'
-	return await getDocumentByType('seo')
-}, 'global-meta')
-
 export default function PageMeta(props: PageMetaProps) {
-	const globalMeta = createAsync(() => getGlobalMeta()) as Accessor<GlobalMeta>
+	const globalMeta = createAsync(() => getGlobalSeo()) as Accessor<GlobalSeo>
 
 	const imageWidth = props.ogImageWidth || 1200
 	const imageHeight = props.ogImageHeight || 630

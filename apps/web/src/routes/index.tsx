@@ -11,6 +11,7 @@ import PackageListItem from '~/components/PackageListItem'
 import PageMeta from '~/components/PageMeta'
 import ProjectListItem from '~/components/ProjectListItem'
 import { DOMAIN } from '~/config'
+import { getGlobalSeo, resolveSeo } from '~/queries/seo'
 import { onPageLeave, TRANSITION } from '~/utils'
 
 const getData = query(async () => {
@@ -36,7 +37,9 @@ const getData = query(async () => {
 		extraQuery: '[0]{headline, blurb}',
 	})
 
-	return await Promise.all([projects, margins, packages, page])
+	const seo = getGlobalSeo()
+
+	return await Promise.all([projects, margins, packages, page, seo])
 }, 'home')
 
 export default function Home() {
@@ -65,14 +68,15 @@ export default function Home() {
 		<div ref={el}>
 			<SanityPage fetcher={data}>
 				{(d) => {
-					const [projects, margins, packages, page] = d
+					const [projects, margins, packages, page, seo] = d
+					const meta = resolveSeo(seo)
 
 					return (
 						<>
 							<PageMeta
-								titleOverride="Nathan Nye • Frontend Engineer"
-								description="Frontend engineer building everything from award-winning marketing sites to sprawling CMS platforms. Focused on ambitious web projects that need to survive the real world."
-								title="Nathan Nye • Frontend Engineer"
+								titleOverride={meta.pageTitle}
+								description={meta.metaDescription}
+								title={meta.pageTitle}
 								slug="/"
 								imageUrl={`${DOMAIN}/og.png`}
 								ogImageWidth={1200}

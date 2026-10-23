@@ -29,6 +29,35 @@ export default {
 			validation: (Rule) => Rule.required(),
 		},
 		{
+			name: 'jobTitle',
+			title: 'Job Title',
+			type: 'string',
+			group: 'meta',
+			description:
+				'Used in schema markup and appended to the site title on the homepage.',
+		},
+		{
+			name: 'metaDescription',
+			title: 'Meta Description',
+			type: 'text',
+			rows: 4,
+			group: 'meta',
+			description:
+				'Homepage meta description, Open Graph description, and WebSite schema description.',
+			validation: (Rule) =>
+				Rule.max(160).warning(
+					'Long descriptions (over 160 characters) will be truncated by Google.',
+				),
+		},
+		{
+			name: 'bio',
+			title: 'Bio',
+			type: 'text',
+			rows: 4,
+			group: 'meta',
+			description: 'Person schema description.',
+		},
+		{
 			name: 'metaImage',
 			title: 'Meta Image',
 			description:
